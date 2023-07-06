@@ -3,7 +3,7 @@ import Editor from '@monaco-editor/react';
 import Parser from "../../Compiler/FrontEnd/Parser.ts";
 import { setupGlobalScope } from "../../Compiler/BackEnd/Scope/globalScope.ts";
 import { evaluate } from "../../Compiler/BackEnd/Interpreter/interpreter.ts";
-
+import Button from 'react-bootstrap/Button';
 import './Playground.scss'
 import AssembleNav from '../../Components/Navbar/Navbar.jsx';
 function Playground() {
@@ -16,10 +16,10 @@ function Playground() {
   const getEditorData = () => {
     return editorRef.current.getValue();
   }
-  const updateEditor = ()=>{
+  const updateEditor = () => {
     editorRef.current.setValue(DEFAULTcode);
   }
-  async function runCode() {
+  async function syncFileCode() {
     const inputFile = document.getElementById('fileInput').files[0];
     if (!inputFile) {
       alert('Please select a file');
@@ -33,29 +33,9 @@ function Playground() {
       return;
     }
 
-    const parser = new Parser();
-    const env = setupGlobalScope();
-
     const input = await inputFile.text();
     DEFAULTcode = input;
     updateEditor();
-    const program = parser.produceAST(input);
-
-    // Redirect console.log to capture the output
-    const originalConsoleLog = console.log;
-    const capturedOutput = [];
-    console.log = (...args) => capturedOutput.push(args.join(' '));
-
-    try {
-      await evaluate(program, env);
-    } catch (error) {
-      window.alert(error);
-    } finally {
-      // Restore console.log
-      console.log = originalConsoleLog;
-    }
-
-    setOutput(capturedOutput.join('\n'));
   }
 
   function runEditorCode() {
@@ -83,9 +63,6 @@ function Playground() {
     setOutput(capturedOutput.join('\n'));
   }
 
-  const mystyle = {
-    display: "flex"
-  };
   const outputStyle = {
     overflowY: "scroll",
     height: "650px",
@@ -94,52 +71,62 @@ function Playground() {
   }
   return (
     <>
-    <AssembleNav/>
-    <div style={mystyle}>
-      <div>
-        <input type="file" id="fileInput" accept=".avenger" />
-        <button onClick={runCode}>Run</button>
-        <div>
-          <h3>Code Editor:</h3>
+      <AssembleNav />
+      <div className='pg-main-container'>
+        <div className='left'>
           <div>
-            <Editor
-              height="650px"
-              width="80vw"
-              onMount={handleEditorMount}
-              theme="vs-dark"
-              defaultLanguage="python"
-              defaultValue={DEFAULTcode}
-              options={{
-                wordWrap: true,
-                formatOnType: true,
-                contextmenu: true,
-                diagnostics: false,
-                quickSuggestions: {
-                  other: false,
-                  comments: false,
-                  strings: false
-                },
-                parameterHints: {
-                  enabled: false
-                },
-                minimap: { enabled: false },
-                suggestOnTriggerCharacters: false,
-                acceptSuggestionOnEnter: "off",
-                tabCompletion: "off",
-                wordBasedSuggestions: false,
-                scrollBeyondLastLine: false,
-                fontSize: "18px",
-              }}
-            />
-            <button style={{ marginTop: "20px" }} onClick={runEditorCode} >Run</button>
+            <div className="intro-editor">
+              <div className="main-avenger">
+                main.avenger
+              </div>
+              <div className="padding">
+                <Button variant="primary" onClick={runEditorCode} ><i class="fa-solid fa-play"></i> Run</Button>
+              </div>
+            </div>
+
+            <div>
+              <Editor
+                height="calc(100vh - 200px)"
+                width="100%"
+                onMount={handleEditorMount}
+                theme="vs-light"
+                defaultLanguage="python"
+                defaultValue={DEFAULTcode}
+                options={{
+                  wordWrap: true,
+                  formatOnType: true,
+                  contextmenu: true,
+                  diagnostics: false,
+                  quickSuggestions: {
+                    other: false,
+                    comments: false,
+                    strings: false
+                  },
+                  parameterHints: {
+                    enabled: false
+                  },
+                  minimap: { enabled: false },
+                  suggestOnTriggerCharacters: false,
+                  acceptSuggestionOnEnter: "off",
+                  tabCompletion: "off",
+                  wordBasedSuggestions: false,
+                  scrollBeyondLastLine: false,
+                  fontSize: "14px",
+                }}
+              />
+              <div className="file-upload">
+                <input type="file" id="fileInput" accept=".avenger" required />
+                <Button variant="primary"onClick={syncFileCode}><i class="fa-solid fa-rotate"></i> Sync file Code </Button>
+              </div>
+            </div>
           </div>
         </div>
+
+        <div className='right'>
+          <p>Output:</p>
+          <pre style={outputStyle}>{output}</pre>
+        </div>
       </div>
-      <div>
-        <h3>Output:</h3>
-        <pre style ={outputStyle}>{output}</pre>
-      </div>
-    </div>
     </>
   );
 }
