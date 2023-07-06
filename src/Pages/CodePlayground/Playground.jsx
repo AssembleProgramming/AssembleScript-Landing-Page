@@ -5,6 +5,7 @@ import { setupGlobalScope } from "../../Compiler/BackEnd/Scope/globalScope.ts";
 import { evaluate } from "../../Compiler/BackEnd/Interpreter/interpreter.ts";
 
 import './Playground.scss'
+import AssembleNav from '../../Components/Navbar/Navbar.jsx';
 function Playground() {
   let DEFAULTcode = `vision("Hello Avenger!!!");`;
   const [output, setOutput] = useState('');
@@ -92,6 +93,8 @@ function Playground() {
     padding: "10px"
   }
   return (
+    <>
+    <AssembleNav/>
     <div style={mystyle}>
       <div>
         <input type="file" id="fileInput" accept=".avenger" />
@@ -137,6 +140,7 @@ function Playground() {
         <pre style ={outputStyle}>{output}</pre>
       </div>
     </div>
+    </>
   );
 }
 

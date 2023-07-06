@@ -2,17 +2,17 @@ import React from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment, Stats } from '@react-three/drei'
 import Shield from '../../Components/Shield'
-import CollapsibleExample from '../../Components/Navbar/Navbar'
 import Button from 'react-bootstrap/Button';
 import './Home.scss'
 import RepoStats from '../../Components/GitStats/CurrentStats'
 import { Perf } from 'r3f-perf'
+import AssembleNav from '../../Components/Navbar/Navbar'
 
 const Home = () => {
     return (
         <>
             <section className='section1' style={{ height: "100vh" }}>
-                <CollapsibleExample />
+                <AssembleNav/>
                 <Canvas
                     className='webgl'
                     camera={{

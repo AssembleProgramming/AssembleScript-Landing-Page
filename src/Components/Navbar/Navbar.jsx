@@ -2,15 +2,16 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo.png';
+import { useLocation } from 'react-router-dom';
 import './Navbar.scss'
-import { NavLink } from 'react-bootstrap';
 
-function CollapsibleExample() {
+function AssembleNav() {
+    const location = useLocation();
     return (
         <Navbar fixed="top" collapseOnSelect expand="lg" className="bg-body-tertiary myNavbar">
             <Container>
-                <Navbar.Brand href="#">
+                <Navbar.Brand href="/">
                     <img
                         src={logo}
                         width="30"
@@ -23,9 +24,9 @@ function CollapsibleExample() {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link href="#">Docs</Nav.Link>
-                        <Nav.Link href="https://assemble-script.vercel.app/playground">Playground</Nav.Link>
+                    <Nav activeKey={location.pathname} className="me-auto">
+                        <Nav.Link href="/docs">Docs</Nav.Link>
+                        <Nav.Link href="/playground">Playground</Nav.Link>
                         <Nav.Link href="#">Team</Nav.Link>
                     </Nav>
                     <Nav>
@@ -42,4 +43,4 @@ function CollapsibleExample() {
     );
 }
 
-export default CollapsibleExample;
+export default AssembleNav;
