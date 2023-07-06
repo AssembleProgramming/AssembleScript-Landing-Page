@@ -1,0 +1,9 @@
+react-router-dom
+leva
+three
+typescript
+@monaco-editor/react
+@typescript-eslint/parser
+npm i @react-three/fiber
+@react-three/drei
+sass

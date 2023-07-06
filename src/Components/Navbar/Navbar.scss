@@ -1,0 +1,11 @@
+.myNavbar{
+    border-bottom: 1px solid #d0d7de;
+    background: #f6f8fa;
+    .my-btn{
+        border: 1px solid #121316;
+        transition: all 0.3s ease;
+    }
+    .my-btn:hover{
+        border: 1px solid #272930;
+    }
+}

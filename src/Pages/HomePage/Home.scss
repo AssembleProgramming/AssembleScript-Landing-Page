@@ -1,0 +1,139 @@
+.section1 {
+    height: "100vh";
+
+    .webgl {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    .mainPageContainer {
+        width: 100vw;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 160px 100px 0px 100px;
+
+        .left {
+            display: flex;
+            flex-direction: column;
+            width: 49vw;
+
+            .main-title {
+                font-size: 60px;
+                font-weight: 800;
+            }
+
+            .main-info {
+                margin-top: 15px;
+                font-size: 20px;
+                color: #667085;
+            }
+
+            .main-btn-container {
+                margin-top: 100px;
+                width: 100%;
+                display: flex;
+
+                .main-btn {
+                    margin-right: 20px;
+                    border: 1px solid #121316;
+                }
+            }
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            height: 90%;
+
+            .version {
+                font-size: 18px;
+                margin-left: 4px;
+
+                .version-title {
+                    color: #667085;
+                    font-size: 20px;
+                    margin-bottom: 0;
+                }
+
+                hr {
+                    margin-top: 3px;
+                    margin-bottom: 4%;
+                }
+
+                margin-bottom: 20px;
+            }
+
+        }
+    }
+
+
+    @media (max-width: 480px) {
+        .mainPageContainer {
+            width: 100vw;
+            height: 100%;
+            flex-direction: column;
+            padding: 120px 20px 0px 20px;
+
+            .left {
+                display: flex;
+                flex-direction: column;
+                width: 90vw;
+                .main-title {
+                    font-size: 30px;
+                    font-weight: 800;
+                }
+
+                .main-info {
+                    margin-top: 15px;
+                    font-size: 20px;
+                }
+
+                .main-btn-container {
+                    margin-top: 30px;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    .main-btn {
+                        font-size: 16px;
+                        padding: 16px;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        border: 1px solid #121316;
+                    }
+                }
+            }
+
+            .right {
+                margin-top: 60px;
+                display: flex;
+                height: 90%;
+
+                .version {
+                
+                    font-size: 18px;
+                    margin-left: 4px;
+
+                    .version-title {
+                        color: #667085;
+                        font-size: 20px;
+                        margin-bottom: 0;
+                    }
+
+                    hr {
+                        margin-top: 3px;
+                        margin-bottom: 4%;
+                    }
+
+                    margin-bottom: 20px;
+                }
+
+            }
+        }
+    }
+}
