@@ -4,6 +4,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: all 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 html,
@@ -15,12 +18,24 @@ body {
     color: #fff;
     background: #121316;
 }
+
+.assemble-script::selection {
+    color: #fff !important;
+    background: #4a32c3c9;
+}
+
 @media (max-width: 850px) {
-    .webgl{
+    .webgl {
         display: none;
     }
 }
 
 h1 {
     font-family: 'Roboto Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+h1::selection{
+    color: #fff;
+    background: #121316;
 }

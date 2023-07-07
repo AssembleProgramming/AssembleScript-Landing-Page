@@ -10,8 +10,6 @@ const Shield = () => {
     const handleMouseMove = (event) => {
       mousePos.current.x = event.clientX;
       mousePos.current.y = event.clientY;
-
-      console.log(mousePos.current);
     };
 
     window.addEventListener('mousemove', handleMouseMove);

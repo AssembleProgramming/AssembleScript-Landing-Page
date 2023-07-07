@@ -3,16 +3,41 @@ import { Canvas } from '@react-three/fiber'
 import { Environment, Stats } from '@react-three/drei'
 import Shield from '../../Components/Shield'
 import Button from 'react-bootstrap/Button';
-import './Home.scss'
 import RepoStats from '../../Components/GitStats/CurrentStats'
 import { Perf } from 'r3f-perf'
 import AssembleNav from '../../Components/Navbar/Navbar'
+import { useState, useEffect } from 'react'
+import './Home.scss'
 
 const Home = () => {
+    const [title, setTitle] = useState();
+    const fullText = "Unleash Your Inner Avenger with AssembleScript";
+    useEffect(() => {
+        let prevText = "";
+        let currentIndex = 0;
+        const interval = setInterval(() => {
+            if (currentIndex === fullText.length) {
+                clearInterval(interval);
+                return;
+            }
+            setTitle(fullText.substring(0, currentIndex + 1));
+            currentIndex += 1;
+        }, 100);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const getWordWithColor = (word) => {
+        if (word === 'AssembleScript') {
+          return <span className="assemble-script">{word}</span>;
+        }
+        return word;
+      };
+
     return (
         <>
             <section className='section1' style={{ height: "100vh" }}>
-                <AssembleNav/>
+                <AssembleNav />
                 <Canvas
                     className='webgl'
                     camera={{
@@ -26,15 +51,20 @@ const Home = () => {
                     <Environment files="./maps/brown_photostudio_1k.hdr" background={false} blur={0} />
                     <Shield />
                     <Stats />
-                    <Perf position="bottom-left"/>
+                    <Perf position="bottom-left" />
                 </Canvas>
                 <div className="mainPageContainer">
                     <div className="left">
-                        <h1 className='main-title'>
-                            Unleash Your Inner
-                            Avenger with
-                            AssembleScript
-                        </h1>
+                        <div className='home-title-container'>
+                            <h1 className='main-title'>
+                                {title && title.split(' ').map((word, index) => {
+                                    if (word === 'AssembleScript') {
+                                        return <span key={index} className="assemble-script">{word}</span>;
+                                    }
+                                    return word + ' ';
+                                })}
+                            </h1>
+                        </div>
                         <p className='main-info'>
                             Inspired by the epic world of Marvel and the incredible Avengers, <br />
                             AssembleScript combines the best of  programming with <br /> the thrill of superheroic adventures.
