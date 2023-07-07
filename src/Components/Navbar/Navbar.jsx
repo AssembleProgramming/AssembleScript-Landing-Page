@@ -28,15 +28,15 @@ function AssembleNav() {
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/docs">Docs</Nav.Link>
                         <Nav.Link href="/playground">Playground</Nav.Link>
-                        <Nav.Link href="#">Team</Nav.Link>
+                        <Nav.Link href="/team">Team</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#">
-                            <Button className='my-btn' variant="light"><i className="fa-solid fa-code"></i> Code</Button>
-                            </Nav.Link>
-                        <Nav.Link  href="#">
-                            <Button variant="dark"><i className="fa-brands fa-github"></i> GitHub</Button>
-                            </Nav.Link>
+                        <Nav.Link target='_blank' href="https://github.com/AssembleProgramming/AssembleScript/blob/main/CONTRIBUTING.md">
+                            <Button className='my-btn' variant="light"><i class="fa-solid fa-code-pull-request"></i> Contribute</Button>
+                        </Nav.Link>
+                        <Nav.Link target='_blank' href="https://github.com/AssembleProgramming">
+                            <Button className='about-us-btn' variant="dark"><i className="fa-brands fa-github"></i> About Us</Button>
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

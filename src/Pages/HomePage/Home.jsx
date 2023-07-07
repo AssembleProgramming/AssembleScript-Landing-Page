@@ -77,7 +77,7 @@ const Home = () => {
                             <Button className='main-btn' variant="light" size="lg">
                                 <i className="fa-solid fa-code"></i> Get Started
                             </Button>
-                            <Button className='main-btn' variant="dark" size="lg">
+                            <Button target='_blank' href='https://github.com/AssembleProgramming/AssembleScript' className='main-btn' variant="dark" size="lg">
                                 <i className="fa-brands fa-github"></i> Source Code
                             </Button>
                         </div>
