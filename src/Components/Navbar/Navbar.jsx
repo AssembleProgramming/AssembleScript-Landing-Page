@@ -25,6 +25,7 @@ function AssembleNav() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav activeKey={location.pathname} className="me-auto">
+                        <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/docs">Docs</Nav.Link>
                         <Nav.Link href="/playground">Playground</Nav.Link>
                         <Nav.Link href="#">Team</Nav.Link>

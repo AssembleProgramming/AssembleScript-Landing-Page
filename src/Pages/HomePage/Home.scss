@@ -73,7 +73,7 @@
     }
 
 
-    @media (max-width: 480px) {
+    @media (max-width: 850px) {
         .mainPageContainer {
             width: 100vw;
             height: 100%;
@@ -83,7 +83,7 @@
             .left {
                 display: flex;
                 flex-direction: column;
-                width: 90vw;
+                width: 100%;
                 .main-title {
                     font-size: 30px;
                     font-weight: 800;
@@ -100,11 +100,14 @@
                     display: flex;
                     flex-direction: column;
                     .main-btn {
+                        width: 100%;
                         font-size: 16px;
                         padding: 16px;
                         margin-top: 10px;
                         margin-bottom: 10px;
                         border: 1px solid #121316;
+                        margin-right: 0px;
+                        margin-left: 0px;
                     }
                 }
             }

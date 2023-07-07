@@ -15,6 +15,11 @@ body {
     color: #fff;
     background: #121316;
 }
+@media (max-width: 850px) {
+    .webgl{
+        display: none;
+    }
+}
 
 h1 {
     font-family: 'Roboto Mono', monospace;
