@@ -7,11 +7,14 @@ import Button from 'react-bootstrap/Button';
 import './Playground.scss'
 import AssembleNav from '../../Components/Navbar/Navbar.jsx';
 function Playground() {
+  let isMobile = false;
   let offset = `calc(100vh - ${200}px)`;
   console.log(window.innerWidth);
   if (window.innerWidth < 780) {
     offset = `calc(100vh - ${240}px)`;
+    isMobile = true;
   }
+
 
   let DEFAULTcode = `vision("Hello Avenger!!!");`;
   const [output, setOutput] = useState('');
@@ -75,9 +78,27 @@ function Playground() {
       setOutput(capturedOutput.join('\n'));
       Load.style.display = "none";
       Run.style.display = "block";
+      if (isMobile) {
+        let outputWindow = document.querySelector('.right');
+        let codeWindow = document.querySelector('.left');
+        outputWindow.style.display = "flex";
+        codeWindow.style.display = "none";
+      }
     }, 1000);
+
   }
 
+  const showCode = () => {
+    let codeWindow = document.querySelector('.left');
+    codeWindow.style.display = "block";
+  }
+
+  const showOp = () => {
+    let outputWindow = document.querySelector('.right');
+    let codeWindow = document.querySelector('.left');
+    outputWindow.style.display = "flex";
+    codeWindow.style.display = "none";
+  }
   return (
     <>
       <AssembleNav />
@@ -85,8 +106,13 @@ function Playground() {
         <div className='left'>
           <div>
             <div className="intro-editor">
-              <div className="main-avenger">
-                main.avenger
+              <div className="tab-switch">
+                <div className="main-avenger">
+                  main.avenger
+                </div>
+                <div onClick={showOp} className="mobile-op-button">
+                  Output
+                </div>
               </div>
               <div className="padding">
                 <Button className='run-btn' variant="primary" onClick={runEditorCode} >
@@ -98,7 +124,6 @@ function Playground() {
                   <div id="loading">
                     <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
                   </div>
-
                 </Button>
 
               </div>
@@ -143,7 +168,10 @@ function Playground() {
         </div>
 
         <div className='right'>
-          <div>
+          <div className='top-bar'>
+            <p className="codeWindow-mobile" onClick={showCode}>
+              main.avenger
+            </p>
             <p className="codeOp">
               Output
             </p>

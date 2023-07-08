@@ -4,7 +4,7 @@
     margin-top: 70px;
     height: calc(100vh - 70px);
     position: fixed;
-
+    background: #2d2f34;
     .left {
       overflow-y: hidden;
       width: 65vw;
@@ -26,6 +26,11 @@
           font-size: 16px;
           margin-bottom: 0;
           color: white;
+        }
+
+        .mobile-op-button {
+          display: none;
+          background: #000000;
         }
 
         .padding {
@@ -131,17 +136,22 @@
     .right {
       display: flex;
       flex-direction: column;
-
-      .codeOp {
-        display: flex;
-        align-items: center;
-        margin: 0;
-        height: 38px;
-        padding-left: 10px;
-        background-color: #2d2f34;
-        color: white;
-        font-size: 16px;
+      .top-bar{
+        .codeWindow-mobile{
+          display: none;
+        }
+        .codeOp {
+          display: flex;
+          align-items: center;
+          margin: 0;
+          height: 40px;
+          padding-left: 10px;
+          background-color: #2d2f34;
+          color: white;
+          font-size: 16px;
+        }
       }
+
 
       .terminal {
         overflow-Y: scroll;
@@ -161,35 +171,59 @@
     }
   }
 
-  @media (max-width: 780px){
+  @media (max-width: 780px) {
     .pg-main-container {
       display: flex;
       margin-top: 59px;
       height: calc(100vh);
       position: fixed;
+
       .left {
         overflow-y: visible;
         width: 100vw;
         height: 20px;
         border-right: 1px solid #606060;
         background: #f5f5f5;
-  
+        display: block;
+        // display: none;
         .intro-editor {
           display: flex;
           align-items: center;
           justify-content: space-between;
           height: 40px;
-  
-          .main-avenger {
-            height: 100%;
-            width: 130px;
-            background-color: #1e1e1e;
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 0;
-            color: white;
+
+          .tab-switch {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .main-avenger {
+              height: 100%;
+              width: 130px;
+              background-color: #0d6efd;
+              padding: 10px;
+              font-size: 16px;
+              margin-bottom: 0;
+              color: white;
+              text-align: center;
+              border: 2px solid #4c4c4c;
+            }
+
+            .mobile-op-button {
+              display: block;
+              height: 100%;
+              width: 130px;
+              background-color: #2d2f34;
+              border: 2px solid #4c4c4c;
+              padding: 10px;
+              font-size: 16px;
+              margin-bottom: 0;
+              color: white;
+              text-align: center;
+            }
           }
-  
+
+
           .padding {
             width: 100%;
             background: #2d2f34;
@@ -197,7 +231,7 @@
             justify-content: right;
             align-items: center;
             padding: 10px;
-  
+
             .run-btn {
               display: flex;
               align-items: center;
@@ -207,7 +241,7 @@
               width: 80px;
               margin-top: 2px;
               border-radius: 10px;
-  
+
               #loading {
                 .lds-ring {
                   display: none;
@@ -216,7 +250,7 @@
                   width: 30px;
                   height: 23px;
                 }
-  
+
                 .lds-ring div {
                   box-sizing: border-box;
                   display: block;
@@ -228,24 +262,24 @@
                   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
                   border-color: #fff transparent transparent transparent;
                 }
-  
+
                 .lds-ring div:nth-child(1) {
                   animation-delay: -0.45s;
                 }
-  
+
                 .lds-ring div:nth-child(2) {
                   animation-delay: -0.3s;
                 }
-  
+
                 .lds-ring div:nth-child(3) {
                   animation-delay: -0.15s;
                 }
-  
+
                 @keyframes lds-ring {
                   0% {
                     transform: rotate(0deg);
                   }
-  
+
                   100% {
                     transform: rotate(360deg);
                   }
@@ -254,13 +288,13 @@
             }
           }
         }
-  
+
         .monaco-editor {
           box-sizing: border-box;
           padding-top: 10px;
           background-color: #1e1e1e;
         }
-  
+
         .file-upload {
           border-right: 1px solid #606060;
           display: flex;
@@ -273,13 +307,13 @@
           background: #2d2f34;
           padding: 10px;
           margin-top: 10px;
-  
+
           input {
             background: #0d6efd;
             color: white;
             border-radius: 5px;
           }
-  
+
           input::file-selector-button {
             font-weight: bold;
             color: #0d6efd;
@@ -289,22 +323,43 @@
           }
         }
       }
-  
+
       .right {
-        display: flex;
+        display: none;
         flex-direction: column;
-  
-        .codeOp {
+
+        .top-bar{
           display: flex;
-          align-items: center;
-          margin: 0;
-          height: 38px;
-          padding-left: 10px;
-          background-color: #2d2f34;
-          color: white;
-          font-size: 16px;
+          .codeWindow-mobile{
+            display: flex;
+            align-items: center;
+            margin: 0;
+            width: 130px;
+            height: 40px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #2d2f34;
+            color: white;
+            font-size: 16px;
+            border: 2px solid #4c4c4c;
+            
+          }
+          .codeOp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            height: 40px;
+            width: 130px;
+            padding: 10px;
+            text-align: center;
+            background-color: #0d6efd;
+            color: white;
+            font-size: 16px;
+            border: 2px solid #4c4c4c;
+          }
         }
-  
+
         .terminal {
           overflow-Y: scroll;
           height: 100%;
@@ -313,13 +368,13 @@
           background-color: #1e1e1e;
           margin-bottom: 0;
           color: white;
-  
+
           .outputIntro {
             color: #3ff12f;
           }
         }
-  
-        width: 35vw;
+
+        width: 100vw;
       }
     }
   }
