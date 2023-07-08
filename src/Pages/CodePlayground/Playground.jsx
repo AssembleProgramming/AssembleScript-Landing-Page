@@ -7,6 +7,12 @@ import Button from 'react-bootstrap/Button';
 import './Playground.scss'
 import AssembleNav from '../../Components/Navbar/Navbar.jsx';
 function Playground() {
+  let offset = `calc(100vh - ${200}px)`;
+  console.log(window.innerWidth);
+  if (window.innerWidth < 780) {
+    offset = `calc(100vh - ${240}px)`;
+  }
+
   let DEFAULTcode = `vision("Hello Avenger!!!");`;
   const [output, setOutput] = useState('');
   const editorRef = useRef(null);
@@ -39,6 +45,12 @@ function Playground() {
   }
 
   function runEditorCode() {
+    const Load = document.querySelector('.lds-ring');
+    const Back = document.querySelector('.run-btn');
+    const Run = document.getElementById('run');
+    Load.style.display = "flex";
+    Run.style.display = "none";
+    Back.style.borderRadius = "10px";
     const inputText = getEditorData();
 
     const parser = new Parser();
@@ -59,8 +71,11 @@ function Playground() {
       // Restore console.log
       console.log = originalConsoleLog;
     }
-
-    setOutput(capturedOutput.join('\n'));
+    setTimeout(() => {
+      setOutput(capturedOutput.join('\n'));
+      Load.style.display = "none";
+      Run.style.display = "block";
+    }, 1000);
   }
 
   return (
@@ -74,13 +89,24 @@ function Playground() {
                 main.avenger
               </div>
               <div className="padding">
-                <Button variant="primary" onClick={runEditorCode} ><i class="fa-solid fa-play"></i> Run</Button>
+                <Button className='run-btn' variant="primary" onClick={runEditorCode} >
+                  <div id="run">
+                    <i className="fa-solid fa-play"></i>
+                    <span> Run</span>
+                  </div>
+
+                  <div id="loading">
+                    <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+                  </div>
+
+                </Button>
+
               </div>
             </div>
 
             <div>
               <Editor
-                height="calc(100vh - 200px)"
+                height={offset}
                 width="100%"
                 onMount={handleEditorMount}
                 theme="vs-dark"
@@ -110,7 +136,7 @@ function Playground() {
               />
               <div className="file-upload">
                 <input type="file" id="fileInput" accept=".avenger" required />
-                <Button variant="primary" onClick={syncFileCode}><i class="fa-solid fa-rotate"></i> Sync file Code </Button>
+                <Button variant="primary" onClick={syncFileCode}><i class="fa-solid fa-rotate"></i></Button>
               </div>
             </div>
           </div>
@@ -119,7 +145,7 @@ function Playground() {
         <div className='right'>
           <div>
             <p className="codeOp">
-                Output
+              Output
             </p>
           </div>
           <pre className='terminal'><span className="outputIntro">~$Avenger:<br /></span>{output}</pre>

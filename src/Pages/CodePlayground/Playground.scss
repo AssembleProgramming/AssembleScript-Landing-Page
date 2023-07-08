@@ -4,19 +4,20 @@
     margin-top: 70px;
     height: calc(100vh - 70px);
     position: fixed;
+
     .left {
       overflow-y: hidden;
       width: 65vw;
       height: 100%;
       border-right: 1px solid #606060;
       background: #f5f5f5;
-  
+
       .intro-editor {
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 40px;
-  
+
         .main-avenger {
           height: 100%;
           width: 130px;
@@ -26,7 +27,7 @@
           margin-bottom: 0;
           color: white;
         }
-  
+
         .padding {
           width: 100%;
           background: #2d2f34;
@@ -34,22 +35,70 @@
           justify-content: right;
           align-items: center;
           padding: 10px;
-  
-          .btn {
+
+          .run-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 5px;
             padding-right: 0px;
             width: 80px;
             margin-top: 2px;
+            border-radius: 10px;
+
+            #loading {
+              .lds-ring {
+                display: none;
+                justify-content: center;
+                align-items: center;
+                width: 30px;
+                height: 23px;
+              }
+
+              .lds-ring div {
+                box-sizing: border-box;
+                display: block;
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                border: 3px solid #fff;
+                border-radius: 50%;
+                animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                border-color: #fff transparent transparent transparent;
+              }
+
+              .lds-ring div:nth-child(1) {
+                animation-delay: -0.45s;
+              }
+
+              .lds-ring div:nth-child(2) {
+                animation-delay: -0.3s;
+              }
+
+              .lds-ring div:nth-child(3) {
+                animation-delay: -0.15s;
+              }
+
+              @keyframes lds-ring {
+                0% {
+                  transform: rotate(0deg);
+                }
+
+                100% {
+                  transform: rotate(360deg);
+                }
+              }
+            }
           }
         }
       }
-  
+
       .monaco-editor {
         box-sizing: border-box;
         padding-top: 10px;
         background-color: #1e1e1e;
       }
-  
+
       .file-upload {
         border-right: 1px solid #606060;
         display: flex;
@@ -62,13 +111,13 @@
         background: #2d2f34;
         padding: 10px;
         margin-top: 10px;
-  
+
         input {
           background: #0d6efd;
           color: white;
           border-radius: 5px;
         }
-  
+
         input::file-selector-button {
           font-weight: bold;
           color: #0d6efd;
@@ -78,11 +127,12 @@
         }
       }
     }
-  
-    .right{
+
+    .right {
       display: flex;
       flex-direction: column;
-      .codeOp{
+
+      .codeOp {
         display: flex;
         align-items: center;
         margin: 0;
@@ -92,8 +142,8 @@
         color: white;
         font-size: 16px;
       }
-      .terminal
-      {
+
+      .terminal {
         overflow-Y: scroll;
         height: 100%;
         width: 100%;
@@ -101,10 +151,175 @@
         background-color: #1e1e1e;
         margin-bottom: 0;
         color: white;
-        .outputIntro{
+
+        .outputIntro {
           color: #3ff12f;
         }
       }
+
       width: 35vw;
+    }
+  }
+
+  @media (max-width: 780px){
+    .pg-main-container {
+      display: flex;
+      margin-top: 59px;
+      height: calc(100vh);
+      position: fixed;
+      .left {
+        overflow-y: visible;
+        width: 100vw;
+        height: 20px;
+        border-right: 1px solid #606060;
+        background: #f5f5f5;
+  
+        .intro-editor {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 40px;
+  
+          .main-avenger {
+            height: 100%;
+            width: 130px;
+            background-color: #1e1e1e;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 0;
+            color: white;
+          }
+  
+          .padding {
+            width: 100%;
+            background: #2d2f34;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            padding: 10px;
+  
+            .run-btn {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 5px;
+              padding-right: 0px;
+              width: 80px;
+              margin-top: 2px;
+              border-radius: 10px;
+  
+              #loading {
+                .lds-ring {
+                  display: none;
+                  justify-content: center;
+                  align-items: center;
+                  width: 30px;
+                  height: 23px;
+                }
+  
+                .lds-ring div {
+                  box-sizing: border-box;
+                  display: block;
+                  position: absolute;
+                  width: 20px;
+                  height: 20px;
+                  border: 3px solid #fff;
+                  border-radius: 50%;
+                  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                  border-color: #fff transparent transparent transparent;
+                }
+  
+                .lds-ring div:nth-child(1) {
+                  animation-delay: -0.45s;
+                }
+  
+                .lds-ring div:nth-child(2) {
+                  animation-delay: -0.3s;
+                }
+  
+                .lds-ring div:nth-child(3) {
+                  animation-delay: -0.15s;
+                }
+  
+                @keyframes lds-ring {
+                  0% {
+                    transform: rotate(0deg);
+                  }
+  
+                  100% {
+                    transform: rotate(360deg);
+                  }
+                }
+              }
+            }
+          }
+        }
+  
+        .monaco-editor {
+          box-sizing: border-box;
+          padding-top: 10px;
+          background-color: #1e1e1e;
+        }
+  
+        .file-upload {
+          border-right: 1px solid #606060;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          position: absolute;
+          bottom: 10;
+          width: 100vw;
+          height: 80px;
+          background: #2d2f34;
+          padding: 10px;
+          margin-top: 10px;
+  
+          input {
+            background: #0d6efd;
+            color: white;
+            border-radius: 5px;
+          }
+  
+          input::file-selector-button {
+            font-weight: bold;
+            color: #0d6efd;
+            padding: 5px;
+            border: thin solid grey;
+            border-radius: 3px;
+          }
+        }
+      }
+  
+      .right {
+        display: flex;
+        flex-direction: column;
+  
+        .codeOp {
+          display: flex;
+          align-items: center;
+          margin: 0;
+          height: 38px;
+          padding-left: 10px;
+          background-color: #2d2f34;
+          color: white;
+          font-size: 16px;
+        }
+  
+        .terminal {
+          overflow-Y: scroll;
+          height: 100%;
+          width: 100%;
+          padding: 10px;
+          background-color: #1e1e1e;
+          margin-bottom: 0;
+          color: white;
+  
+          .outputIntro {
+            color: #3ff12f;
+          }
+        }
+  
+        width: 35vw;
+      }
     }
   }
