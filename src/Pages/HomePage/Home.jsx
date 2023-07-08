@@ -13,7 +13,6 @@ const Home = () => {
     const [title, setTitle] = useState();
     const fullText = "Unleash Your Inner Avenger with AssembleScript";
     useEffect(() => {
-        let prevText = "";
         let currentIndex = 0;
         const interval = setInterval(() => {
             if (currentIndex === fullText.length) {
@@ -26,13 +25,6 @@ const Home = () => {
 
         return () => clearInterval(interval);
     }, []);
-
-    const getWordWithColor = (word) => {
-        if (word === 'AssembleScript') {
-          return <span className="assemble-script">{word}</span>;
-        }
-        return word;
-      };
 
     return (
         <>
