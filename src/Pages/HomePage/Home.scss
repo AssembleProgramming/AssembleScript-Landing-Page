@@ -21,18 +21,16 @@
             display: flex;
             flex-direction: column;
             width: 49vw;
-
             .home-title-container {
                 .main-title {
-                    font-size: 60px;
+                    font-size: 4vw;
                     font-weight: 800;
-                    line-height: 75px;
+                    // line-height: px;
                     .assemble-script {
                         color: #4b32c3;
                     }
+                    height: 25vh;
                 }
-
-                height: 220px;
             }
 
             .main-info {
@@ -42,7 +40,7 @@
             }
 
             .main-btn-container {
-                margin-top: 100px;
+                margin-top: 40px;
                 width: 100%;
                 display: flex;
 
@@ -80,7 +78,33 @@
         }
     }
 
+    @media (max-height: 645px) {
+        .mainPageContainer {    
+            .left {    
+                .home-title-container {
+                    .main-title {
+                        font-size: 3vw;
+                        height: 20vh;
+                    }
+                }
+            }
+        }
+    }
 
+    @media screen and (min-width: 1500px) {
+        .mainPageContainer {    
+            .left {    
+                .home-title-container {
+                    .main-title {
+                        font-size: 2.8vw;
+                        height: 20vh;
+                    }
+                }
+            }
+        }
+    }
+
+        
     @media (max-width: 850px) {
         .mainPageContainer {
             width: 100vw;

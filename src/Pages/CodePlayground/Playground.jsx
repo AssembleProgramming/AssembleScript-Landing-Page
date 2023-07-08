@@ -63,12 +63,6 @@ function Playground() {
     setOutput(capturedOutput.join('\n'));
   }
 
-  const outputStyle = {
-    overflowY: "scroll",
-    height: "650px",
-    width: "250px",
-    padding: "10px"
-  }
   return (
     <>
       <AssembleNav />
@@ -89,7 +83,7 @@ function Playground() {
                 height="calc(100vh - 200px)"
                 width="100%"
                 onMount={handleEditorMount}
-                theme="vs-light"
+                theme="vs-dark"
                 defaultLanguage="python"
                 defaultValue={DEFAULTcode}
                 options={{
@@ -116,15 +110,19 @@ function Playground() {
               />
               <div className="file-upload">
                 <input type="file" id="fileInput" accept=".avenger" required />
-                <Button variant="primary"onClick={syncFileCode}><i class="fa-solid fa-rotate"></i> Sync file Code </Button>
+                <Button variant="primary" onClick={syncFileCode}><i class="fa-solid fa-rotate"></i> Sync file Code </Button>
               </div>
             </div>
           </div>
         </div>
 
         <div className='right'>
-          <p>Output:</p>
-          <pre style={outputStyle}>{output}</pre>
+          <div>
+            <p className="codeOp">
+                Output
+            </p>
+          </div>
+          <pre className='terminal'><span className="outputIntro">~$Avenger:<br /></span>{output}</pre>
         </div>
       </div>
     </>
