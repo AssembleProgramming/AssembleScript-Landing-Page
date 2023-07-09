@@ -68,22 +68,6 @@ const Footer = () => {
                         <FooterText>
                             Credits:
                             <CreditLink
-                                href="https://skfb.ly/OGyC"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                "Captain America - Civil War" by Veysel Gök
-                            </CreditLink>{' '}
-                            is licensed under Creative Commons Attribution (
-                            <CreditLink
-                                href="http://creativecommons.org/licenses/by/4.0/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                CC BY 4.0
-                            </CreditLink>
-                            ). <br />
-                            <CreditLink
                                 href="https://skfb.ly/6QWMH"
                                 target="_blank"
                                 rel="noopener noreferrer"
