@@ -32,7 +32,7 @@ function AssembleNav() {
                     </Nav>
                     <Nav>
                         <Nav.Link target='_blank' href="https://github.com/AssembleProgramming/AssembleScript/blob/main/CONTRIBUTING.md">
-                            <Button className='my-btn' variant="light"><i class="fa-solid fa-code-pull-request"></i> Contribute</Button>
+                            <Button className='my-btn' variant="light"><i className="fa-solid fa-code-pull-request"></i> Contribute</Button>
                         </Nav.Link>
                         <Nav.Link target='_blank' href="https://github.com/AssembleProgramming">
                             <Button className='about-us-btn' variant="dark"><i className="fa-brands fa-github"></i> About Us</Button>

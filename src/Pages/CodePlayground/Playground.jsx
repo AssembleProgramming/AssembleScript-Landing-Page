@@ -161,7 +161,7 @@ function Playground() {
               />
               <div className="file-upload">
                 <input type="file" id="fileInput" accept=".avenger" required />
-                <Button variant="primary" onClick={syncFileCode}><i class="fa-solid fa-rotate"></i></Button>
+                <Button variant="primary" onClick={syncFileCode}><i className="fa-solid fa-rotate"></i></Button>
               </div>
             </div>
           </div>

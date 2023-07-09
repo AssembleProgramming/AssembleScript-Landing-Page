@@ -1,7 +1,10 @@
 .section1 {
-    height: "100vh";
+    height: 100vh;
+    border-bottom: 1px solid #e5e7eb;
 
     .webgl {
+        height: 100vh;
+        width: 100vw;
         position: relative;
         top: 0;
         left: 0;
@@ -21,14 +24,17 @@
             display: flex;
             flex-direction: column;
             width: 49vw;
+
             .home-title-container {
                 .main-title {
                     font-size: 4vw;
                     font-weight: 800;
+
                     // line-height: px;
                     .assemble-script {
                         color: #4b32c3;
                     }
+
                     height: 25vh;
                 }
             }
@@ -79,8 +85,8 @@
     }
 
     @media (max-height: 645px) {
-        .mainPageContainer {    
-            .left {    
+        .mainPageContainer {
+            .left {
                 .home-title-container {
                     .main-title {
                         font-size: 3vw;
@@ -92,8 +98,8 @@
     }
 
     @media screen and (min-width: 1500px) {
-        .mainPageContainer {    
-            .left {    
+        .mainPageContainer {
+            .left {
                 .home-title-container {
                     .main-title {
                         font-size: 2.8vw;
@@ -104,7 +110,7 @@
         }
     }
 
-        
+
     @media (max-width: 850px) {
         .mainPageContainer {
             width: 100vw;
@@ -123,6 +129,7 @@
                         font-weight: 800;
                         line-height: 38px;
                         transition: all 0.3s ease;
+
                         .assemble-script {
                             color: #4b32c3;
                         }
@@ -177,6 +184,142 @@
                     }
 
                     margin-bottom: 20px;
+                }
+
+            }
+        }
+    }
+}
+
+#section2 {
+    height: 100vh;
+    border-bottom: 1px solid #e5e7eb;
+
+    .webgl {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .section2Container {
+        pointer-events: none;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 100vh;
+        left: 0;
+        padding: 100px 160px 100px 160px;
+
+        .section2-title {
+            width: 100%;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .key-info {
+            width: 50%;
+            align-self: flex-end;
+            text-align: right;
+            color: #667085;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            padding-right: 30px;
+            width: 50%;
+            align-self: flex-end;
+            text-align: right;
+            border-right: 3px solid #f2f4f7;
+
+            .feat {
+                padding: 20px 0;
+                display: flex;
+                flex-direction: column;
+                align-items: space-evenly;
+                justify-content: space-evenly;
+                border-bottom: 2px solid #f2f4f7;
+
+                .feat-title {
+                    font-weight: 600;
+                }
+
+                .feat-into {
+                    color: #667085;
+                    font-size: 15px;
+                }
+
+                .learnmore {
+                    pointer-events: auto;
+                    color: #4b32c3;
+                }
+            }
+
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    #section2 {
+        height: 100%;
+       
+        .webgl {
+            width: 0vw;
+            height: 0vh;
+        }
+
+        .section2Container {
+            pointer-events: auto;
+            padding: 0;
+            height: 100%;
+            padding: 150px 20px;
+            .section2-title {
+                width: 100%;
+                text-align: center;
+                font-weight: 600;
+            }
+
+            .key-info {
+                width: 100%;
+                align-self: flex-end;
+                text-align: center;
+                color: #667085;
+                font-size: 16px;
+                margin-bottom: 30px;
+            }
+
+            .features {
+                padding-right: 0px;
+                width: 100%;
+                align-self: flex-start;
+                text-align: left;
+                border-right: 0px;
+
+                .feat {
+                    padding: 20px 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: space-evenly;
+                    justify-content: space-evenly;
+                    border-bottom: 2px solid #f2f4f7;
+
+                    .feat-title {
+                        font-weight: 600;
+                    }
+
+                    .feat-into {
+                        color: #667085;
+                        font-size: 15px;
+                    }
+
+                    .learnmore {
+                        pointer-events: auto;
+                        color: #4b32c3;
+                    }
                 }
 
             }

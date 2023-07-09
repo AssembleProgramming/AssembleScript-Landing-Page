@@ -15,12 +15,12 @@ body {
 
 ::selection {
     color: #fff;
-    background: #121316;
+    background: #4a32c3;
 }
 
 .assemble-script::selection {
-    color: #fff !important;
-    background: #4a32c3c9;
+    color: #7444ff !important;
+    background: #121316e2;
 }
 
 @media (max-width: 850px) {
@@ -33,8 +33,4 @@ h1 {
     font-family: 'Roboto Mono', monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-h1::selection{
-    color: #fff;
-    background: #121316;
 }
