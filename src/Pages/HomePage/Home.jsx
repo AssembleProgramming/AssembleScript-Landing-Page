@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react'
 import './Home.scss'
 import BlackPanther from '../../Components/BlackPanther';
 import Loader from '../Loader/Loader';
+import Footer from '../../Components/Footer/Footer';
 
 
 const Home = () => {
@@ -31,7 +32,7 @@ const Home = () => {
 
     return (
         <>
-            <Suspense fallback={<Loader/>}>
+            <Suspense fallback={<Loader />}>
                 <section className='section1'>
                     <AssembleNav />
                     <Canvas
@@ -94,6 +95,7 @@ const Home = () => {
                 </section>
 
                 <section id='section2' style={{ background: "#fff" }}>
+                    <div className='canvas-container'>
                         <Canvas
                             className='webgl'
                             camera={{
@@ -109,6 +111,7 @@ const Home = () => {
                             <Stats />
                             <Perf position="bottom-left" />
                         </Canvas>
+                    </div>
                     <div className="section2Container">
                         <h1 className='section2-title'>The Power of AssembleScript</h1>
                         <p className='key-info'> AssembleScript is a programming language for Avengers.
@@ -120,22 +123,24 @@ const Home = () => {
                             <div className="feat">
                                 <h3 className="feat-title">Avengers-Specific Syntax</h3>
                                 <p className="feat-into">Write code that resonates with the spirit of your favorite Avengers, making programming an adventure in itself.</p>
-                                <a className='learnmore' target='_blank' href="#"><i className="fa-solid fa-arrow-left"></i>&nbsp; Learn More</a>
+                                <a className='learnmore' target='_blank' href="#">Learn More &nbsp;<i className="fa-solid fa-arrow-right"></i></a>
                             </div>
                             <div className="feat">
                                 <h3 className="feat-title">Powerful Scripting Capabilities</h3>
                                 <p className="feat-into">AssembleScript empowers you to create scripts with incredible power and versatility.</p>
-                                <a className='learnmore' target='_blank' href="#"><i className="fa-solid fa-arrow-left"></i>&nbsp; Learn More</a>
+                                <a className='learnmore' target='_blank' href="#">Learn More &nbsp;<i className="fa-solid fa-arrow-right"></i></a>
                             </div>
                             <div className="feat">
                                 <h3 className="feat-title">Continuous Updates and Support</h3>
                                 <p className="feat-into">Our dedicated team of developers is committed to the ongoing improvement of AssembleScript. Expect regular updates, bug fixes, and comprehensive documentation to support your programming journey.</p>
-                                <a className='learnmore' target='_blank' href="#"><i className="fa-solid fa-arrow-left"></i>&nbsp; Learn More</a>
+                                <a className='learnmore' target='_blank' href="#">Learn More &nbsp;<i className="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </section>
-            </Suspense>
+
+                <Footer />
+            </Suspense >
         </>
     )
 }

@@ -13,8 +13,8 @@ const BlackPanther = () => {
     const animateOnScroll = () => {
         const scrollY = window.scrollY || document.documentElement.scrollTop;
 
-        if (scrollY >= 770) {
-            gsap.to(tchalla.current.rotation, { y: 0.4, duration: 2, delay: 0.5 });
+        if (scrollY >= 700) {
+            gsap.to(tchalla.current.rotation, { y: 0.2, duration: 2, delay: 0.5 });
         }
     };
 
@@ -41,11 +41,11 @@ const BlackPanther = () => {
     }, []);
 
     const handlePointerEnter = () => {
-        gsap.to(tchalla.current.rotation, { y: -0.2, duration: 1, delay: 0 });
+        gsap.to(tchalla.current.rotation, { y: -0.5, duration: 1, delay: 0 });
     };
 
     const handlePointerLeave = () => {
-        gsap.to(tchalla.current.rotation, { y: 0.4, duration: 1, delay: 0 });
+        gsap.to(tchalla.current.rotation, { y: 0.2, duration: 1, delay: 0 });
     };
 
     return (
@@ -59,11 +59,11 @@ const BlackPanther = () => {
                 <primitive
                     ref={tchalla}
                     object={model.scene}
-                    scale={0.018}
-                    position={[-3.0, -2.1, 0]}
+                    scale={0.024}
+                    position={[0, -3.5, 0]}
                     rotation-x={-0.1}
                     rotation-z={-0.1}
-                    rotation-y={-0.2}
+                    rotation-y={-0.5}
                     onPointerOver={handlePointerEnter}
                     onPointerOut={handlePointerLeave}
                 />
@@ -77,9 +77,9 @@ const BlackPanther = () => {
             >
                 <Text
                     font='./fonts/font.ttf'
-                    position={[-2.5, -1, -2.5]}
+                    position={[1, -1, -2.5]}
                     color={"#664EAE"}
-                    scale={0.5}
+                    scale={0.6}
                     maxWidth={0.5}
                     fontSize={3}
                     rotation-x={0}

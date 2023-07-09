@@ -192,49 +192,48 @@
 }
 
 #section2 {
-    height: 100vh;
-    border-bottom: 1px solid #e5e7eb;
-
-    .webgl {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100vw;
+    height: 100%;
+    display: flex;
+    .canvas-container{
+        width: 50vw;
         height: 100vh;
+        .webgl {
+            width: 50vw;
+            height: 100vh;
+        }
     }
 
     .section2Container {
         pointer-events: none;
-        width: 100vw;
-        height: 100vh;
-        position: absolute;
+        width: 50vw;
+        height: 100%;
+        position: relative;
+        top: 0;
         display: flex;
         flex-direction: column;
-        top: 100vh;
-        left: 0;
-        padding: 90px 160px 90px 160px;
+        padding: 90px 90px 90px 0px;
 
         .section2-title {
             width: 100%;
-            text-align: right;
+            text-align: left;
             font-weight: 600;
         }
 
         .key-info {
-            width: 50%;
-            align-self: flex-end;
-            text-align: right;
+            width: 100%;
+            align-self: flex-start;
+            text-align: left;
             color: #667085;
             font-size: 16px;
             margin-bottom: 30px;
         }
 
         .features {
-            padding-right: 30px;
-            width: 50%;
-            align-self: flex-end;
-            text-align: right;
-            border-right: 3px solid #f2f4f7;
+            padding-left: 30px;
+            width: 100%;
+            align-self: flex-start;
+            text-align: left;
+            border-left: 3px solid #f2f4f7;
 
             .feat {
                 padding: 20px 0;
@@ -265,40 +264,51 @@
 
 @media (max-width: 850px) {
     #section2 {
+        margin-top: 120px;
         height: 100%;
-       
-        .webgl {
-            width: 0vw;
-            height: 0vh;
+        display: flex;
+        .canvas-container{
+            width: 50vw;
+            height: 100vh;
+            .webgl {
+                width: 50vw;
+                height: 100vh;
+            }
+            display: none;
         }
-
+    
         .section2Container {
-            pointer-events: auto;
-            padding: 0;
+            pointer-events: none;
+            width: 100vw;
             height: 100%;
-            padding: 150px 20px;
+            position: relative;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+    
             .section2-title {
                 width: 100%;
                 text-align: center;
                 font-weight: 600;
             }
-
+    
             .key-info {
                 width: 100%;
-                align-self: flex-end;
+                align-self: flex-start;
                 text-align: center;
                 color: #667085;
                 font-size: 16px;
                 margin-bottom: 30px;
             }
-
+    
             .features {
-                padding-right: 0px;
+                padding-left: 30px;
                 width: 100%;
                 align-self: flex-start;
                 text-align: left;
-                border-right: 0px;
-
+                border-left: 3px solid #f2f4f7;
+    
                 .feat {
                     padding: 20px 0;
                     display: flex;
@@ -306,22 +316,22 @@
                     align-items: space-evenly;
                     justify-content: space-evenly;
                     border-bottom: 2px solid #f2f4f7;
-
+    
                     .feat-title {
                         font-weight: 600;
                     }
-
+    
                     .feat-into {
                         color: #667085;
                         font-size: 15px;
                     }
-
+    
                     .learnmore {
                         pointer-events: auto;
                         color: #4b32c3;
                     }
                 }
-
+    
             }
         }
     }
