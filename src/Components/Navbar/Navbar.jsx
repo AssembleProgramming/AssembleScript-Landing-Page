@@ -26,9 +26,7 @@ function AssembleNav() {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav activeKey={location.pathname} className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/docs">Docs</Nav.Link>
                         <Nav.Link href="/playground">Playground</Nav.Link>
-                        <Nav.Link href="/team">Team</Nav.Link>
                     </Nav>
                     <Nav>
                         <Nav.Link target='_blank' href="https://github.com/AssembleProgramming/AssembleScript/blob/main/CONTRIBUTING.md">

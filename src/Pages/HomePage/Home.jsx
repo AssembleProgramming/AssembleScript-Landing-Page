@@ -11,7 +11,8 @@ import './Home.scss'
 import BlackPanther from '../../Components/BlackPanther';
 import Loader from '../Loader/Loader';
 import Footer from '../../Components/Footer/Footer';
-
+import CodeExampleSection from '../../Components/CodeExample/CodeExample';
+import Nav from 'react-bootstrap/Nav';
 
 const Home = () => {
     const [title, setTitle] = useState();
@@ -72,7 +73,7 @@ const Home = () => {
                             </div>
                             <div className='main-btn-container'>
                                 <Button className='main-btn' variant="light" size="lg">
-                                    <i className="fa-solid fa-code"></i> Get Started
+                                <Nav.Link href="/playground"><i className="fa-solid fa-code"></i> Get Started</Nav.Link> 
                                 </Button>
                                 <Button target='_blank' href='https://github.com/AssembleProgramming/AssembleScript' className='main-btn' variant="dark" size="lg">
                                     <i className="fa-brands fa-github"></i> Source Code
@@ -108,8 +109,8 @@ const Home = () => {
                             <color attach="background" args={['#fff']} />
                             <Environment files="./maps/studio_small_01_1k.hdr" background={false} blur={0} />
                             <BlackPanther />
-                            <Stats />
-                            <Perf position="bottom-left" />
+                            {/* <Stats />
+                            <Perf position="bottom-left" /> */}
                         </Canvas>
                     </div>
                     <div className="section2Container">
@@ -138,7 +139,11 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
-
+                <section id='section3'>
+                    <h3 className='section3-title'>Example Code written in AssembleScript</h3>
+                    <p className="section3-info">This code snippet demonstrates a simple algorithm for checking prime numbers in AssembleScript by iterating over the array nums and applying the logic to each element.</p>
+                    <CodeExampleSection />
+                </section>
                 <Footer />
             </Suspense >
         </>

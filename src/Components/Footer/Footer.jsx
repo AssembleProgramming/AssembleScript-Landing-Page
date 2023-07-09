@@ -47,7 +47,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <FooterContainer>
+        <FooterContainer style={{marginTop: "90px"}}>
             <Container>
                 <Row>
                     <Col className="text-center">
