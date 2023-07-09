@@ -9,7 +9,7 @@ import AssembleNav from '../../Components/Navbar/Navbar.jsx';
 function Playground() {
   let isMobile = false;
   let offset = `calc(100vh - ${200}px)`;
-  console.log(window.innerWidth);
+
   if (window.innerWidth < 780) {
     offset = `calc(100vh - ${240}px)`;
     isMobile = true;
@@ -48,11 +48,7 @@ function Playground() {
   }
 
   function runEditorCode() {
-    const Load = document.querySelector('.lds-ring');
     const Back = document.querySelector('.run-btn');
-    const Run = document.getElementById('run');
-    Load.style.display = "flex";
-    Run.style.display = "none";
     Back.style.borderRadius = "10px";
     const inputText = getEditorData();
 
@@ -69,23 +65,19 @@ function Playground() {
     try {
       evaluate(program, env);
     } catch (error) {
-      window.alert(error);
+      console.log(error);
     } finally {
-      // Restore console.log
       console.log = originalConsoleLog;
     }
     setTimeout(() => {
       setOutput(capturedOutput.join('\n'));
-      Load.style.display = "none";
-      Run.style.display = "block";
       if (isMobile) {
         let outputWindow = document.querySelector('.right');
         let codeWindow = document.querySelector('.left');
         outputWindow.style.display = "flex";
         codeWindow.style.display = "none";
       }
-    }, 1000);
-
+    }, 300)
   }
 
   const showCode = () => {
@@ -120,12 +112,7 @@ function Playground() {
                     <i className="fa-solid fa-play"></i>
                     <span> Run</span>
                   </div>
-
-                  <div id="loading">
-                    <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
-                  </div>
                 </Button>
-
               </div>
             </div>
 

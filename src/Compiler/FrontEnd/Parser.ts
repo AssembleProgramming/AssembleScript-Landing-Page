@@ -80,8 +80,9 @@ export default class Parser {
   private expect(type: TokenType, err: string) {
     const prev = this.tokens.shift() as Token;
     if (!prev || prev.type != type) {
-      console.error("Parser Error: \n", err, prev, "- Expecting: ", type);
-      Deno.exit(1);
+      let error = `"Parser Error: \n, ${err} reading ${prev.value}`
+      window.alert(error);
+      throw `${error}`;
     }
     return prev;
   }
@@ -880,7 +881,8 @@ export default class Parser {
         return this.parse_not_expr();
 
       default:
-        throw `Unexpected token found while parsing: , ${this.at()}`;
+        window.alert(`Unexpected token found while parsing: ${this.at().value}`);
+        throw `Unexpected token found while parsing: ${this.at()}`;
     }
   }
 }
