@@ -1,8 +1,7 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import Home from "./Pages/HomePage/Home";
-import Docs from "./Pages/Docs/Docs";
+import Docs from "./Pages/Docs/Latest/Docs";
 import Playground from "./Pages/CodePlayground/Playground";
-import Team from "./Pages/Team/Team";
 
 function App() {
   return (

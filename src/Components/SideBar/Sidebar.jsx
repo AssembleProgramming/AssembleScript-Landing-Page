@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Form, FormControl, Col } from 'react-bootstrap';
 import Fuse from 'fuse.js';
 import './Sidebar.scss'
+import { useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
+    const location = useLocation();
     const [searchValue, setSearchValue] = useState('');
     const [latestVersion, setLatestVersion] = useState('Loading...');
     useEffect(() => {
@@ -77,7 +79,7 @@ const Sidebar = () => {
                         </Form>
                     </div>
 
-                    <Nav className="flex-column">
+                    <Nav activeKey={location.pathname} className="flex-column">
                         {searchResults.map((section, index) => (
                             <Nav.Item key={index}>
                                 <Nav.Link

@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import AssembleNav from '../../Components/Navbar/Navbar';
+import AssembleNav from '../../../Components/Navbar/Navbar';
 import 'prismjs/themes/prism-okaidia.css';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import './Docs.scss';
-import Sidebar from '../../Components/SideBar/Sidebar';
-import Footer from '../../Components/Footer/Footer';
+import Sidebar from '../../../Components/SideBar/Sidebar';
+import Footer from '../../../Components/Footer/Footer';
 
 const Docs = () => {
   const sectionRefs = [
