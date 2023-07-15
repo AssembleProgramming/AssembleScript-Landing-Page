@@ -47,8 +47,8 @@ const Docs = () => {
 
   return (
     <>
+    <AssembleNav />
       <div className="docs-page">
-        <AssembleNav />
         <div className="container">
           <div className="row">
             <div className="col-md-3">
