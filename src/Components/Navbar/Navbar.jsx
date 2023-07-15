@@ -26,6 +26,7 @@ function AssembleNav() {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav activeKey={location.pathname} className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/docs/latest">Docs</Nav.Link>
                         <Nav.Link href="/playground">Playground</Nav.Link>
                     </Nav>
                     <Nav>

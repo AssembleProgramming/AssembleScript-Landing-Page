@@ -16,6 +16,7 @@
     "@react-three/fiber": "^8.13.4",
     "@typescript-eslint/parser": "^5.61.0",
     "bootstrap": "^5.3.0",
+    "fuse.js": "^6.6.2",
     "gsap": "^3.12.2",
     "leva": "^0.9.35",
     "prismjs": "^1.29.0",

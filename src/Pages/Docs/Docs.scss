@@ -1,0 +1,83 @@
+.docs-page {
+    margin-top: 71px;
+    display: flex;
+    width: 100vw !important;
+
+    .container {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+    .row {
+        width: 100vw !important;
+    }
+
+    .documentation {
+        width: 75vw;
+        display: flex;
+
+        .section-container {
+            padding: 50px 70px 50px 70px;
+            width: 75%;
+            border-left: 1px solid #e5e7eb;
+            .sectionHead{
+                font-weight: 600;
+                font-size: 40px;
+                margin-bottom: 27px;
+            }
+        }
+
+        .currentSection {
+            padding: 20px;
+            border-left: 1px solid #e5e7eb;
+
+            .currentSection-index {
+                width: 200px;
+                position: sticky;
+                top: 90px;
+            }
+
+            .toc {
+                margin: 0;
+                margin-bottom: 0.5rem;
+                color: #667085;
+                font-size: 17px;
+                font-weight: bold;
+            }
+
+            .current-section-list {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    padding: 5px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    .docs-page {
+        .documentation {
+            width: 100vw;
+            display: flex;
+
+            .section-container {
+                padding: 20px 20px 20px 20px;
+                border-left: 1px solid #e5e7eb;
+                width: 100%;
+                .sectionHead{
+                    width: 100%;
+                    font-weight: 600;
+                    font-size: 30px;
+                    margin-bottom: 15px;
+                }
+            }
+
+            .currentSection {
+                display: none;
+            }
+        }
+    }
+}

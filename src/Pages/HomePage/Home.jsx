@@ -4,20 +4,20 @@ import { Environment, OrbitControls, Stats } from '@react-three/drei'
 import Shield from '../../Components/Shield'
 import Button from 'react-bootstrap/Button';
 import RepoStats from '../../Components/GitStats/CurrentStats'
-import { Perf } from 'r3f-perf'
 import AssembleNav from '../../Components/Navbar/Navbar'
 import { useState, useEffect } from 'react'
 import './Home.scss'
 import BlackPanther from '../../Components/BlackPanther';
-import Loader from '../Loader/Loader';
 import Footer from '../../Components/Footer/Footer';
 import CodeExampleSection from '../../Components/CodeExample/CodeExample';
 import Nav from 'react-bootstrap/Nav';
 
 const Home = () => {
     const [title, setTitle] = useState();
+    const [latestVersion, setLatestVersion] = useState('Loading...');
     const fullText = "Unleash Your Inner Avenger with AssembleScript";
     useEffect(() => {
+        fetchLatestVersion();
         let currentIndex = 0;
         const interval = setInterval(() => {
             if (currentIndex === fullText.length) {
@@ -31,6 +31,27 @@ const Home = () => {
         return () => clearInterval(interval);
     }, []);
 
+    const fetchLatestVersion = async () => {
+        try {
+          const response = await fetch('https://api.github.com/repos/AssembleProgramming/AssembleScript/releases/latest', {
+            headers: {
+              Authorization: 'Bearer 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',
+            },
+          });
+          const data = await response.json();
+          setLatestVersion({
+            version: data.tag_name,
+            releaseDate: new Date(data.published_at).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            }),
+          });
+        } catch (error) {
+          console.log('Error fetching latest version:', error);
+          setLatestVersion({ version: 'N/A', releaseDate: 'N/A' });
+        }
+      };
     return (
         <>
 
@@ -84,7 +105,7 @@ const Home = () => {
                         <div className="version">
                             <h6 className='version-title'>Latest Version</h6>
                             <hr />
-                            <i className="fa-brands fa-github"></i> <span>v1.0.0 on 5 Jul</span>
+                            <i className="fa-brands fa-github"></i> <span>{latestVersion.version} {latestVersion.releaseDate}</span>
                         </div>
                         <div className="version">
                             <h6 className='version-title'>Upcoming Version</h6>
