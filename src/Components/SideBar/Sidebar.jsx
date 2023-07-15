@@ -35,7 +35,7 @@ const Sidebar = () => {
     };
 
     const sections = [
-        { name: 'Getting Started With AssembleScript', href: '/' },
+        { name: 'Getting Started With AssembleScript', href: '/docs/latest' },
     ];
 
     const options = {
