@@ -20,9 +20,12 @@ const Docs = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      if(window.scrollY == 0){
+        setActiveSection(0);
+        return;
+      }
 
       let currentSection = 0;
-
       sectionRefs.forEach((ref, index) => {
         const { top, bottom } = ref.current.getBoundingClientRect();
 
@@ -30,7 +33,6 @@ const Docs = () => {
           currentSection = index;
         }
       });
-      console.log(currentSection);
       if (currentSection !== activeSection) {
         setActiveSection(currentSection);
       }
