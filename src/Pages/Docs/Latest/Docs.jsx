@@ -55,8 +55,9 @@ const Docs = () => {
             </div>
             <div className="col-md-9 documentation">
               <div className="section-container">
+                <h1 className="sectionHead">Welcome to AssembleScript!</h1>
                 <div ref={sectionRefs[0]}>
-                  <h1 className="sectionHead">Getting Started</h1>
+                  <h1 className="sub-sectionHead">Getting Started</h1>
                   <p>
                     AssembleScript is a programming language specifically
                     created for avengers to write scripts and tackle challenges
@@ -77,7 +78,7 @@ const Docs = () => {
                 </div>
 
                 <div ref={sectionRefs[1]}>
-                  <h1 className="sectionHead">Prerequisites</h1>
+                  <h1 className="sub-sectionHead">Prerequisites</h1>
                   <p>
                     Before getting started with AssembleScript, you'll need to
                     have the following prerequisites:
@@ -133,7 +134,7 @@ const Docs = () => {
                 </div>
 
                 <div ref={sectionRefs[2]}>
-                  <h1 className="sectionHead">Quick Start</h1>
+                  <h1 className="sub-sectionHead">Quick Start</h1>
                   <p>
                     To quickly start using AssembleScript, follow these steps:
                   </p>
