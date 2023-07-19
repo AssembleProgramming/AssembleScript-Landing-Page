@@ -30,7 +30,6 @@ const Docs = () => {
           currentSection = index;
         }
       });
-      console.log(currentSection);
       if (currentSection !== activeSection) {
         setActiveSection(currentSection);
       }

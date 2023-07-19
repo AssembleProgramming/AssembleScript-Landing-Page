@@ -59,7 +59,7 @@ vision("The sum of a and b is: " + (a + b));`;
             </div>
             <div className="col-md-9 documentation">
               <div className="section-container">
-                <h1 className="sub-sectionHead">Print Statement</h1>
+                <h1 className="sectionHead">Print Statement</h1>
                 <p>
                   The print statement in AssembleScript allows you to display
                   output to the console or standard output. It is used to
