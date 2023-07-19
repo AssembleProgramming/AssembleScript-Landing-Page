@@ -1,36 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html,
 body {
-    background: #fff;
+  background: #fff;
 }
 
 ::selection {
-    color: #fff;
-    background: #4a32c3;
+  color: #fff;
+  background: #4a32c3;
 }
 
 .assemble-script::selection {
-    color: #7444ff !important;
-    background: #121316e2;
+  color: #7444ff !important;
+  background: #121316e2;
 }
 
 @media (max-width: 850px) {
-    .webgl {
-        display: none;
-    }
+  .webgl {
+    display: none;
+  }
 }
 
 h1 {
-    font-family: 'Roboto Mono', monospace;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: "Roboto Mono", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sub-sectionHead {
+  color: #4b32c3 !important;
+}
+
+th {
+  color: #4b32c3 !important;
+  background: #f6f6fe !important;
 }
