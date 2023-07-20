@@ -18,7 +18,7 @@ function AssembleNav() {
       <Container>
         <Navbar.Brand href="/">
           <img
-            src= {logo}
+            src= "../favicon.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
