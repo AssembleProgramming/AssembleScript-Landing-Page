@@ -4,9 +4,20 @@ import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import { useLocation } from "react-router-dom";
 import "./Navbar.scss";
+import { useEffect, useState } from "react";
 
 function AssembleNav() {
   const location = useLocation();
+  const [activeKey, setActiveKey] = useState("");
+  useEffect(() => {
+    if (location.pathname.includes("/docs/")) {
+      setActiveKey("/docs/latest");
+      return;
+    }
+    setActiveKey(location.pathname);
+  }, [])
+
+
   return (
     <Navbar
       fixed="top"
@@ -17,7 +28,7 @@ function AssembleNav() {
       <Container>
         <Navbar.Brand href="/">
           <img
-            src= "../favicon.png"
+            src="../favicon.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
@@ -27,7 +38,7 @@ function AssembleNav() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav activeKey={location.pathname} className="me-auto">
+          <Nav activeKey={activeKey} className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/docs/latest">Docs</Nav.Link>
             <Nav.Link href="/playground">Playground</Nav.Link>

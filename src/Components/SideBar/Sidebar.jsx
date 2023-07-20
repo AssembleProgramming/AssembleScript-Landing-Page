@@ -89,7 +89,7 @@ const Sidebar = () => {
         <Col className="main-sidebar">
           <div className="mb-3">
             <div id="latest-version">
-              <span style={{ fontWeight: "600", color: "#4b32c3" }}>
+              <span style={{ fontWeight: "bold", color: "#4b32c3" }}>
                 Latest Version:{" "}
               </span>
               <span>
