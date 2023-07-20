@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import AssembleNav from "../../../Components/Navbar/Navbar";
 import "prismjs/themes/prism-okaidia.css";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./Operators.scss";
 import Sidebar from "../../../Components/SideBar/Sidebar";
 import Footer from "../../../Components/Footer/Footer";
+import AssembleNav from "../../../Components/Navbar/Navbar";
 
 const Operators = () => {
   const sectionRefs = [
@@ -76,7 +76,7 @@ newAvenger firstAvenger = avengers[0];   $ firstAvenger = "Iron Man" $`;
 
   return (
     <>
-      <AssembleNav />
+      <AssembleNav/>
       <div className="docs-page">
         <div className="container">
           <div className="row">

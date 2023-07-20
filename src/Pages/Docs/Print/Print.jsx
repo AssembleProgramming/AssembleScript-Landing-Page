@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import AssembleNav from "../../../Components/Navbar/Navbar";
 import "prismjs/themes/prism-okaidia.css";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./Print.scss";
 import Sidebar from "../../../Components/SideBar/Sidebar";
 import Footer from "../../../Components/Footer/Footer";
+import AssembleNav from "../../../Components/Navbar/Navbar";
 
 const Print = () => {
   const sectionRefs = [useRef(null), useRef(null), useRef(null)]; // Refs for each section
@@ -50,7 +50,7 @@ vision("The sum of a and b is: " + (a + b));`;
 
   return (
     <>
-      <AssembleNav />
+      <AssembleNav/>
       <div className="docs-page">
         <div className="container">
           <div className="row">

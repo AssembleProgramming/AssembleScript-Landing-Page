@@ -62,7 +62,7 @@ const Loops = () => {
 
   return (
     <>
-      <AssembleNav />
+      <AssembleNav/>
       <div className="docs-page">
         <div className="container">
           <div className="row">

@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import { useLocation } from "react-router-dom";
+import logo from "./assets/logo.png"
 import "./Navbar.scss";
 
 function AssembleNav() {
@@ -17,11 +18,11 @@ function AssembleNav() {
       <Container>
         <Navbar.Brand href="/">
           <img
-            src="./favicon.png"
+            src= {logo}
             width="30"
             height="30"
             className="d-inline-block align-top"
-            alt="React Bootstrap logo"
+            alt="logo"
           />
           &nbsp; AssembleScript
         </Navbar.Brand>
