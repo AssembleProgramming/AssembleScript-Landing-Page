@@ -181,9 +181,9 @@ function Playground() {
             justifyContent: "space-between"
           }} className='top-bar'>
             <div style={{
-            display: "flex",
-            justifyContent: "space-evenly"
-          }}>
+              display: "flex",
+              justifyContent: "space-evenly"
+            }}>
               <p className="codeWindow-mobile" onClick={showCode}>
                 main.avenger
               </p>
