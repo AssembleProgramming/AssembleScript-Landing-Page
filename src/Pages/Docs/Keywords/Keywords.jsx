@@ -24,7 +24,7 @@ const Keywords = () => {
   ]; // Refs for each section
   const [activeSection, setActiveSection] = useState(0); // Index of the active section
   const Keywords_1 = `newAvenger power = "Super Strength";`;
-  const Keywords_2 = `newEternal PI = 3.14159;";`;
+  const Keywords_2 = `newEternal PI = 3.14159;`;
   const Keywords_3 = `vision("Hello, Avengers!");`;
   const Keywords_4 = `newAvenger dimension = "Earth-616";
   
