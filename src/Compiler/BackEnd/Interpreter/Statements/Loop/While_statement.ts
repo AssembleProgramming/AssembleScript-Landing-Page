@@ -1,6 +1,11 @@
 import { WhileStatement } from "../../../../FrontEnd/AST.ts";
 import Environment from "../../../Scope/environment.ts";
-import { BooleanVal,RuntimeVal,MAKE_NUll,NumberVal } from "../../../values.ts";
+import {
+  BooleanVal,
+  MAKE_NUll,
+  NumberVal,
+  RuntimeVal,
+} from "../../../values.ts";
 import { evaluate } from "../../interpreter.ts";
 
 /**
@@ -15,10 +20,19 @@ export const evaluate_boolean_while_statement = (
   stmt: WhileStatement,
   env: Environment,
 ): RuntimeVal => {
+  let iterationCnt = 0;
   let breakLoop = false;
   let evaluatedCondition = evaluate(stmt.condition, env) as BooleanVal;
+  const startTime = performance.now();
 
   while (evaluatedCondition.value && !breakLoop) {
+    iterationCnt++;
+
+    // Check for infinite loop
+    if (env.checkInfiniteLoop(iterationCnt)) {
+      break;
+    }
+
     // Create a new environment for each iteration
     const whileEnv = new Environment(env);
     for (const statement of stmt.body) {
@@ -54,10 +68,18 @@ export const evaluate_numeric_while_statement = (
   stmt: WhileStatement,
   env: Environment,
 ): RuntimeVal => {
+  let iterationCnt = 0;
   let breakLoop = false;
   let evaluatedCondition = evaluate(stmt.condition, env) as NumberVal;
 
   while (evaluatedCondition.value && !breakLoop) {
+    iterationCnt++;
+
+    // Check for infinite loop
+    if (env.checkInfiniteLoop(iterationCnt)) {
+      break;
+    }
+
     // Create a new environment for each iteration
     const whileEnv = new Environment(env);
     for (const statement of stmt.body) {

@@ -7,7 +7,7 @@ export default class Environment {
   private parent?: Environment;
   private variables: Map<string, RuntimeVal>;
   private constants: Set<string>;
-
+  private MAX_ALLOWED_ITERATIONS: number;
   /**
    * Creates an instance of the Environment class.
    * @param parentENV - The parent environment (optional).
@@ -17,6 +17,16 @@ export default class Environment {
     this.parent = parentENV;
     this.variables = new Map();
     this.constants = new Set();
+    this.MAX_ALLOWED_ITERATIONS = 102702;
+  }
+
+  public checkInfiniteLoop(
+    iterationCnt: number,
+  ): Boolean {
+    if (iterationCnt > this.MAX_ALLOWED_ITERATIONS) {
+      throw `TIME LIMIT EXCEEDED...`;
+    }
+    return false;
   }
 
   /**
@@ -80,7 +90,7 @@ export default class Environment {
     if (this.variables.has(varname)) {
       return this;
     }
-    if (this.parent == undefined) {
+    if (this.parent === undefined) {
       throw `cannot resolve ${varname} in the scope.`;
     }
     return this.parent.resolveScope(varname);
