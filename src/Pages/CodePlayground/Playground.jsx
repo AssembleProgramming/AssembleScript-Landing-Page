@@ -4,6 +4,8 @@ import Parser from "../../Compiler/FrontEnd/Parser.ts";
 import { setupGlobalScope } from "../../Compiler/BackEnd/Scope/globalScope.ts";
 import { evaluate } from "../../Compiler/BackEnd/Interpreter/interpreter.ts";
 import Button from 'react-bootstrap/Button';
+import Tooltip from 'react-bootstrap/Tooltip'; // Import Tooltip
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'; // Import OverlayTrigger
 import './Playground.scss'
 import AssembleNav from '../../Components/Navbar/Navbar.jsx';
 function Playground() {
@@ -15,9 +17,9 @@ function Playground() {
     isMobile = true;
   }
 
-
   let DEFAULTcode = `vision("Hello Avenger!!!");`;
   const [output, setOutput] = useState('');
+  const [executionTime, setExecutionTime] = useState("");  // State variable to hold execution time
   const editorRef = useRef(null);
   const handleEditorMount = (editor, monaco) => {
     editorRef.current = editor;
@@ -28,6 +30,10 @@ function Playground() {
   const updateEditor = () => {
     editorRef.current.setValue(DEFAULTcode);
   }
+  const clearOutput = () => {
+    setOutput("");
+    setExecutionTime("");
+  };
   async function syncFileCode() {
     const inputFile = document.getElementById('fileInput').files[0];
     if (!inputFile) {
@@ -62,6 +68,9 @@ function Playground() {
     const capturedOutput = [];
     console.log = (...args) => capturedOutput.push(args.join(' '));
 
+    // Measure the execution time
+    const startTime = performance.now();
+
     try {
       evaluate(program, env);
     } catch (error) {
@@ -69,6 +78,11 @@ function Playground() {
     } finally {
       console.log = originalConsoleLog;
     }
+
+    // Calculate and set the execution time
+    const endTime = performance.now();
+    const timeTaken = endTime - startTime;
+
     setTimeout(() => {
       setOutput(capturedOutput.join('\n'));
       if (isMobile) {
@@ -78,6 +92,8 @@ function Playground() {
         codeWindow.style.display = "none";
       }
     }, 300)
+
+    setExecutionTime(" Finished in " + timeTaken.toFixed(2).toString() + " ms"); // Round to 2 decimal places
   }
 
   const showCode = () => {
@@ -148,24 +164,45 @@ function Playground() {
               />
               <div className="file-upload">
                 <input type="file" id="fileInput" accept=".avenger" required />
-                <Button variant="primary" onClick={syncFileCode}><i className="fa-solid fa-rotate"></i></Button>
+                <OverlayTrigger
+                  placement="top"
+                  overlay={<Tooltip id="clear-tooltip">Sync The File Code With Editor</Tooltip>}
+                >
+                  <Button variant="primary" onClick={syncFileCode}><i className="fa-solid fa-rotate"></i></Button>
+                </OverlayTrigger>
               </div>
             </div>
           </div>
         </div>
 
         <div className='right'>
-          <div className='top-bar'>
-            <p className="codeWindow-mobile" onClick={showCode}>
-              main.avenger
-            </p>
-            <p className="codeOp">
-              Output
-            </p>
+          <div style={{
+            display: "flex",
+            justifyContent: "space-between"
+          }} className='top-bar'>
+            <div style={{
+            display: "flex",
+            justifyContent: "space-evenly"
+          }}>
+              <p className="codeWindow-mobile" onClick={showCode}>
+                main.avenger
+              </p>
+              <p className="codeOp">
+                Output
+              </p>
+            </div>
+            <OverlayTrigger
+              placement="bottom"
+              overlay={<Tooltip id="clear-tooltip">Clear Output</Tooltip>}
+            >
+              <Button variant="danger" onClick={clearOutput}>
+                <i className="fa-solid fa-eraser"></i>
+              </Button>
+            </OverlayTrigger>
           </div>
-          <pre className='terminal'><span className="outputIntro">~$Avenger:<br /></span>{output}</pre>
+          <pre className='terminal'><span className="outputIntro">~$Avenger:<span>{executionTime}</span> <br /></span>{output}</pre>
         </div>
-      </div>
+      </div >
     </>
   );
 }
