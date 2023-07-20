@@ -33,19 +33,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/docs" element={<Docs />} />
-            <Route path="/docs/latest" element={<Docs />} />
-            <Route path="/docs/keywords" element={<Keywords />} />
-            <Route path="/docs/comments" element={<Comments />} />
-            <Route path="/docs/variables" element={<Variables />} />
-            <Route path="/docs/print" element={<Print />} />
-            <Route path="/docs/switch" element={<Switch />} />
-            <Route path="/docs/conditionals" element={<Conditionals />} />
-            <Route path="/docs/loops" element={<Loops />} />
-            <Route path="/docs/arrays" element={<Arrays />} />
-            <Route path="/docs/datatypes" element={<Datatypes />} />
-            <Route path="/docs/operators" element={<Operators />} />
-            <Route path="/docs/builtinmethods" element={<Builtinmethods />} />
+            <Route path="/docs/*" element={<Docs />} />
             <Route path="/playground" element={<Playground />} />
           </Routes>
         </BrowserRouter>
