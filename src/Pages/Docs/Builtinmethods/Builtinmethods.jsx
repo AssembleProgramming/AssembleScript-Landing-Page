@@ -39,8 +39,11 @@ const Builtinmethods = () => {
   }, []);
 
   return (
-    <>  
-      <AssembleNav/>
+    <>
+      <div className="">
+        <AssembleNav />
+      </div>
+
       <div className="docs-page">
         <div className="container">
           <div className="row">
@@ -62,7 +65,7 @@ const Builtinmethods = () => {
                 <div ref={sectionRefs[0]}>
                   <h1 className="sub-sectionHead">General Methods</h1>
 
-                  <Table bordered variant="dark">
+                  <Table bordered>
                     <thead>
                       <tr>
                         <th>Method</th>

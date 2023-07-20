@@ -3,7 +3,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import { useLocation } from "react-router-dom";
-import logo from "./assets/logo.png"
 import "./Navbar.scss";
 
 function AssembleNav() {
