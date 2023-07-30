@@ -1,6 +1,6 @@
 import React from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Environment, OrbitControls, Stats } from '@react-three/drei'
+import { Environment, ContactShadows, OrbitControls, Stats } from '@react-three/drei'
 import Shield from '../../Components/Shield'
 import Button from 'react-bootstrap/Button';
 import RepoStats from '../../Components/GitStats/CurrentStats'
@@ -11,6 +11,8 @@ import BlackPanther from '../../Components/BlackPanther';
 import Footer from '../../Components/Footer/Footer';
 import CodeExampleSection from '../../Components/CodeExample/CodeExample';
 import Nav from 'react-bootstrap/Nav';
+import {Experience} from "../../Components/Experience"
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 const Home = () => {
     const [title, setTitle] = useState();
@@ -33,25 +35,25 @@ const Home = () => {
 
     const fetchLatestVersion = async () => {
         try {
-          const response = await fetch('https://api.github.com/repos/AssembleProgramming/AssembleScript/releases/latest', {
-            headers: {
-              Authorization: 'Bearer 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',
-            },
-          });
-          const data = await response.json();
-          setLatestVersion({
-            version: data.tag_name,
-            releaseDate: new Date(data.published_at).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            }),
-          });
+            const response = await fetch('https://api.github.com/repos/AssembleProgramming/AssembleScript/releases/latest', {
+                headers: {
+                    Authorization: 'Bearer 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',
+                },
+            });
+            const data = await response.json();
+            setLatestVersion({
+                version: data.tag_name,
+                releaseDate: new Date(data.published_at).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                }),
+            });
         } catch (error) {
-          console.log('Error fetching latest version:', error);
-          setLatestVersion({ version: 'N/A', releaseDate: 'N/A' });
+            console.log('Error fetching latest version:', error);
+            setLatestVersion({ version: 'N/A', releaseDate: 'N/A' });
         }
-      };
+    };
     return (
         <>
 
@@ -69,6 +71,7 @@ const Home = () => {
                     <color attach="background" args={['#fff']} />
                     <Environment files="./maps/brown_photostudio_1k.hdr" background={false} blur={0} />
                     <Shield />
+
                     {/* <Stats /> */}
                     {/* <Perf position="bottom-left" /> */}
                 </Canvas>
@@ -118,20 +121,12 @@ const Home = () => {
 
             <section id='section2' style={{ background: "#fff" }}>
                 <div className='canvas-container'>
-                    <Canvas
-                        className='webgl'
-                        camera={{
-                            fov: 45,
-                            near: 0.1,
-                            far: 200,
-                            position: [- 4, 3, 6],
-                        }}
-                    >
-                        <color attach="background" args={['#fff']} />
-                        <Environment files="./maps/studio_small_01_1k.hdr" background={false} blur={0} />
-                        <BlackPanther />
-                        {/* <Stats />
-                            <Perf position="bottom-left" /> */}
+                    <Canvas shadows camera={{ position: [3, 3, 7], fov: 42 }}>
+                        <color attach="background" args={["#fff"]} />
+                        <Experience />
+                        <EffectComposer>
+                            <Bloom luminanceThreshold={1} intensity={1.25} mipmapBlur />
+                        </EffectComposer>
                     </Canvas>
                 </div>
                 <div className="section2Container">

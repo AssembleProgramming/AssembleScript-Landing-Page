@@ -73,6 +73,8 @@ const Footer = () => {
             </FooterText>
           </Col>
         </Row>
+
+
         <Row>
           <Col className="text-center">
             <FooterText>
@@ -82,36 +84,104 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                "Captain America Shield" by ElliotGriffiths
-              </CreditLink>{" "}
-              is licensed under Creative Commons Attribution (
+                "Captain America Shield" by ElliotGriffiths ,
+              </CreditLink>
               <CreditLink
-                href="http://creativecommons.org/licenses/by/4.0/"
+                href="https://skfb.ly/oIPZn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                "Disney Infinity 3.0 - AVG Hulkbuster" by JohnLogostini,
+              </CreditLink>
+
+              <CreditLink
+                href="https://skfb.ly/oIT6y"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                "Disney Infinity 3.0 - AVG Black Panther" by JohnLogostini,
+              </CreditLink>
+
+              <CreditLink
+                href="https://skfb.ly/oIRB9"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                "Disney Infinity 2.0 - SPD Spider-Man" by JohnLogostini,
+              </CreditLink>
+
+              <CreditLink
+                href="https://skfb.ly/oIWCn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                "Disney Infinity 2.0 - AVG Iron Man" by JohnLogostini,
+              </CreditLink>
+
+              <CreditLink
+                href="https://skfb.ly/oJsKF"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                "Disney Infinity 2.0 - AVG Falcon Movie" by JohnLogostini,
+              </CreditLink>
+
+              <CreditLink
+                href="https://skfb.ly/oIUUz"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                "Disney Infinity 3.0 - AVG Ultron" by JohnLogostini,
+              </CreditLink>
+
+              <CreditLink
+                href="https://skfb.ly/oIUR9"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                "Disney Infinity 3.0 - ANT Ant-Man" by JohnLogostini,
+              </CreditLink>
+
+              <CreditLink
+                href="https://skfb.ly/oIX8D"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                "Disney Infinity 3.0 - AVG Vision" by JohnLogostini,
+              </CreditLink>
+
+
+              <CreditLink
+                href="https://skfb.ly/oJA6n"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                "Disney Infinity 2.0 - AVG Winter Soldier" by JohnLogostini,
+              </CreditLink>
+
+              <CreditLink
+                href="https://skfb.ly/oIX6X"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                "DI 3.0 - AVG Captain America The First Avenger" by JohnLogostini,
+              </CreditLink>
+              
+              {" "}
+              all are licensed under Creative Commons Attribution (
+              <CreditLink
+                href="http://creativecommons.org/licenses/by-nc/4.0/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 CC BY 4.0
               </CreditLink>
               ). <br />
-              <CreditLink
-                href="https://skfb.ly/6RsKO"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                "Black Panther" by Lil_CJ_5888
-              </CreditLink>{" "}
-              is licensed under Creative Commons Attribution (
-              <CreditLink
-                href="http://creativecommons.org/licenses/by/4.0/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                CC BY 4.0
-              </CreditLink>
-              ).
             </FooterText>
           </Col>
         </Row>
+
+
         <Row>
           <Col className="text-center">
             <FooterText>
