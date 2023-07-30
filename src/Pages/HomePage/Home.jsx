@@ -1,23 +1,42 @@
-import React from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Environment, ContactShadows, OrbitControls, Stats } from '@react-three/drei'
+import React, { useRef } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { Environment } from '@react-three/drei'
 import Shield from '../../Components/Shield'
 import Button from 'react-bootstrap/Button';
 import RepoStats from '../../Components/GitStats/CurrentStats'
 import AssembleNav from '../../Components/Navbar/Navbar'
 import { useState, useEffect } from 'react'
 import './Home.scss'
-import BlackPanther from '../../Components/BlackPanther';
 import Footer from '../../Components/Footer/Footer';
 import CodeExampleSection from '../../Components/CodeExample/CodeExample';
 import Nav from 'react-bootstrap/Nav';
-import {Experience} from "../../Components/Experience"
+import { Experience } from "../../Components/Experience"
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import gauntlet from "../../assets/gauntlet.png"
+import hoverSound from "./snap.mp3"
+import transform from "./transform.mp3"
 
 const Home = () => {
     const [title, setTitle] = useState();
     const [latestVersion, setLatestVersion] = useState('Loading...');
     const fullText = "Unleash Your Inner Avenger with AssembleScript";
+    const experienceRef = useRef();
+
+    const handleSnapClick = () => {
+        // Step 4: Call the function from the <Experience /> component using the ref
+        if (experienceRef.current) {
+            experienceRef.current.snapHandler();
+            const audio = new Audio(transform);
+            audio.play();
+        }
+    };
+
+    const playHoverSound = () => {
+        // Create an audio element and play the sound on hover
+        const audio = new Audio(hoverSound);
+        audio.play();
+    };
+
     useEffect(() => {
         fetchLatestVersion();
         let currentIndex = 0;
@@ -71,9 +90,6 @@ const Home = () => {
                     <color attach="background" args={['#fff']} />
                     <Environment files="./maps/brown_photostudio_1k.hdr" background={false} blur={0} />
                     <Shield />
-
-                    {/* <Stats /> */}
-                    {/* <Perf position="bottom-left" /> */}
                 </Canvas>
                 <div className="mainPageContainer">
                     <div className="left">
@@ -123,11 +139,15 @@ const Home = () => {
                 <div className='canvas-container'>
                     <Canvas shadows camera={{ position: [3, 3, 7], fov: 42 }}>
                         <color attach="background" args={["#fff"]} />
-                        <Experience />
+                        <Experience ref={experienceRef} />
                         <EffectComposer>
                             <Bloom luminanceThreshold={1} intensity={1.25} mipmapBlur />
                         </EffectComposer>
                     </Canvas>
+                    <div id='snap-button' onMouseEnter={playHoverSound} onClick={handleSnapClick}>
+                        <img src={gauntlet} alt="img" />
+                        <span>Snap !</span>
+                    </div>
                 </div>
                 <div className="section2Container">
                     <h1 className='section2-title'>The Power of AssembleScript</h1>

@@ -1,6 +1,5 @@
 import { ContactShadows, Environment, Float, OrbitControls, Text } from "@react-three/drei";
-import { useState, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import React, { useState } from "react";
 import { BlackPanther } from "./Black_panther";
 import { HulkBuster } from "./Hulkbuster";
 import { SpiderMan } from "./Spider-man";
@@ -12,27 +11,26 @@ import { IronMan } from "./Iron_man";
 import { Capsy } from "./Captain_america";
 import { Vision } from "./Vision";
 
-
 const options = ["BlackPanther", "HulkBuster", "SpiderMan", "Ultron", "AntMan", "Bucky", "Falcon", "IronMan", "Capsy", "Vision"];
-export const Experience = () => {
-
+export const Experience = React.forwardRef((props, ref) =>{
   const [currentIndex, setCurrentIndex] = useState(0);
-  const timeElapsed = useRef(0);
+
   let itemDisplayed =
   {
     value: "BlackPanther"
-  }
+  } 
 
   itemDisplayed.value = options[currentIndex];
-  useFrame((state, delta) => {
-    timeElapsed.current += delta; // Increment the time elapsed
-    if (timeElapsed.current >= 10) {
-      const nextIndex = (currentIndex + 1) % options.length; // Calculate the next index sequentially
+
+  const snapHandler = () => {
+    const nextIndex = (currentIndex + 1) % options.length; 
       itemDisplayed.value = options[nextIndex];
       setCurrentIndex(nextIndex);
-      timeElapsed.current = 0; // Reset the time elapsed
-    }
-  });
+  };
+
+  React.useImperativeHandle(ref, () => ({
+    snapHandler,
+  }));
 
   const [visibleItem, setVisibleItem] = useState(itemDisplayed.value);
 
@@ -388,4 +386,4 @@ export const Experience = () => {
       <ContactShadows position-y={-1.8} />
     </>
   );
-};
+});
