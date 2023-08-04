@@ -129,7 +129,7 @@ const Home = () => {
                         <div className="version">
                             <h6 className='version-title'>Upcoming Version</h6>
                             <hr />
-                            <i className="fa-brands fa-github"></i> <span>v1.2.0 on 30 Aug</span>
+                            <i className="fa-brands fa-github"></i> <span>v3.0.0 on 30 Sept</span>
                         </div>
                     </div>
                 </div>
