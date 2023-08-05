@@ -20,9 +20,8 @@ import MyLoader from '../Loader/Loader';
 import MyLoader2 from '../Loader/Loader2';
 
 const Home = () => {
-    const [latestVersion, setLatestVersion] = useState('Loading...');
+    const [latestVersion, setLatestVersion] = useState("");
     const experienceRef = useRef();
-    const AssembleScript = `AssembleScript`;
     const handleSnapClick = () => {
         // Step 4: Call the function from the <Experience /> component using the ref
         if (experienceRef.current) {
@@ -125,7 +124,7 @@ const Home = () => {
                         <div className="version">
                             <h6 className='version-title'>Latest Version</h6>
                             <hr />
-                            <i className="fa-brands fa-github"></i> <span>{latestVersion.version} {latestVersion.releaseDate}</span>
+                            <i className="fa-brands fa-github"></i> <span>{latestVersion.version ? latestVersion.version: "Loading....."} {latestVersion.releaseDate}</span>
                         </div>
                         <div className="version">
                             <h6 className='version-title'>Upcoming Version</h6>

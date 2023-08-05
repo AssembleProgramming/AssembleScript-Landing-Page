@@ -7,7 +7,6 @@ const MyLoader = () => {
       <div className="loader__spinner">
         <div className="loader__spinner2">
           <div className="loader__spinner3">
-            <div className="loader__spinner4"></div>
           </div>
         </div>
       </div>
