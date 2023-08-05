@@ -18,7 +18,11 @@ function Playground() {
     isMobile = true;
   }
 
-  let DEFAULTcode = `vision("Hello Avenger!!!");`;
+  let DEFAULTcode = `assemble my_function(){
+  vision("Hello Avenger!!!");
+  snap;
+}
+my_function();`;
   const [output, setOutput] = useState('');
   const [executionTime, setExecutionTime] = useState("");  // State variable to hold execution time
 
