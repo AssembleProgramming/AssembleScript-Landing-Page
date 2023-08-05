@@ -29,7 +29,9 @@
                 .main-title {
                     font-size: 4vw;
                     font-weight: 800;
-
+                    #line-break{
+                        display: none;
+                    }
                     // line-height: px;
                     .assemble-script {
                         color: #4b32c3;
@@ -91,6 +93,9 @@
                     .main-title {
                         font-size: 3vw;
                         height: 20vh;
+                        #line-break{
+                            display: initial;
+                        }
                     }
                 }
             }
@@ -132,6 +137,9 @@
 
                         .assemble-script {
                             color: #4b32c3;
+                        }
+                        #line-break{
+                            display: block;
                         }
                     }
 

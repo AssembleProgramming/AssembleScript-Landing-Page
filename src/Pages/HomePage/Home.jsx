@@ -87,6 +87,7 @@ const Home = () => {
                         <div className='home-title-container'>
                             <h1 className='main-title'>
                                 With&nbsp;
+                                 <br id='line-break'/>
                                 <span className="assemble-script">
                                     AssembleScript
                                 </span>
