@@ -15,8 +15,8 @@ import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import gauntlet from "../../assets/gauntlet.png"
 import hoverSound from "./snap.mp3"
 import transform from "./transform.mp3"
-import Loader from '../Loader/Loader';
 import { TypeAnimation } from 'react-type-animation';
+import MyLoader from '../Loader/Loader';
 
 const Home = () => {
     const [latestVersion, setLatestVersion] = useState('Loading...');
@@ -77,7 +77,9 @@ const Home = () => {
                 >
                     <color attach="background" args={['#fff']} />
                     <Environment files="./maps/brown_photostudio_1k.hdr" background={false} blur={0} />
-                    <Shield />
+                    <Suspense fallback={<MyLoader />}>
+                        <Shield />
+                    </Suspense>
                 </Canvas>
                 <div className="mainPageContainer">
                     <div className="left">
@@ -85,18 +87,18 @@ const Home = () => {
                             <h1 className='main-title'>
                                 With&nbsp;
                                 <span className="assemble-script">
-                                AssembleScript
+                                    AssembleScript
                                 </span>
                                 <TypeAnimation
                                     sequence={[
                                         `Unleash Your Inner Developer`,
-                                        1500, 
+                                        1500,
                                         `Unleash Your Inner Avenger`,
                                         1500,
                                     ]}
                                     wrapper="span"
                                     speed={50}
-                                    style={{display: 'inline-block' }}
+                                    style={{ display: 'inline-block' }}
                                 />
                             </h1>
                         </div>
@@ -134,7 +136,7 @@ const Home = () => {
 
             <section id='section2' style={{ background: "#fff" }}>
                 <div className='canvas-container'>
-                    <Suspense fallback={<Loader />}>
+                    <Suspense fallback={<MyLoader />}>
                         <Canvas shadows camera={{ position: [3, 3, 7], fov: 42 }}>
                             <color attach="background" args={["#fff"]} />
                             <Experience ref={experienceRef} />

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Loader.scss";
 
-const Loader = () => {
+const MyLoader = () => {
   return (
     <div className="loader">
       <div className="loader__spinner">
@@ -16,4 +16,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default MyLoader;
