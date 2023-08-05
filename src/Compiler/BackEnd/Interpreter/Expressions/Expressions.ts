@@ -1,29 +1,19 @@
-import { CallExpr,AssignmentExpression,Identifier,MemberExpr,Expr } from "../../../FrontEnd/AST.ts";
+import {
+  AssignmentExpression,
+  Expr,
+  Identifier,
+  MemberExpr,
+} from "../../../FrontEnd/AST.ts";
 import Environment from "../../Scope/environment.ts";
-import { RuntimeVal,NativeFnVal,NumberVal,StringVal,ArrayVal,MAKE_NUll } from "../../values.ts";
+import {
+  ArrayVal,
+  BooleanVal,
+  MAKE_NUll,
+  NumberVal,
+  RuntimeVal,
+  StringVal,
+} from "../../values.ts";
 import { evaluate } from "../interpreter.ts";
-
-
-/**
- * Evaluates a call expression by invoking a function with the provided arguments.
- * @param expr The call expression to evaluate.
- * @param env The environment in which the expression is evaluated.
- * @returns The result of the function call.
- * @throws Error if the value being called is not a function.
- */
-export const evaluate_call_expression = (
-  expr: CallExpr,
-  env: Environment,
-): RuntimeVal => {
-  const args = expr.args.map((arg) => evaluate(arg, env));
-  const fn = evaluate(expr.caller, env);
-
-  if (fn.type == "native-fn") {
-    const result = (fn as NativeFnVal).call(args, env);
-    return result;
-  }
-  throw `Cannot call value that is not a function.`;
-};
 
 /**
  * Evaluates an assignment expression by assigning a value to a variable or array element.
@@ -35,20 +25,23 @@ export const evaluate_assignment_expression = (
   node: AssignmentExpression,
   env: Environment,
 ): RuntimeVal => {
-  if (node.assignee.kind == "Identifier") {
+  if (node.assignee.kind === "Identifier") {
     const varname = (node.assignee as Identifier).symbol;
     const value = evaluate(node.val, env);
     return env.assignVar(varname, value);
   }
-  if (node.assignee.kind == "MemberExpr") {
+  if (node.assignee.kind === "MemberExpr") {
     const rhs = evaluate(node.val, env) as RuntimeVal;
     let rhs_value;
-    if (rhs.type == "number") {
+    if (rhs.type === "number") {
       rhs_value = (rhs as NumberVal).value;
-    } else if (rhs.type == "string") {
+    } else if (rhs.type === "string") {
       rhs_value = (rhs as StringVal).value;
+    } else if (rhs.type === "boolean") {
+      rhs_value = (rhs as BooleanVal).value;
     }
-    const assigner = (node.assignee) as MemberExpr;
+
+    const assigner = node.assignee as MemberExpr;
     const assigner_name = (assigner.object as Identifier).symbol;
     const index = evaluate(assigner.property, env) as NumberVal;
     const index_val = index.value;
@@ -57,10 +50,13 @@ export const evaluate_assignment_expression = (
       throw new Error("Index must be a valid number");
     }
     const object = evaluate(assigner.object, env) as ArrayVal;
+
     if (object.type === "array") {
       const array = object.values;
-      if (rhs.type == "number") {
+      if (rhs.type === "number") {
         array[index_val] = { kind: "NumericLiteral", value: rhs_value } as Expr;
+      } else if (rhs.type === "boolean") {
+        array[index_val] = { kind: "BooleanLiteral", value: rhs_value } as Expr;
       } else {
         array[index_val] = { kind: "StringLiteral", value: rhs_value } as Expr;
       }
@@ -97,8 +93,10 @@ export const evaluate_member_expression = (
   env: Environment,
 ): RuntimeVal => {
   const object = evaluate(member.object, env);
+  // console.log(object);
 
   if (object.type === "array") {
+    // console.log(object.size);
     const index = evaluate(member.property, env) as NumberVal;
     if (index.type !== "number") {
       throw new Error("Array index must be a number");

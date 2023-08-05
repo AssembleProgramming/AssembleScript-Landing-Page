@@ -8,6 +8,7 @@ import Tooltip from 'react-bootstrap/Tooltip'; // Import Tooltip
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'; // Import OverlayTrigger
 import './Playground.scss'
 import AssembleNav from '../../Components/Navbar/Navbar.jsx';
+
 function Playground() {
   let isMobile = false;
   let offset = `calc(100vh - ${200}px)`;
@@ -20,6 +21,7 @@ function Playground() {
   let DEFAULTcode = `vision("Hello Avenger!!!");`;
   const [output, setOutput] = useState('');
   const [executionTime, setExecutionTime] = useState("");  // State variable to hold execution time
+
   const editorRef = useRef(null);
   const handleEditorMount = (editor, monaco) => {
     editorRef.current = editor;
@@ -53,48 +55,53 @@ function Playground() {
     updateEditor();
   }
 
+
   function runEditorCode() {
     const Back = document.querySelector('.run-btn');
-    Back.style.borderRadius = "10px";
+    Back.style.borderRadius = '10px';
     const inputText = getEditorData();
 
     const parser = new Parser();
     const env = setupGlobalScope();
-
-    const program = parser.produceAST(inputText);
 
     // Redirect console.log to capture the output
     const originalConsoleLog = console.log;
     const capturedOutput = [];
     console.log = (...args) => capturedOutput.push(args.join(' '));
 
-    // Measure the execution time
-    const startTime = performance.now();
-
     try {
+      const startTime = performance.now();
+
+      const program = parser.produceAST(inputText);
       evaluate(program, env);
+
+      // Calculate and set the execution time
+      const endTime = performance.now();
+      const timeTaken = endTime - startTime;
+
+      setTimeout(() => {
+        setOutput(capturedOutput.join('\n'));
+        if (isMobile) {
+          let outputWindow = document.querySelector('.right');
+          let codeWindow = document.querySelector('.left');
+          outputWindow.style.display = 'flex';
+          codeWindow.style.display = 'none';
+        }
+      }, 300);
+
+      setExecutionTime(' Finished in ' + timeTaken.toFixed(2).toString() + ' ms'); // Round to 2 decimal places
     } catch (error) {
-      console.log(error);
+      // If there's an error during evaluation (interpreter error)
+      setOutput(error || 'Error occurred during execution');
+      setExecutionTime(''); // Clear execution time in case of an error
+      return 1;
     } finally {
       console.log = originalConsoleLog;
     }
 
-    // Calculate and set the execution time
-    const endTime = performance.now();
-    const timeTaken = endTime - startTime;
-
-    setTimeout(() => {
-      setOutput(capturedOutput.join('\n'));
-      if (isMobile) {
-        let outputWindow = document.querySelector('.right');
-        let codeWindow = document.querySelector('.left');
-        outputWindow.style.display = "flex";
-        codeWindow.style.display = "none";
-      }
-    }, 300)
-
-    setExecutionTime(" Finished in " + timeTaken.toFixed(2).toString() + " ms"); // Round to 2 decimal places
+    return 0; // Return success flag
   }
+
 
   const showCode = () => {
     let codeWindow = document.querySelector('.left');

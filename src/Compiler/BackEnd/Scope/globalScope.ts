@@ -1,30 +1,84 @@
 import {
+  ArrayVal,
   BooleanVal,
   MAKE_BOOL,
+  MAKE_FUNCTION,
   MAKE_NATIVE_FN,
   MAKE_NUll,
   MAKE_NUM,
   MAKE_STRING,
   NumberVal,
+  RuntimeVal,
   StringVal,
 } from "../values.ts";
 import Environment from "./environment.ts";
 
 export function setupGlobalScope() {
+  const isVaild = (actual: any, expected: any): RuntimeVal => {
+    if (actual === expected) {
+      console.log("✅Test passed!");
+      return MAKE_BOOL(true);
+    } else {
+      console.log("❌Test failed!");
+      console.log("⚠️ Expected: ", expected);
+      console.log("⚠️ Output: ", actual);
+      throw `Failed execution`;
+    }
+  };
   const env = new Environment();
   /** ===========================================================================================
    *                 Definition of global constant variables and builtin methods
   =========================================================================================== */
   env.declareVar("SHIELD", MAKE_BOOL(true), true);
   env.declareVar("HYDRA", MAKE_BOOL(false), true);
+  env.declareVar("hasReturn", MAKE_BOOL(false), false);
   env.declareVar("null", MAKE_NUll(), true);
 
   // Define a native builtin method GENERAL
   env.declareVar(
+    "assertEqual",
+    MAKE_NATIVE_FN((args, _scope): RuntimeVal => {
+      if (args.length !== 2) {
+        const error_msg: any =
+          `RunTimeError: No matching function for call to 'assertEqual'. Note: candidate function not viable. Function assertEqual requires 2 arguments, but ${args.length} was provided.`;
+        throw error_msg;
+      }
+      const actual_type = args[0].type;
+      const expected_type = args[1].type;
+
+      if (actual_type !== expected_type) {
+        throw `❌Test failed (Type Mismatched)`;
+      } else {
+        switch (actual_type) {
+          case "string": {
+            const actual = (args[0] as StringVal).value;
+            const expected = (args[1] as StringVal).value;
+            return isVaild(actual, expected);
+          }
+          case "number": {
+            const actual = (args[0] as NumberVal).value;
+            const expected = (args[1] as NumberVal).value;
+            return isVaild(actual, expected);
+          }
+          case "boolean": {
+            const actual = (args[0] as BooleanVal).value;
+            const expected = (args[1] as BooleanVal).value;
+            return isVaild(actual, expected);
+          }
+
+          default:
+            throw `RunTimeError: Null value exception`;
+        }
+      }
+    }),
+    true,
+  );
+  env.declareVar(
     "vision",
-    MAKE_NATIVE_FN((args, _scope) => {
+    MAKE_NATIVE_FN((args, _scope): RuntimeVal => {
       for (let i = 0; i < args.length; i++) {
         const type = args[i].type;
+
         switch (type) {
           case "number": {
             const num_to_print = (args[i] as NumberVal).value;
@@ -48,7 +102,7 @@ export function setupGlobalScope() {
             break;
           }
           case "array": {
-            throw `Invalid Array Print Operation. Use Iterative Method Instead.`;
+            throw `RunTimeError: Invalid Array Print Operation. Use Iterative Method Instead.`;
           }
           case "null": {
             console.log(null);

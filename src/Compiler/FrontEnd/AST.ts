@@ -10,7 +10,7 @@ export type NodeType =
   | "ArrayDeclaration"
   | "IfStatement"
   | "ElseStatement"
-  | "WhileStatement" 
+  | "WhileStatement"
   | "ForLoopStatement"
   | "BreakStatement"
   | "SwitchStatement"
@@ -30,7 +30,11 @@ export type NodeType =
   | "Property"
   | "StringLiteral"
   | "NullLiteral"
-   ;
+  | "BooleanLiteral"
+  // Function-related nodes
+  | "FunctionParam"
+  | "FunctionDefinition"
+  | "ReturnStatement";
 
 /**
  * Represents a statement in the program.
@@ -63,7 +67,6 @@ export interface VariableDeclaration extends Stmt {
   identifier: string;
   value?: Expr;
 }
-
 
 /**
  * Represents an if statement.
@@ -229,6 +232,17 @@ export interface NullLiteral extends Expr {
 }
 
 /**
+ * Represents a boolean literal expression.
+ * The BooleanLiteral interface represents a bool literal expression. It has the following properties:
+ * - kind: The type of the node ("BooleanLiteral").
+ * - value: The value of the bool literal ("bool").
+ */
+export interface BooleanLiteral extends Expr {
+  kind: "BooleanLiteral";
+  value: boolean;
+}
+
+/**
  * Represents a property in an object or class.
  * The Property interface represents a property in an object or class. It has the following properties:
  * - kind: The type of the node ("Property").
@@ -303,7 +317,7 @@ export interface BreakStatement extends Stmt {
 export interface ArrayDeclaration extends Stmt {
   kind: "ArrayDeclaration";
   name: string;
-  size: number;
+  size: Expr;
   values: Expr[];
 }
 
@@ -344,4 +358,47 @@ export interface SwitchStatement {
 export interface MinusExpr extends Expr {
   kind: "MinusExpr";
   argument: Expr;
+}
+
+/**
+ * ===========================================================================================
+ *                        User Defined Functions
+ * ===========================================================================================
+ */
+/**
+ * Represents a function parameter.
+ * The FunctionParam interface represents a parameter of a function. It has the following properties:
+ * - kind: The type of the node ("FunctionParam").
+ * - name: The name of the parameter.
+ */
+export interface FunctionParam {
+  kind: "FunctionParam";
+  name: string;
+}
+
+/**
+ * Represents a function definition statement.
+ * The FunctionDefinition interface represents a statement that defines a function. It has the following properties:
+ * - kind: The type of the node ("FunctionDefinition").
+ * - name: The name of the function.
+ * - params: An array of FunctionParam objects representing the function parameters.
+ * - body: The body of the function (an array of statements).
+ * - returnType: The return type of the function (optional).
+ */
+export interface FunctionDefinition extends Stmt {
+  kind: "FunctionDefinition";
+  name: string;
+  params: FunctionParam[];
+  body: Stmt[];
+}
+
+/**
+ * Represents a return statement.
+ * The ReturnStatement interface represents a return statement. It has the following properties:
+ * - kind: The type of the node ("ReturnStatement").
+ * - value: The expression being returned (optional).
+ */
+export interface ReturnStatement extends Stmt {
+  kind: "ReturnStatement";
+  value?: Expr;
 }

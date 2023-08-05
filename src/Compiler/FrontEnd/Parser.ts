@@ -11,6 +11,8 @@ import {
   ElseStatement,
   Expr,
   ForLoopStatement,
+  FunctionDefinition,
+  FunctionParam,
   Identifier,
   IfStatement,
   LogicalExpression,
@@ -19,6 +21,7 @@ import {
   NullLiteral,
   NumericLiteral,
   Program,
+  ReturnStatement,
   Stmt,
   StringLiteral,
   SwitchCase,
@@ -50,7 +53,7 @@ export default class Parser {
    * @returns A boolean indicating if there are more tokens.
    */
   private not_eof(): boolean {
-    return this.tokens[0].type != TokenType.EOF;
+    return this.tokens[0].type !== TokenType.EOF;
   }
 
   /**
@@ -78,13 +81,11 @@ export default class Parser {
    * @returns The consumed token.
    */
   private expect(type: TokenType, err: string) {
-    const prev = this.tokens.shift() as Token;
-    if (!prev || prev.type != type) {
-      let error = `"Parser Error: \n, ${err} reading ${prev.value}`
-      window.alert(error);
-      throw `${error}`;
+    const next = this.tokens.shift() as Token;
+    if (!next || next.type !== type) {
+      throw `SyntaxError:line:${next.curr_line}: Hey Avenger you just snapped an ERROR! ${err} instead scanned '${next.value}' `;
     }
-    return prev;
+    return next;
   }
 
   /**
@@ -104,6 +105,39 @@ export default class Parser {
       program.body.push(this.parse_stmt());
     }
     return program;
+  }
+
+  /**
+   * Parses easter egg in AssembleScript
+   */
+  private parse_easter_egg(): Stmt {
+    switch (this.at().type) {
+      case TokenType.If:
+        throw `SyntaxError:line:${this.at().curr_line}: Hey Avenger you just snapped an error found an unexpected token 'if' did you mean 'ifWorthy'`;
+      case TokenType.Else:
+        throw `SyntaxError:line:${this.at().curr_line}: Hey Avenger you just snapped an error found an unexpected token 'else' did you mean 'otherwise'`;
+      case TokenType.While:
+        throw `SyntaxError:line:${this.at().curr_line}: Hey Avenger you just snapped an error found an unexpected token 'while' did you mean 'fightUntil'`;
+      case TokenType.For:
+        throw `SyntaxError:line:${this.at().curr_line}: Hey Avenger you just snapped an error found an unexpected token 'for' did you mean 'wakandFor'`;
+      case TokenType.Switch:
+        throw `SyntaxError:line:${this.at().curr_line}: Hey Avenger you just snapped an error found an unexpected token 'switch' did you mean 'multiverse'`;
+      case TokenType.Case:
+        throw `SyntaxError:line:${this.at().curr_line}: Hey Avenger you just snapped an error found an unexpected token 'case' did you mean 'madness'`;
+      case TokenType.Let:
+        throw `SyntaxError:line:${this.at().curr_line}: Hey Avenger you just snapped an error found an unexpected token 'let' did you mean 'newAvenger'`;
+      case TokenType.Const:
+        throw `SyntaxError:line:${this.at().curr_line}: Hey Avenger you just snapped an error found an unexpected token 'const' did you mean 'newEternal'`;
+      case TokenType.Return:
+        throw `SyntaxError:line:${this.at().curr_line}: Hey Avenger you just snapped an error found an unexpected token 'return' did you mean 'snap'`;
+      case TokenType.Break:
+        throw `SyntaxError:line:${this.at().curr_line}: Hey Avenger you just snapped an error found an unexpected token 'break' did you mean 'endGame'`;
+      case TokenType.True:
+        throw `SyntaxError:line:${this.at().curr_line}: Hey Avenger you just snapped an error found an unexpected token 'true' did you mean 'SHIELD'`;
+      case TokenType.False:
+        throw `SyntaxError:line:${this.at().curr_line}: Hey Avenger you just snapped an error found an unexpected token 'false' did you mean 'HYDRA'`;
+    }
+    throw `Hey Avenger you just snapped an error {If this error displayed it's fault of developer contact them with a screenshot for reward}`;
   }
 
   /**
@@ -128,15 +162,120 @@ export default class Parser {
         return this.parse_switch_statement();
       case TokenType.WakandaFor:
         return this.parse_for_loop_statement();
+      case TokenType.Assemble:
+        return this.parse_function_definition();
+      case TokenType.Snap:
+        return this.parse_return_statement();
+      //?Easter egg 🥚
+      case TokenType.If:
+        return this.parse_easter_egg();
+      case TokenType.Else:
+        return this.parse_easter_egg();
+      case TokenType.While:
+        return this.parse_easter_egg();
+      case TokenType.For:
+        return this.parse_easter_egg();
+      case TokenType.Switch:
+        return this.parse_easter_egg();
+      case TokenType.Case:
+        return this.parse_easter_egg();
+      case TokenType.Let:
+        return this.parse_easter_egg();
+      case TokenType.Const:
+        return this.parse_easter_egg();
+      case TokenType.Return:
+        return this.parse_easter_egg();
+      case TokenType.Break:
+        return this.parse_easter_egg();
+      case TokenType.True:
+        return this.parse_easter_egg();
+      case TokenType.False:
+        return this.parse_easter_egg();
       default: {
         const expr = this.parse_expr();
-        this.expect(
-          TokenType.Semicolon,
-          "Expected semicolon at the end of the statement",
-        );
+        this.expect(TokenType.Semicolon, `Expected ';' after expression`);
         return expr;
       }
     }
+  }
+
+  /**
+   * Parses a function parameter.
+   *
+   * @returns A FunctionParam object representing the parsed parameter.
+   * @throws {Error} If there are syntax errors or missing tokens in the parameter.
+   */
+  private parse_function_param(): FunctionParam {
+    const name = this.expect(
+      TokenType.Identifier,
+      "Expected parameter name",
+    ).value;
+    return { kind: "FunctionParam", name };
+  }
+
+  /**
+   * Parses a function definition statement.
+   *
+   * @returns A FunctionDefinition object representing the parsed function definition.
+   * @throws {Error} If there are syntax errors or missing tokens in the function definition.
+   */
+  private parse_function_definition(): FunctionDefinition {
+    this.eat(); // Eat 'assemble' token
+
+    const name = this.expect(
+      TokenType.Identifier,
+      "Expected function name",
+    ).value;
+
+    this.expect(TokenType.OpenParen, "Expected '(' after function name");
+
+    const params: FunctionParam[] = [];
+    if (this.at().type !== TokenType.CloseParen) {
+      params.push(this.parse_function_param());
+      while (this.at().type === TokenType.Comma && this.eat()) {
+        params.push(this.parse_function_param());
+      }
+    }
+
+    this.expect(TokenType.CloseParen, "Expected ')' after function parameters");
+
+    this.expect(TokenType.OpenBrace, "Expected '{' before function body");
+
+    const body: Stmt[] = [];
+    while (this.at().type !== TokenType.CloseBrace && this.not_eof()) {
+      body.push(this.parse_stmt());
+    }
+
+    this.expect(TokenType.CloseBrace, "Expected '}' after function body");
+
+    return {
+      kind: "FunctionDefinition",
+      name,
+      params,
+      body,
+    } as FunctionDefinition;
+  }
+
+  /**
+   * Parses a return statement.
+   *
+   * @returns A ReturnStatement object representing the parsed return statement.
+   * @throws {Error} If there are syntax errors or missing tokens in the return statement.
+   */
+  private parse_return_statement(): ReturnStatement {
+    this.eat(); // Eat 'snap' token
+
+    let value: Expr | undefined = undefined;
+    if (this.at().type !== TokenType.Semicolon) {
+      value = this.parse_expr();
+    }
+
+    this.expect(TokenType.Semicolon, "Expected ';' after return statement");
+
+    return {
+      kind: "ReturnStatement",
+      value,
+    } as ReturnStatement;
   }
 
   /**
@@ -149,20 +288,20 @@ export default class Parser {
     // Eat 'for' token
     this.eat();
 
-    // Expect identifier as iterator in 'for' statement
+    // Expect identifier as iterator in 'wakandaFor' loop
     const iterator = this.expect(
       TokenType.Identifier,
-      "Expected identifier as iterator in 'for' statement",
+      "Expected identifier as an iterator in 'wakandaFor' loop",
     ).value;
 
     // Expect 'in' keyword after iterator
-    this.expect(TokenType.In, "Expected `in` keyword after iterator");
+    this.expect(TokenType.In, "Expected 'in' keyword after iterator");
 
     // Parse start expression
     const start = this.parse_expr();
 
     // Expect 'to' keyword after start expression
-    this.expect(TokenType.To, "Expected `to` keyword after start expression");
+    this.expect(TokenType.To, "Expected 'to' keyword after start expression");
 
     // Parse end expression
     const end = this.parse_expr();
@@ -174,10 +313,10 @@ export default class Parser {
       step = this.parse_expr();
     }
 
-    // Expect opening brace before 'for' statement body
+    // Expect '{' before 'for' statement body
     this.expect(
       TokenType.OpenBrace,
-      "Expected opening brace before 'for' statement body",
+      "Expected '{' before 'wakandaFor' statement body",
     );
 
     // Parse statements within the 'for' loop body
@@ -186,10 +325,10 @@ export default class Parser {
       body.push(this.parse_stmt());
     }
 
-    // Expect closing brace after 'for' statement body
+    // Expect '}' after 'for' statement body
     this.expect(
       TokenType.CloseBrace,
-      "Expected closing brace after 'for' statement body",
+      "Expected '}' after 'wakandaFor' statement body",
     );
 
     // Return the parsed 'for' loop statement object
@@ -213,25 +352,22 @@ export default class Parser {
     // Eat 'switch' token
     this.eat();
 
-    // Expect opening parenthesis after 'switch'
-    this.expect(
-      TokenType.OpenParen,
-      "Expected opening parenthesis after 'switch'",
-    );
+    // Expect '(' after 'switch'
+    this.expect(TokenType.OpenParen, "Expected '(' after 'multiverse' ");
 
     // Parse the expression used as the discriminant
     const discriminant = this.parse_expr();
 
-    // Expect closing parenthesis after switch expression
+    // Expect ')' after switch expression
     this.expect(
       TokenType.CloseParen,
-      "Expected closing parenthesis after switch expression",
+      "Expected ')' after 'multiverse' expression",
     );
 
-    // Expect opening brace before 'switch' statement body
+    // Expect '{' before 'switch' statement body
     this.expect(
       TokenType.OpenBrace,
-      "Expected opening brace before 'switch' statement body",
+      "Expected '{' before 'multiverse' statement body",
     );
 
     const cases: SwitchCase[] = [];
@@ -247,14 +383,15 @@ export default class Parser {
         const test = this.parse_expr();
 
         // Expect colon after 'case' expression
-        this.expect(TokenType.Colon, "Expected colon after 'case' expression");
+        this.expect(TokenType.Colon, "Expected ':' after 'madness' expression");
 
         // Parse statements within the 'case' block
         const consequent: Stmt[] = [];
         while (
           this.at().type !== TokenType.Madness &&
           this.at().type !== TokenType.Default &&
-          this.at().type !== TokenType.CloseBrace && this.not_eof()
+          this.at().type !== TokenType.CloseBrace &&
+          this.not_eof()
         ) {
           consequent.push(this.parse_stmt());
         }
@@ -264,29 +401,30 @@ export default class Parser {
         this.eat(); // Eat 'default' token
 
         // Expect colon after 'default'
-        this.expect(TokenType.Colon, "Expected colon after 'default'");
+        this.expect(TokenType.Colon, "Expected ':' after 'default'");
 
         // Parse statements within the 'default' block
         defaultCase = [];
         while (
           this.at().type !== TokenType.Madness &&
           this.at().type !== TokenType.Default &&
-          this.at().type !== TokenType.CloseBrace && this.not_eof()
+          this.at().type !== TokenType.CloseBrace &&
+          this.not_eof()
         ) {
           defaultCase.push(this.parse_stmt());
         }
       } else {
-        throw "Expected 'case' or 'default' inside 'switch' statement";
+        throw `SyntaxError:line:${this.at().curr_line}: Expected 'madness' or 'default' inside 'multiverse' statement`;
       }
     }
 
-    // Expect closing brace after 'switch' statement body
+    // Expect '}' after 'switch' statement body
     this.expect(
       TokenType.CloseBrace,
-      "Expected closing brace after 'switch' statement body",
+      "Expected '}' after 'multiverse' statement body",
     );
 
-    // Return the parsed 'switch' statement object
+    // Return the parsed 'multiverse' statement object
     return {
       kind: "SwitchStatement",
       discriminant,
@@ -305,48 +443,44 @@ export default class Parser {
     this.eat(); // Eat 'array' token
 
     // Parse identifier
-    const name = this.expect(TokenType.Identifier, "Expected array name").value;
+    const name = this.expect(
+      TokenType.Identifier,
+      "Expected 'team (array)' name",
+    ).value;
 
     // Check for optional size or values
-    let size = 0;
+    let size: Expr;
     let vals: Expr[];
 
     // Check for optional size or values
-    if (this.at().type === TokenType.OpenParen) {
-      // Expect opening parenthesis ( after array identifier
-      this.expect(
-        TokenType.OpenParen,
-        "Expected opening parenthesis ( after array identifier",
-      );
+    // Expect '[' after array identifier
+    this.expect(
+      TokenType.OpenBracket,
+      `Expected '[' after identifier '${name}'`,
+    );
 
-      // Parse the array size as a number
-      size = parseInt(
-        this.expect(TokenType.Number, "Expected array size").value,
-      );
+    // Parse the array size as a number
+    size = this.parse_expr();
 
-      // Expect closing parenthesis ) after array size or values
-      this.expect(
-        TokenType.CloseParen,
-        "Expected closing parenthesis ) after array size or values",
-      );
-    }
+    // Expect ')' ) after array size or values
+    this.expect(TokenType.CloseBracket, "Expected ']'");
 
     // Expect = to add values
-    this.expect(TokenType.Equals, "Expected = to add values");
+    this.expect(TokenType.Equals, "Expected '=' for team assignment");
 
     // Expect { to add array values
-    this.expect(TokenType.OpenBrace, "Expected { to add array value");
+    this.expect(TokenType.OpenBrace, "Expected '{' to add team value");
 
     // Parse the array values
     vals = this.parse_array_values(size);
 
     // Expect } to add array values
-    this.expect(TokenType.CloseBrace, "Expected } to add array value");
+    this.expect(TokenType.CloseBrace, "Expected '}' to add team value");
 
     // Expect ; at the end of the declaration statement
     this.expect(
       TokenType.Semicolon,
-      "Expected ; at end of declaration statement",
+      "Expected ';' at end of declaration statement",
     );
 
     // Return the parsed array declaration statement object
@@ -365,29 +499,15 @@ export default class Parser {
    * @returns An array of parsed expressions representing the array values.
    * @throws {Error} If the array size is exceeded by the number of values provided.
    */
-  private parse_array_values(size: number): Expr[] {
+  private parse_array_values(size: Expr): Expr[] {
     const values: Expr[] = [];
-    let cnt = 1;
 
-    // Continue parsing values until encountering the closing brace or reaching the end of input
+    // Continue parsing values until encountering the '}' or reaching the end of input
     while (this.at().type !== TokenType.CloseBrace && this.not_eof()) {
-      if (cnt <= size) {
-        // If there are still available slots in the array, parse the expression and add it to the values
-        values.push(this.parse_expr());
-      } else {
-        // If the array size is exceeded, throw an error indicating the expected size
-        throw `Array size exceeded by the number of values provided. Expected ${size} values.`;
-      }
+      values.push(this.parse_expr());
       if (this.at().type === TokenType.Comma) {
         this.eat(); // Eat the comma if present
       }
-      cnt++;
-    }
-
-    // If there are remaining empty slots in the array, fill them with a default NumericLiteral of value 0
-    while (cnt <= size) {
-      values.push({ kind: "NumericLiteral", value: 0 } as NumericLiteral);
-      cnt++;
     }
 
     return values;
@@ -401,16 +521,16 @@ export default class Parser {
    */
   private parse_if_statement(): IfStatement | ElseStatement {
     this.eat(); // Eat 'if' token
-    this.expect(TokenType.OpenParen, "Expected opening parenthesis after 'if'");
+    this.expect(TokenType.OpenParen, "Expected '(' after 'ifWorthy'");
     const condition = this.parse_expr();
     this.expect(
       TokenType.CloseParen,
-      "Expected closing parenthesis after condition in 'if' statement",
+      "Expected ')' after condition in 'ifWorthy' statement",
     );
 
     this.expect(
       TokenType.OpenBrace,
-      "Expected opening brace before 'if' statement body",
+      "Expected '{' before 'ifWorthy' statement body",
     );
     const body: Stmt[] = [];
     while (this.at().type !== TokenType.CloseBrace && this.not_eof()) {
@@ -418,7 +538,7 @@ export default class Parser {
     }
     this.expect(
       TokenType.CloseBrace,
-      "Expected closing brace after 'if' statement body",
+      "Expected '}' after 'ifWorthy' statement body",
     );
     let elseBranch: IfStatement | ElseStatement | undefined = undefined;
     if (this.at().type === TokenType.Otherwise) {
@@ -430,7 +550,7 @@ export default class Parser {
         // 'else' statement
         this.expect(
           TokenType.OpenBrace,
-          "Expected opening brace before 'else' statement body",
+          "Expected '{' before 'otherwise' statement body",
         );
         const elseBody: Stmt[] = [];
         while (this.at().type !== TokenType.CloseBrace && this.not_eof()) {
@@ -438,7 +558,7 @@ export default class Parser {
         }
         this.expect(
           TokenType.CloseBrace,
-          "Expected closing brace after 'else' statement body",
+          "Expected '}' after 'otherwise' statement body",
         );
 
         elseBranch = { kind: "ElseStatement", body: elseBody };
@@ -456,21 +576,18 @@ export default class Parser {
    */
   private parse_while_statement(): Stmt {
     this.eat(); // Eat 'while' token
-    this.expect(
-      TokenType.OpenParen,
-      "Expected opening parenthesis after 'while'",
-    );
+    this.expect(TokenType.OpenParen, "Expected '(' after 'fightUntil'");
 
     const condition = this.parse_expr();
 
     this.expect(
       TokenType.CloseParen,
-      "Expected closing parenthesis after condition in 'while' statement",
+      "Expected ')' after condition in 'fightUntil' statement",
     );
 
     this.expect(
       TokenType.OpenBrace,
-      "Expected opening brace before 'while' statement body",
+      "Expected '{' before 'fightUntil' statement body",
     );
 
     const body: Stmt[] = [];
@@ -481,7 +598,7 @@ export default class Parser {
 
     this.expect(
       TokenType.CloseBrace,
-      "Expected closing brace after 'while' statement body",
+      "Expected '}' after 'fightUntil' statement body",
     );
 
     return {
@@ -498,17 +615,17 @@ export default class Parser {
    * @throws {Error} If there are syntax errors or missing tokens in the statement.
    */
   private parse_var_declaration(): Stmt {
-    const isConstant = this.eat().type == TokenType.NewEternal;
+    const isConstant = this.eat().type === TokenType.NewEternal;
     const identifier = this.expect(
       TokenType.Identifier,
       "Expected identifier name while declaration",
     ).value;
 
-    if (this.at().type == TokenType.Semicolon) {
+    if (this.at().type === TokenType.Semicolon) {
       // Consume semicolon
       this.eat();
       if (isConstant) {
-        throw `Must assign value to constant expression.`;
+        throw `SyntaxError:line:${this.at().curr_line}: Must assign value to constant expression ${identifier}`;
       }
       return {
         kind: "VariableDeclaration",
@@ -518,7 +635,10 @@ export default class Parser {
       } as VariableDeclaration;
     }
 
-    this.expect(TokenType.Equals, "Expected assignment to identifier");
+    this.expect(
+      TokenType.Equals,
+      `Expected assignment to identifier ${identifier}`,
+    );
 
     const declaration = {
       kind: "VariableDeclaration",
@@ -528,7 +648,7 @@ export default class Parser {
     } as VariableDeclaration;
 
     // Check semicolon
-    this.expect(TokenType.Semicolon, "Expected Semicolon");
+    this.expect(TokenType.Semicolon, "Expected ';'");
     return declaration;
   }
 
@@ -546,7 +666,7 @@ export default class Parser {
    */
   private parse_break_statement(): Expr {
     this.eat(); // Eat 'break' token
-    this.expect(TokenType.Semicolon, "Expected Semicolon");
+    this.expect(TokenType.Semicolon, "Expected ';'");
     return { kind: "BreakStatement" } as BreakStatement;
   }
 
@@ -558,7 +678,7 @@ export default class Parser {
    */
   private parse_assignment_expr(): Expr {
     const left = this.parse_logical_expr();
-    if (this.at().type == TokenType.Equals) {
+    if (this.at().type === TokenType.Equals) {
       // Consume the equals token we just found
       this.eat();
 
@@ -589,7 +709,7 @@ export default class Parser {
   private parse_logical_expr(): Expr {
     let left = this.parse_comparison_expr();
 
-    while (this.at().type == TokenType.LogicalOperator) {
+    while (this.at().type === TokenType.LogicalOperator) {
       const operator = this.eat().value;
       const right = this.parse_comparison_expr();
 
@@ -611,9 +731,7 @@ export default class Parser {
   private parse_comparison_expr(): Expr {
     let left = this.parse_additive_expr();
 
-    while (
-      this.at().type == TokenType.ComparisonOperator
-    ) {
+    while (this.at().type === TokenType.ComparisonOperator) {
       const operator = this.eat().value; // Consume the comparison operator token
       const right = this.parse_additive_expr(); // Parse the right-hand side of the comparison
 
@@ -639,7 +757,7 @@ export default class Parser {
     let left = this.parse_multiplicative_expr();
 
     // Pase operator
-    while (this.at().value == "+" || this.at().value == "-") {
+    while (this.at().value === "+" || this.at().value === "-") {
       const operator = this.eat().value;
       const right = this.parse_multiplicative_expr();
 
@@ -662,7 +780,9 @@ export default class Parser {
 
     // Pase operator
     while (
-      this.at().value == "*" || this.at().value == "/" || this.at().value == "%"
+      this.at().value === "*" ||
+      this.at().value === "/" ||
+      this.at().value === "%"
     ) {
       const operator = this.eat().value;
       const right = this.parse_exponential_expr();
@@ -685,9 +805,7 @@ export default class Parser {
     let left = this.parse_call_member_expr();
 
     // Pase operator
-    while (
-      this.at().value == "^"
-    ) {
+    while (this.at().value === "^") {
       const operator = this.eat().value;
       const right = this.parse_call_member_expr();
 
@@ -710,7 +828,7 @@ export default class Parser {
   private parse_call_member_expr(): Expr {
     const member = this.parse_member_expr();
 
-    if (this.at().type == TokenType.OpenParen) {
+    if (this.at().type === TokenType.OpenParen) {
       return this.parse_call_expr(member);
     }
     return member;
@@ -730,7 +848,7 @@ export default class Parser {
       args: this.parse_args(),
     } as CallExpr;
 
-    if (this.at().type == TokenType.OpenParen) {
+    if (this.at().type === TokenType.OpenParen) {
       call_expr = this.parse_call_expr(call_expr);
     }
 
@@ -744,12 +862,12 @@ export default class Parser {
    * @throws {Error} If there are syntax errors or missing tokens in the expression.
    */
   private parse_args(): Expr[] {
-    this.expect(TokenType.OpenParen, `Expected open parenthesis`);
-    const args = this.at().type == TokenType.CloseParen
+    this.expect(TokenType.OpenParen, `Expected '('`);
+    const args = this.at().type === TokenType.CloseParen
       ? []
       : this.parse_arguments_list();
 
-    this.expect(TokenType.CloseParen, `Expected close parenthesis`);
+    this.expect(TokenType.CloseParen, `Expected ')'`);
     return args;
   }
 
@@ -762,7 +880,7 @@ export default class Parser {
   private parse_arguments_list(): Expr[] {
     const args = [this.parse_assignment_expr()];
 
-    while (this.at().type == TokenType.Comma && this.eat()) {
+    while (this.at().type === TokenType.Comma && this.eat()) {
       args.push(this.parse_assignment_expr());
     }
 
@@ -781,7 +899,7 @@ export default class Parser {
     while (this.at().type === TokenType.OpenBracket) {
       this.eat(); // Consume the opening bracket
       const property = this.parse_expr();
-      this.expect(TokenType.CloseBracket, "Missing closing bracket");
+      this.expect(TokenType.CloseBracket, "Expected ']'");
 
       object = {
         kind: "MemberExpr",
@@ -858,21 +976,21 @@ export default class Parser {
         return { kind: "NullLiteral", value: "null" } as NullLiteral;
 
       case TokenType.OpenParen: {
-        this.eat(); //Eat opening parenthesis
+        this.eat(); //Eat '('
         const value = this.parse_expr();
         this.expect(
           TokenType.CloseParen,
-          "Unexpected token found inside parenthesized expression. Expected closing parenthesis !!!",
-        ); //Eat closing parenthesis
+          "Unexpected token found inside parenthesized expression. Expected ')'",
+        ); //Eat ')'
         return value;
       }
       case TokenType.OpenBrace: {
-        this.eat(); //Eat opening parenthesis
+        this.eat(); //Eat '('
         const value = this.parse_expr();
         this.expect(
           TokenType.CloseBrace,
-          "Unexpected token found inside parenthesized expression. Expected closing parenthesis !!!",
-        ); //Eat closing parenthesis
+          "Unexpected token found inside parenthesized expression. Expected ')'",
+        ); //Eat ')'
         return value;
       }
 
@@ -881,8 +999,7 @@ export default class Parser {
         return this.parse_not_expr();
 
       default:
-        window.alert(`Unexpected token found while parsing: ${this.at().value}`);
-        throw `Unexpected token found while parsing: ${this.at()}`;
+        throw `SyntaxError:line:${this.at().curr_line}: Unexpected token found while parsing scanned ${this.at().value}`;
     }
   }
 }

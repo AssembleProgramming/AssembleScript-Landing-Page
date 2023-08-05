@@ -5,6 +5,7 @@
     height: calc(100vh - 70px);
     position: fixed;
     background: #2d2f34;
+
     .left {
       overflow-y: hidden;
       width: 65vw;
@@ -136,10 +137,12 @@
     .right {
       display: flex;
       flex-direction: column;
-      .top-bar{
-        .codeWindow-mobile{
+
+      .top-bar {
+        .codeWindow-mobile {
           display: none;
         }
+
         .codeOp {
           display: flex;
           align-items: center;
@@ -161,6 +164,7 @@
         background-color: #1e1e1e;
         margin-bottom: 0;
         color: white;
+        white-space: pre-wrap;
 
         .outputIntro {
           color: #3ff12f;
@@ -185,6 +189,7 @@
         border-right: 1px solid #606060;
         background: #f5f5f5;
         display: block;
+
         // display: none;
         .intro-editor {
           display: flex;
@@ -328,9 +333,10 @@
         display: none;
         flex-direction: column;
 
-        .top-bar{
+        .top-bar {
           display: flex;
-          .codeWindow-mobile{
+
+          .codeWindow-mobile {
             display: flex;
             align-items: center;
             margin: 0;
@@ -342,8 +348,9 @@
             color: white;
             font-size: 16px;
             border: 2px solid #4c4c4c;
-            
+
           }
+
           .codeOp {
             display: flex;
             align-items: center;
