@@ -382,7 +382,7 @@ export const Experience = React.forwardRef((props, ref) =>{
           </>
         )
       }
-      <Environment preset="sunset" />
+      <Environment files="./maps/sunset.hdr" background={false} blur={0}/>
       <ContactShadows position-y={-1.8} />
     </>
   );

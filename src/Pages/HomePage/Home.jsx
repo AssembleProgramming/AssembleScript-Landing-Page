@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { Suspense, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
 import Shield from '../../Components/Shield'
@@ -15,6 +15,7 @@ import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import gauntlet from "../../assets/gauntlet.png"
 import hoverSound from "./snap.mp3"
 import transform from "./transform.mp3"
+import Loader from '../Loader/Loader';
 
 const Home = () => {
     const [title, setTitle] = useState();
@@ -137,17 +138,19 @@ const Home = () => {
 
             <section id='section2' style={{ background: "#fff" }}>
                 <div className='canvas-container'>
-                    <Canvas shadows camera={{ position: [3, 3, 7], fov: 42 }}>
-                        <color attach="background" args={["#fff"]} />
-                        <Experience ref={experienceRef} />
-                        <EffectComposer>
-                            <Bloom luminanceThreshold={1} intensity={1.25} mipmapBlur />
-                        </EffectComposer>
-                    </Canvas>
-                    <div id='snap-button' onMouseEnter={playHoverSound} onClick={handleSnapClick}>
-                        <img src={gauntlet} alt="img" />
-                        <span>Snap !</span>
-                    </div>
+                    <Suspense fallback={<Loader />}>
+                        <Canvas shadows camera={{ position: [3, 3, 7], fov: 42 }}>
+                            <color attach="background" args={["#fff"]} />
+                            <Experience ref={experienceRef} />
+                            <EffectComposer>
+                                <Bloom luminanceThreshold={1} intensity={1.25} mipmapBlur />
+                            </EffectComposer>
+                        </Canvas>
+                        <div id='snap-button' onMouseEnter={playHoverSound} onClick={handleSnapClick}>
+                            <img src={gauntlet} alt="img" />
+                            <span>Snap !</span>
+                        </div>
+                    </Suspense>
                 </div>
                 <div className="section2Container">
                     <h1 className='section2-title'>The Power of AssembleScript</h1>

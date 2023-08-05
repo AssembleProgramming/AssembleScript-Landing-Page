@@ -21,7 +21,5 @@ function setFavicon() {
 setFavicon();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Suspense fallback={<Loader />}>
-    <App/>
-  </Suspense>
+  <App />
 )
