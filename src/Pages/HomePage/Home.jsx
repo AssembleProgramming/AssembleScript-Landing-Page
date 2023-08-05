@@ -16,13 +16,12 @@ import gauntlet from "../../assets/gauntlet.png"
 import hoverSound from "./snap.mp3"
 import transform from "./transform.mp3"
 import Loader from '../Loader/Loader';
+import { TypeAnimation } from 'react-type-animation';
 
 const Home = () => {
-    const [title, setTitle] = useState();
     const [latestVersion, setLatestVersion] = useState('Loading...');
-    const fullText = "Unleash Your Inner Avenger with AssembleScript";
     const experienceRef = useRef();
-
+    const AssembleScript = `AssembleScript`;
     const handleSnapClick = () => {
         // Step 4: Call the function from the <Experience /> component using the ref
         if (experienceRef.current) {
@@ -40,19 +39,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchLatestVersion();
-        let currentIndex = 0;
-        const interval = setInterval(() => {
-            if (currentIndex === fullText.length) {
-                clearInterval(interval);
-                return;
-            }
-            setTitle(fullText.substring(0, currentIndex + 1));
-            currentIndex += 1;
-        }, 100);
-
-        return () => clearInterval(interval);
-    }, []);
-
+    }, [])
     const fetchLatestVersion = async () => {
         try {
             const response = await fetch('https://api.github.com/repos/AssembleProgramming/AssembleScript/releases/latest', {
@@ -96,12 +83,21 @@ const Home = () => {
                     <div className="left">
                         <div className='home-title-container'>
                             <h1 className='main-title'>
-                                {title && title.split(' ').map((word, index) => {
-                                    if (word === 'AssembleScript') {
-                                        return <span key={index} className="assemble-script">{word}</span>;
-                                    }
-                                    return word + ' ';
-                                })}
+                                With&nbsp;
+                                <span className="assemble-script">
+                                AssembleScript
+                                </span>
+                                <TypeAnimation
+                                    sequence={[
+                                        `Unleash Your Inner Developer`,
+                                        1500, 
+                                        `Unleash Your Inner Avenger`,
+                                        1500,
+                                    ]}
+                                    wrapper="span"
+                                    speed={50}
+                                    style={{display: 'inline-block' }}
+                                />
                             </h1>
                         </div>
                         <p className='main-info'>
