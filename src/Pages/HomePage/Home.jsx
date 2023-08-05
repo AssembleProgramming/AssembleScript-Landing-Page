@@ -17,6 +17,7 @@ import hoverSound from "./snap.mp3"
 import transform from "./transform.mp3"
 import { TypeAnimation } from 'react-type-animation';
 import MyLoader from '../Loader/Loader';
+import MyLoader2 from '../Loader/Loader2';
 
 const Home = () => {
     const [latestVersion, setLatestVersion] = useState('Loading...');
@@ -66,21 +67,21 @@ const Home = () => {
 
             <section className='section1'>
                 <AssembleNav />
-                <Canvas
-                    className='webgl'
-                    camera={{
-                        fov: 45,
-                        near: 0.1,
-                        far: 200,
-                        position: [- 4, 3, 6],
-                    }}
-                >
-                    <color attach="background" args={['#fff']} />
-                    <Environment files="./maps/brown_photostudio_1k.hdr" background={false} blur={0} />
-                    <Suspense fallback={<MyLoader />}>
+                <Suspense fallback={<MyLoader />}>
+                    <Canvas
+                        className='webgl'
+                        camera={{
+                            fov: 45,
+                            near: 0.1,
+                            far: 200,
+                            position: [- 4, 3, 6],
+                        }}
+                    >
+                        <color attach="background" args={['#fff']} />
+                        <Environment files="./maps/brown_photostudio_1k.hdr" background={false} blur={0} />
                         <Shield />
-                    </Suspense>
-                </Canvas>
+                    </Canvas>
+                </Suspense>
                 <div className="mainPageContainer">
                     <div className="left">
                         <div className='home-title-container'>
@@ -136,7 +137,7 @@ const Home = () => {
 
             <section id='section2' style={{ background: "#fff" }}>
                 <div className='canvas-container'>
-                    <Suspense fallback={<MyLoader />}>
+                    <Suspense fallback={<MyLoader2 />}>
                         <Canvas shadows camera={{ position: [3, 3, 7], fov: 42 }}>
                             <color attach="background" args={["#fff"]} />
                             <Experience ref={experienceRef} />

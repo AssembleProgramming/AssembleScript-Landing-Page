@@ -1,9 +1,9 @@
 import React from "react";
-import "./Loader.scss";
+import "./Loader2.scss";
 
-const MyLoader = () => {
+const MyLoader2 = () => {
   return (
-    <div className="loader">
+    <div className="loader2">
       <div className="loader__spinner">
         <div className="loader__spinner2">
           <div className="loader__spinner3">
@@ -15,4 +15,4 @@ const MyLoader = () => {
   );
 };
 
-export default MyLoader;
+export default MyLoader2;
