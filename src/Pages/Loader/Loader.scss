@@ -4,64 +4,17 @@
   align-items: flex-end;
   flex-direction: column;
   height: 100vh;
-  margin-right: 20%;
+  margin-right: 15%;
 }
-
-.img {
-  border-radius: 50%;
+.avengers-logo{
+  width: 30vw;
+  animation: rotateLogo 3s linear infinite;
 }
-
-.loader__spinner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #4b32c3;
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  animation: spin 1s linear infinite;
-  margin: 0;
-
-  .loader__spinner2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #4b32c3;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    animation: spin 1s linear infinite;
-    margin: 0;
-
-    .loader__spinner3 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid #4b32c3;
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-      animation: spin 1s linear infinite;
-      margin: 0;
-    }
-  }
-}
-
-
-@keyframes spin {
+@keyframes rotateLogo {
   0% {
-    transform: rotate(0deg);
+    transform: rotateY(0deg);
   }
-
   100% {
-    transform: rotate(360deg);
+    transform: rotateY(360deg); /* Rotate the logo 360 degrees around Y-axis */
   }
-}
-
-.loadingTXT {
-  position: absolute;
-  bottom: 10%;
 }
