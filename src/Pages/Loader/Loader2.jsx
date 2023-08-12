@@ -4,7 +4,7 @@ import "./Loader2.scss";
 const MyLoader2 = () => {
   return (
     <div className="loader2">
-      <img className="avengers-logo" src="/a.png" alt="logo" />
+      <img className="avengers-logo" src="/a.webp" alt="logo" />
     </div>
   );
 };
