@@ -21,6 +21,13 @@ const Shield = () => {
 
   const model = useLoader(GLTFLoader, './shield.glb');
 
+  // Iterate through all materials and enable wireframe mode
+  model.scene.traverse((child) => {
+    if (child.isMesh) {
+      child.material.wireframe = true;
+    }
+  });
+
   useFrame(({ clock }) => {
     const a = clock.getElapsedTime();
     shield.current.rotation.z = a * 3;
