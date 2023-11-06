@@ -14,7 +14,11 @@ import Datatypes from "./Pages/Docs/Datatypes/Datatypes";
 import Operators from "./Pages/Docs/Operators/Operators";
 import Builtinmethods from "./Pages/Docs/Builtinmethods/Builtinmethods";
 import Contest from "./Pages/Contest/Contest";
+<<<<<<< HEAD
 import Functions from "./Pages/Docs/Functions/Functions";
+=======
+import Team from "./Pages/Team/Team";
+>>>>>>> 9a9cad537c8eb6fdadc8c436dc36b6cf9f49ac15
 
 function App() {
   const Naam = `
@@ -51,6 +55,7 @@ function App() {
             <Route path="/docs/functions" element={<Functions />} />
             <Route path="/playground" element={<Playground />} />
             <Route path="/contest" element={<Contest />} />
+            <Route path="/team" element={<Team />} />
           </Routes>
         </BrowserRouter>
       </div>
