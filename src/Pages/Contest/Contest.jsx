@@ -8,8 +8,8 @@ import three from "../../assets/images/Cthree.webp"
 import four from "../../assets/images/Cfour.webp"
 import five from "../../assets/images/Cfive.webp"
 import Footer from '../../Components/Footer/Footer';
-import MainContest from "../../assets/images/main-contest.avif"
-import practice from "../../assets/images/practice.jpg"
+import MainContest from "../../assets/images/main-contest.jpg"
+import practice from "../../assets/images/practice.png"
 
 const startTime = new Date(2023, 10, 10, 14, 30, 0);
 const calculateTimeRemaining = (startTime) => {
