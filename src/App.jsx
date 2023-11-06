@@ -14,6 +14,7 @@ import Datatypes from "./Pages/Docs/Datatypes/Datatypes";
 import Operators from "./Pages/Docs/Operators/Operators";
 import Builtinmethods from "./Pages/Docs/Builtinmethods/Builtinmethods";
 import Contest from "./Pages/Contest/Contest";
+import Functions from "./Pages/Docs/Functions/Functions";
 
 function App() {
   const Naam = `
@@ -47,6 +48,7 @@ function App() {
             <Route path="/docs/datatypes" element={<Datatypes />} />
             <Route path="/docs/operators" element={<Operators />} />
             <Route path="/docs/builtinmethods" element={<Builtinmethods />} />
+            <Route path="/docs/functions" element={<Functions />} />
             <Route path="/playground" element={<Playground />} />
             <Route path="/contest" element={<Contest />} />
           </Routes>
