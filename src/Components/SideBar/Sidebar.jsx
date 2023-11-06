@@ -55,6 +55,8 @@ const Sidebar = () => {
       name: " Builtin Methods in AssembleScript",
       href: "/docs/builtinmethods",
     },
+    { name: "Functions in AssembleScript", href: "/docs/functions" },
+
   ];
 
   const options = {

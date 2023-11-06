@@ -13,27 +13,35 @@ const Functions = () => {
     useRef(null),
     useRef(null),
     useRef(null),
+    useRef(null),
   ]; // Refs for each section
   const [activeSection, setActiveSection] = useState(0); // Index of the active section
 
   const Variable_1 = `assemble myFunction(param1, param2, ...){
 // Function Body
 }`;
-  const Variable_2 = `newAvenger name = "Iron Man";`;
-  const Variable_3 = `newAvenger age = 35;`;
-  const Variable_4 = `newAvenger power = "Super Strength";
-power = "Flight";`;
-  const Variable_5 = `newAvenger globalVariable = "Global Variable";
-
-  function exampleFunction() {
-      newAvenger localVariable = "Local Variable";
-      vision(globalVariable);   $ Output: "Global Variable" $
-      vision(localVariable);    $ Output: "Local Variable" $
-  }
-  
-  vision(globalVariable);   $ Output: "Global Variable" $
-  vision(localVariable);    $ Output: Error: 'localVariable' is not defined`;
-  const Variable_6 = `newEternal PI = 3.14159;`;
+  const Variable_2 = `assemble myFunction(param1, param2){
+// Function Body
+}`;
+  const Variable_3 = `assemble myFunction(){
+// Function Body
+snap result;
+}`;
+  const Variable_4 = `assemble square(number){
+snap number * number;
+}`;
+  const Variable_5 = `newAvenger result = square(5);
+vision(result);
+#Output: 25`;
+  const Variable_6 = `assemble fact(number){
+ifWorthy(number==1) {
+    snap 1;
+}
+snap number * fact(number-1);
+}`;
+  const Variable_7 = `newAvenger result = fact(5);
+vision(result);
+#Output: 120`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +84,7 @@ power = "Flight";`;
               <div className="section-container">
                 <h1 className="sectionHead">Functions</h1>
                 <p>
-                In AssembleScript, functions empower you to encapsulate code, 
+                In <span style={{ color: "#4b32c3" }}>AssembleScript</span>, functions empower you to encapsulate code, 
                 enhance modularity, and promote code reuse. This documentation provides 
                 a comprehensive guide on creating and utilizing user-defined functions.
                 </p>
@@ -85,7 +93,7 @@ power = "Flight";`;
                   Defining Functions
                   </h1>
                   <p>
-                  To declare a function, use the `assemble` keyword followed by the function name 
+                  To declare a function, use the <span style={{ color: "#4b32c3" }}>`assemble`</span> keyword followed by the function name 
                   and parameters, much like 'def' in other languages. 
                   The function body encapsulates the heroic actions you want the function to perform.
                   </p>
@@ -112,112 +120,67 @@ power = "Flight";`;
                   It ends the function execution and can carry a value back to the calling code.
                   </p>
 
+                  <SyntaxHighlighter language="javascript" style={oneDark}>
+                    {Variable_3}
+                  </SyntaxHighlighter>
+
                   
                 </div>
                 <div ref={sectionRefs[3]}>
-                  <h1 className="sub-sectionHead">Example</h1>
-                  <p>
+                  <h1 className="sub-sectionHead">Examples</h1>
+                  <ul>
+                    <li><p>
                   Here's an example of a simple function that calculates the square of a number:
                   </p>
                   <SyntaxHighlighter language="javascript" style={oneDark}>
                     {Variable_4}
                   </SyntaxHighlighter>
 
-
-
-                  
                   <p>
                     To use this function:
                   </p>
 
                   <SyntaxHighlighter language="javascript" style={oneDark}>
                     {Variable_5}
+                  </SyntaxHighlighter></li>
+                    <li><p>
+                  Here's an example of a recursive function that calculates the factorial of a number:
+                  </p>
+                  <SyntaxHighlighter language="javascript" style={oneDark}>
+                    {Variable_6}
                   </SyntaxHighlighter>
 
-                </div>
-                <div ref={sectionRefs[4]}>
-                  <h1 className="sub-sectionHead">Reassigning Variables</h1>
                   <p>
-                    Variables in AssembleScript can be reassigned new values
-                    after their initial declaration. This allows you to update
-                    and modify the data stored in the variable as needed.
+                    To use this function:
                   </p>
+
                   <SyntaxHighlighter language="javascript" style={oneDark}>
-                    {Variable_4}
-                  </SyntaxHighlighter>
-                  <p>
-                    In the above example, the variable power is initially
-                    assigned the value "Super Strength." However, it is later
-                    reassigned the value "Flight," reflecting a change in the
-                    superhero's abilities.
-                  </p>
-                </div>
-                <div ref={sectionRefs[5]}>
-                  <h1 className="sub-sectionHead">Scope</h1>
-                  <p>
-                    Variables in AssembleScript have different scopes, which
-                    define where the variable is accessible and can be used
-                    within the code. The scope of a variable is determined by
-                    where it is declared.
-                  </p>
-                  <ul>
-                    <li>
-                      Global Scope: Variables declared outside of any block have
-                      global scope, meaning they can be accessed from anywhere
-                      in the program.
-                    </li>
-                    <li>
-                      Local Scope: Variables declared inside a block have local
-                      scope, meaning they are only accessible within that
-                      specific function or block.
-                    </li>
+                    {Variable_7}
+                  </SyntaxHighlighter></li>
                   </ul>
                 </div>
-                <div ref={sectionRefs[6]}>
-                  <h1 className="sub-sectionHead">Constants</h1>
-                  <p>
-                    In AssembleScript, you can declare constants using the
-                    newEternal keyword. Constants are similar to variables, but
-                    their values cannot be changed after their initial
-                    assignment.
-                  </p>
-                  <SyntaxHighlighter language="javascript" style={oneDark}>
-                    {Variable_4}
-                  </SyntaxHighlighter>
-                  <p>
-                    In the above example, PI is declared as a constant and is
-                    assigned the value 3.14159. Attempts to reassign PI to a
-                    different value will result in an error.
-                  </p>
-                </div>
-                <div ref={sectionRefs[7]}>
+                <div ref={sectionRefs[4]}>
                   <h1 className="sub-sectionHead">Best Practices</h1>
                   <ul>
                     <li>
-                      Choose meaningful and descriptive names for your variables
-                      to make your code more readable and maintainable.
+                    Keep it Modular: Functions should focus on a 
+                    specific task to encourage code modularity.
+
                     </li>
                     <li>
-                      Initialize variables with an appropriate value to avoid
-                      unexpected behavior.
+                    Parameter Naming: Use clear and concise names 
+                    for parameters, enhancing code readability.
                     </li>
                     <li>
-                      Minimize the use of global variables to prevent unintended
-                      side effects and maintain code modularity.
+                    Return Meaningful Values: When using snap,
+                    return values that convey meaning and facilitate 
+                    understanding.
+
                     </li>
                     <li>
-                      Use constants for values that should not change during the
-                      program's execution.
+                    Documentation: Add comments within the function to explain complex logic and usage.
                     </li>
                   </ul>
-                  <p>
-                    Understanding how to declare, assign, and work with
-                    variables in AssembleScript is fundamental for building
-                    powerful and flexible programs. Properly utilizing variables
-                    will allow you to store and manipulate data effectively in
-                    your scripts, just like assembling a team of superheroes to
-                    combat evil forces in the Marvel universe.
-                  </p>
                 </div>
               </div>
               <div className="currentSection">
@@ -227,14 +190,14 @@ power = "Flight";`;
                 >
                   <p className="toc">Table of Contents</p>
                   <ul className="current-section-list">
+
                     <li
                       style={{
                         color: activeSection === 0 ? "#4b32c3" : "black",
                         fontWeight: activeSection === 0 ? "600" : "400",
                       }}
                     >
-                      <i className="fa-solid fa-l"></i> Declaration and
-                      Assignment
+                      <i className="fa-solid fa-l"></i> Defining Functions
                     </li>
                     <li
                       style={{
@@ -242,7 +205,7 @@ power = "Flight";`;
                         fontWeight: activeSection === 1 ? "600" : "400",
                       }}
                     >
-                      <i className="fa-solid fa-l"></i> Examples
+                      <i className="fa-solid fa-l"></i> Params
                     </li>
                     <li
                       style={{
@@ -250,7 +213,7 @@ power = "Flight";`;
                         fontWeight: activeSection === 2 ? "600" : "400",
                       }}
                     >
-                      <i className="fa-solid fa-l"></i> Data Types
+                      <i className="fa-solid fa-l"></i> Return Statement
                     </li>
                     <li
                       style={{
@@ -258,36 +221,12 @@ power = "Flight";`;
                         fontWeight: activeSection === 3 ? "600" : "400",
                       }}
                     >
-                      <i className="fa-solid fa-l"></i> Variable Naming Rules
+                      <i className="fa-solid fa-l"></i> Examples
                     </li>
                     <li
                       style={{
                         color: activeSection === 4 ? "#4b32c3" : "black",
                         fontWeight: activeSection === 4 ? "600" : "400",
-                      }}
-                    >
-                      <i className="fa-solid fa-l"></i> Reassigning Variables
-                    </li>
-                    <li
-                      style={{
-                        color: activeSection === 5 ? "#4b32c3" : "black",
-                        fontWeight: activeSection === 5 ? "600" : "400",
-                      }}
-                    >
-                      <i className="fa-solid fa-l"></i> Scope
-                    </li>
-                    <li
-                      style={{
-                        color: activeSection === 6 ? "#4b32c3" : "black",
-                        fontWeight: activeSection === 6 ? "600" : "400",
-                      }}
-                    >
-                      <i className="fa-solid fa-l"></i> Constants
-                    </li>
-                    <li
-                      style={{
-                        color: activeSection === 7 ? "#4b32c3" : "black",
-                        fontWeight: activeSection === 7 ? "600" : "400",
                       }}
                     >
                       <i className="fa-solid fa-l"></i> Best Practices
