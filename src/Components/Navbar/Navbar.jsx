@@ -42,6 +42,7 @@ function AssembleNav() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/docs/latest">Docs</Nav.Link>
             <Nav.Link href="/playground">Playground</Nav.Link>
+            <Nav.Link href="/contest">Contest</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link
