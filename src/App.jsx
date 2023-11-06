@@ -14,11 +14,8 @@ import Datatypes from "./Pages/Docs/Datatypes/Datatypes";
 import Operators from "./Pages/Docs/Operators/Operators";
 import Builtinmethods from "./Pages/Docs/Builtinmethods/Builtinmethods";
 import Contest from "./Pages/Contest/Contest";
-<<<<<<< HEAD
 import Functions from "./Pages/Docs/Functions/Functions";
-=======
 import Team from "./Pages/Team/Team";
->>>>>>> 9a9cad537c8eb6fdadc8c436dc36b6cf9f49ac15
 
 function App() {
   const Naam = `
