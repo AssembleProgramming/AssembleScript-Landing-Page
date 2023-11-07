@@ -6,6 +6,7 @@ const FooterContainer = styled.footer`
   background-color: #f8f9fa;
   padding: 40px;
   color: #6c757d;
+  padding-top: 70px;
 `;
 
 const FooterText = styled.p`
@@ -47,7 +48,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <FooterContainer style={{ marginTop: "30px" }}>
+    <FooterContainer>
       <Container>
         <Row>
           <Col className="text-center">
@@ -166,7 +167,7 @@ const Footer = () => {
               >
                 "DI 3.0 - AVG Captain America The First Avenger" by JohnLogostini,
               </CreditLink>
-              
+
               {" "}
               all are licensed under Creative Commons Attribution (
               <CreditLink
