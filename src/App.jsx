@@ -19,6 +19,14 @@ import Team from "./Pages/Team/Team";
 import MainContest from "./Pages/Contest/MainContestPage/MainContest";
 
 function App() {
+  // const User = [
+  //   {
+  //     teamName: "aaaaaaaaaaaaa",
+  //     leaderName: "tony",
+  //     memberName: "steve",
+  //   },
+  // ];
+  const User = [];
   const Naam = `
   ▄████████    ▄████████    ▄████████    ▄████████   ▄▄▄▄███▄▄▄▄   ▀█████████▄   ▄█        ▄████████       ▄████████  ▄████████    ▄████████    ▄█     ▄███████▄     ███     
  ███    ███   ███    ███   ███    ███   ███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███ ███       ███    ███      ███    ███ ███    ███   ███    ███   ███    ███    ███ ▀█████████▄ 
@@ -53,7 +61,10 @@ function App() {
             <Route path="/docs/functions" element={<Functions />} />
             <Route path="/playground" element={<Playground />} />
             <Route path="/contest" element={<Contest />} />
-            <Route path="/contest/main-contest" element={<MainContest />} />
+            <Route
+              path="/contest/main-contest"
+              element={<MainContest user={User} />}
+            />
             <Route path="/team" element={<Team />} />
           </Routes>
         </BrowserRouter>
