@@ -6,7 +6,7 @@ const RepoStats = () => {
     const [stars, setStars] = useState(0);
     const [forks, setForks] = useState(0);
 
-    const token = "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";
+    const token = "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";
     const headers = {
         Authorization: `Bearer ${token}`
     };

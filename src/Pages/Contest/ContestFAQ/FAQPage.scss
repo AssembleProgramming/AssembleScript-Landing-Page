@@ -1,0 +1,99 @@
+.faq-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 80px;
+    width: 100vw;
+    background-image: url("../../../assets/images/faqbg.jpg");
+
+    .faq-item {
+        width: 60%;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        margin: 10px 0;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+        .faq-question {
+            background-color: #fff;
+            border-left: 5px solid #7444ff;
+            padding: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h2 {
+                font-size: 20px;
+                margin: 0;
+                padding: 10px;
+            }
+
+            &.active {
+                background-color: #fff;
+            }
+        }
+
+        .faq-answer {
+            padding: 10px;
+            display: none;
+            background-color: #f6e7ff;
+
+            &.open {
+                display: block;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .faq-container {
+        h1{
+            font-size: 30px;
+            text-align: center;
+        }
+        .faq-item {
+            width: 90%;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            margin: 10px 0;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+            .faq-question {
+                background-color: #fff;
+                border-left: 5px solid #7444ff;
+                padding: 10px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h2 {
+                    font-size: 20px;
+                    margin: 0;
+                    padding: 10px;
+                }
+
+                &.active {
+                    background-color: #fff;
+                }
+            }
+
+            .faq-answer {
+                padding: 10px;
+                display: none;
+                background-color: #f6e7ff;
+
+                &.open {
+                    display: block;
+                }
+            }
+        }
+    }
+}

@@ -44,7 +44,7 @@ const Home = () => {
         try {
             const response = await fetch('https://api.github.com/repos/AssembleProgramming/AssembleScript/releases/latest', {
                 headers: {
-                    Authorization: 'Bearer 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',
+                    Authorization: 'Bearer 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',
                 },
             });
             const data = await response.json();
@@ -76,7 +76,7 @@ const Home = () => {
                             position: [- 4, 3, 6],
                         }}
                     >
-                        <color attach="background" args={['#fff']} />
+                        <color args={['#fff']} />
                         <Environment files="./maps/brown_photostudio_1k.hdr" background={false} blur={0} />
                         <Shield />
                     </Canvas>
@@ -86,7 +86,7 @@ const Home = () => {
                         <div className='home-title-container'>
                             <h1 className='main-title'>
                                 With&nbsp;
-                                 <br id='line-break'/>
+                                <br id='line-break' />
                                 <span className="assemble-script">
                                     AssembleScript
                                 </span>
@@ -124,7 +124,7 @@ const Home = () => {
                         <div className="version">
                             <h6 className='version-title'>Latest Version</h6>
                             <hr />
-                            <i className="fa-brands fa-github"></i> <span>{latestVersion.version ? latestVersion.version: "Loading....."} {latestVersion.releaseDate}</span>
+                            <i className="fa-brands fa-github"></i> <span>{latestVersion.version ? latestVersion.version : "Loading....."} {latestVersion.releaseDate}</span>
                         </div>
                         <div className="version">
                             <h6 className='version-title'>Upcoming Version</h6>
@@ -135,7 +135,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section id='section2' style={{ background: "#fff" }}>
+            <section id='section2'>
                 <div className='canvas-container'>
                     <Suspense fallback={<MyLoader2 />}>
                         <Canvas shadows camera={{ position: [3, 3, 7], fov: 42 }}>

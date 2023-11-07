@@ -1,6 +1,7 @@
 .section1 {
     height: 100vh;
     border-bottom: 1px solid #e5e7eb;
+    background-image: url('../../assets/images/assembleBg.png');
 
     .webgl {
         height: 100vh;
@@ -29,9 +30,11 @@
                 .main-title {
                     font-size: 4vw;
                     font-weight: 800;
-                    #line-break{
+
+                    #line-break {
                         display: none;
                     }
+
                     // line-height: px;
                     .assemble-script {
                         color: #4b32c3;
@@ -93,7 +96,8 @@
                     .main-title {
                         font-size: 3vw;
                         height: 20vh;
-                        #line-break{
+
+                        #line-break {
                             display: initial;
                         }
                     }
@@ -138,7 +142,8 @@
                         .assemble-script {
                             color: #4b32c3;
                         }
-                        #line-break{
+
+                        #line-break {
                             display: block;
                         }
                     }
@@ -202,6 +207,7 @@
 #section2 {
     height: 100%;
     display: flex;
+    background-image: url('../../assets/images/assembleBg.png');
 
     .canvas-container {
         width: 50vw;
@@ -276,6 +282,7 @@
 
 @media (max-width: 850px) {
     #section2 {
+
         margin-top: 120px;
         height: 100%;
         display: flex;
@@ -354,11 +361,13 @@
     }
 }
 
-#section3{
+#section3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url('../../assets/images/assembleBg.png');
+
     .section3-title {
         width: 100%;
         text-align: center;
@@ -367,7 +376,7 @@
         padding: 20px;
         padding-top: 50px;
     }
-    
+
     .section3-info {
         width: 80%;
         align-self: center;
@@ -377,6 +386,7 @@
         margin-bottom: 50px;
     }
 }
+
 #snap-button {
     position: relative;
     cursor: pointer;
@@ -388,10 +398,10 @@
     justify-content: space-between;
     align-items: center;
     font-size: 22px;
-    background-color: white; 
+    background-color: white;
     border-radius: 30px;
     padding-right: 15px;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); 
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
     font-family: "avengerFont";
     transition: background-color 0.3s ease-in-out;
     transition: all 0.3s ease;
@@ -399,7 +409,7 @@
 
 #snap-button:hover {
     background-color: white;
-    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6); 
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
 }
 
 #snap-button img {
@@ -407,10 +417,10 @@
     height: 40px;
     border-radius: 50%;
     align-self: flex-start;
-    box-shadow: 2px 2px 2px rgba(93, 93, 93, 0.4); 
+    box-shadow: 2px 2px 2px rgba(93, 93, 93, 0.4);
     transition: box-shadow 0.3s ease-in-out;
 }
 
-#snap-button span{
+#snap-button span {
     margin-top: 8px;
 }

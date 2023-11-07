@@ -6,6 +6,7 @@
     backface-visibility: 10px;
     color: white;
     text-align: center;
+
     .section-container {
         margin: 0 119.6px;
         padding: 0 31.36px;
@@ -18,17 +19,20 @@
                 font-weight: 600;
                 font-size: 40px;
                 margin-bottom: 16px;
+                text-shadow: 2px 2px #0000003c;
             }
 
             .section-content {
                 font-size: 20px;
-                color: white;
+                text-shadow: 2px 2px #0000003c;
             }
         }
     }
 }
 
 .section-hero-2 {
+    background-image: url('../../assets/images/assembleBg.png');
+
     .section-container {
         margin: 0 119.6px;
         padding: 0 31.36px;
@@ -67,7 +71,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
+    background-image: url('../../assets/images/assembleBg.png');
     margin-bottom: 5px;
 }
 
@@ -170,7 +174,7 @@
                 .section-content {
                     font-size: 20px;
                     color: #fff;
-                    
+
                 }
             }
         }

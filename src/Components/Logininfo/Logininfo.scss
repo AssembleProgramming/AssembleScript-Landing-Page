@@ -40,6 +40,11 @@
             border-radius: 6px;
             padding-bottom: 8px;
             border: none;
+            transition: all 0.3s ease;
+        }
+
+        #logout-btn:hover{
+            background-color: #db403a;
         }
 
     }

@@ -17,7 +17,7 @@ const Sidebar = () => {
         "https://api.github.com/repos/AssembleProgramming/AssembleScript/releases/latest",
         {
           headers: {
-            Authorization: "Bearer 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",
+            Authorization: "Bearer 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",
           },
         }
       );

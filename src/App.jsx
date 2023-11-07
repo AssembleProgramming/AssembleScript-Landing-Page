@@ -17,16 +17,18 @@ import Contest from "./Pages/Contest/Contest";
 import Functions from "./Pages/Docs/Functions/Functions";
 import Team from "./Pages/Team/Team";
 import MainContest from "./Pages/Contest/MainContestPage/MainContest";
+import FAQPage from "./Pages/Contest/ContestFAQ/FAQPage";
+import faqs from "./Pages/Contest/ContestFAQ/FAQdata";
 
 function App() {
-  // const User = [
-  //   {
-  //     teamName: "aaaaaaaaaaaaa",
-  //     leaderName: "tony",
-  //     memberName: "steve",
-  //   },
-  // ];
-  const User = [];
+  const User = [
+    {
+      teamName: "Avengers",
+      leaderName: "Tony Stark",
+      memberName: "Steve Rogers",
+    },
+  ];
+  // const User = [];
   const Naam = `
   ▄████████    ▄████████    ▄████████    ▄████████   ▄▄▄▄███▄▄▄▄   ▀█████████▄   ▄█        ▄████████       ▄████████  ▄████████    ▄████████    ▄█     ▄███████▄     ███     
  ███    ███   ███    ███   ███    ███   ███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███ ███       ███    ███      ███    ███ ███    ███   ███    ███   ███    ███    ███ ▀█████████▄ 
@@ -61,6 +63,7 @@ function App() {
             <Route path="/docs/functions" element={<Functions />} />
             <Route path="/playground" element={<Playground />} />
             <Route path="/contest" element={<Contest />} />
+            <Route path="/contest/frequently-asked-questions" element={<FAQPage faqs={faqs} />} />
             <Route
               path="/contest/main-contest"
               element={<MainContest user={User} />}

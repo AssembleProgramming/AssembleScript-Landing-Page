@@ -5,6 +5,12 @@ import { AddToCalendarButton } from "add-to-calendar-button-react";
 import startTime, { startDate } from "../StartTime";
 import Footer from "../../../Components/Footer/Footer";
 import Logininfo from "../../../Components/Logininfo/Logininfo";
+import RulesBullet from "../../../Components/RulesBullet/RulesBullet";
+import { ContestDetails, ContestRules } from "../Data/ContestData";
+import ContestRegister from "../../../Components/RegisterForContest/ContestRegister";
+
+console.log(ContestDetails);
+console.log(ContestRules);
 
 const calculateTimeRemaining = (startTime) => {
   const now = new Date().getTime();
@@ -69,10 +75,10 @@ const MainContest = ({ user }) => {
             <Logininfo user={user} />
           </div>
           <div className="col-right">
-            <p>
+            <h4>
               Welcome to the <span id="codefinity">"Codefinity Challenge"</span>{" "}
               of AssembleScript
-            </p>
+            </h4>
             <p>
               This contest is sponsored by{" "}
               <a href="https://github.com/AssembleProgramming">
@@ -85,7 +91,7 @@ const MainContest = ({ user }) => {
               </h6>
             </p>
 
-            <h5>🏆Prizes🏆</h5>
+            <h5 style={{ marginTop: 20 }}>🏆Prizes🏆</h5>
             <ul>
               <li>
                 Contestants ranked 1st will win a AssembleScript Waterbottel.
@@ -96,7 +102,8 @@ const MainContest = ({ user }) => {
                 of enjoyment!!
               </li>
             </ul>
-            <h5>🛡Codefinity Challenge Rules.</h5>
+
+            <h5>🛡 Codefinity Challenge Rules.</h5>
             <p>
               The Codefinity Challenge tests your ability to translate code
               snippets from any programming language into AssembleScript. This
@@ -104,22 +111,29 @@ const MainContest = ({ user }) => {
               diverse coding languages. Please read it thoroughly to ensure a
               fair and enjoyable experience.
             </p>
-            <ul>
-              <li>
-                Three code snippets will be provided in a language of your
-                choice.
-              </li>
-              <li>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequuntur veniam cum, quo labore eos magnam laudantium ut
-                veritatis, tenetur asperiores id provident vitae sunt atque
-                expedita tempore, repellat cupiditate eius!
-              </li>
-            </ul>
+
+            <div style={{
+              marginTop: 20
+            }}>
+              <h5> 🔹 Contest Details</h5>
+              <RulesBullet rules={ContestDetails} />
+            </div>
+
+            <div style={{
+              marginTop: 20
+            }}>
+              <h5> 🔹 Contest Rules</h5>
+              <RulesBullet rules={ContestRules} />
+            </div>
+
           </div>
         </div>
-      </div>
 
+
+        <div className="register-start-compo">
+          <ContestRegister user={user} />
+        </div>
+      </div>
       <Footer />
     </div>
   );
