@@ -16,6 +16,7 @@ import Builtinmethods from "./Pages/Docs/Builtinmethods/Builtinmethods";
 import Contest from "./Pages/Contest/Contest";
 import Functions from "./Pages/Docs/Functions/Functions";
 import Team from "./Pages/Team/Team";
+import MainContest from "./Pages/Contest/MainContestPage/MainContest";
 
 function App() {
   const Naam = `
@@ -52,6 +53,7 @@ function App() {
             <Route path="/docs/functions" element={<Functions />} />
             <Route path="/playground" element={<Playground />} />
             <Route path="/contest" element={<Contest />} />
+            <Route path="/contest/main-contest" element={<MainContest />} />
             <Route path="/team" element={<Team />} />
           </Routes>
         </BrowserRouter>

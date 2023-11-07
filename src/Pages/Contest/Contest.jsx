@@ -10,8 +10,9 @@ import five from "../../assets/images/Cfive.webp"
 import Footer from '../../Components/Footer/Footer';
 import MainContest from "../../assets/images/main-contest.jpg"
 import practice from "../../assets/images/practice.png"
+import { Link } from 'react-router-dom';
+import startTime from './StartTime';
 
-const startTime = new Date(2023, 10, 10, 14, 30, 0);
 const calculateTimeRemaining = (startTime) => {
     const now = new Date().getTime();
     const start = new Date(startTime).getTime();
@@ -129,12 +130,14 @@ const Contest = () => {
                                 <img src={MainContest} alt="img" />
                             </div>
                             <div className="contest-details">
-                                <h2>Final Contest</h2>
+                                <h2>Codefinity Challenge</h2>
                                 <p>Starts in: {timeRemaining}</p>
                                 <p>Day and Time: Sunday, 8:00 am</p>
                             </div>
                             <div className="buttons">
-                                <button>Register</button>
+                                <Link to="/contest/main-contest">
+                                    <button href="/contest/main-contest">Register</button>
+                                </Link>
                                 <button id='ranking-btn'>Ranking</button>
                             </div>
                         </div>
