@@ -1,7 +1,7 @@
 # Assemble Script Webpage
 
 ## Live
-- [live](https://assemble-script.vercel.app/)
+- [live](https://assemblescript.vercel.app/)
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
