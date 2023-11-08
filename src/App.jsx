@@ -21,11 +21,12 @@ import FAQPage from "./Pages/Contest/ContestFAQ/FAQPage";
 import faqs from "./Pages/Contest/ContestFAQ/FAQdata";
 import LoginSignUpPage from "./Pages/LoginSignup/LoginSignUpPage";
 import { useState } from "react";
+import ConsoleLog from "./ConsoleLog";
 
 
 function App() {
   const [user, setUser] = useState([]);
-
+  ConsoleLog;
   const handleLogin = async (userData) => {
     const teamToken = userData.team;
     try {

@@ -10,8 +10,8 @@ const calculateTimeRemaining = (targetTime) => {
 };
 
 const ContestRegister = ({ user }) => {
-    const timeRemainingToStart = calculateTimeRemaining(startTime);
-    const timeRemainingToEnd = calculateTimeRemaining(endTime);
+    const [timeRemainingToStart, setTimeRemainingToStart] = useState(calculateTimeRemaining(startTime));
+    const [timeRemainingToEnd, setTimeRemainingToEnd] =  useState(calculateTimeRemaining(endTime));
 
     useEffect(() => {
         const timer = setInterval(() => {
