@@ -269,7 +269,7 @@ const LoginSignUpBody = ({ onLogin }) => {
               type="text"
               placeholder="Enter a unique name for your team"
               required
-              maxLength={15}
+              maxLength={14}
               value={teamName}
               onChange={(e) => setTeamName(e.target.value)}
             />

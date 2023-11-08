@@ -34,8 +34,11 @@ const Logininfo = ({ user }) => {
       {user.length ? (
         user.map((user, id) => (
           <div key={id} className="login">
-            <h3> Your Team Name: </h3> <h1>{user.TEAM_NAME}</h1>
-            <p>{user.Registered ? <p style={{ color: "green" }}>Registered For Contest</p> : <p style={{ color: "red" }}>Not Registered For Contest</p>}</p>
+            <div style={{textAlign: "center"}}>
+              <h6> Your Team Name: </h6> <h3>{user.TEAM_NAME}</h3>
+            </div>
+
+            <p>{user.Registered ? <p style={{ color: "green", textAlign: 'center' }}>Your team is registered for contest. All the best !!!</p> : <p style={{ color: "red",textAlign: 'center', fontSize: 14 }}>Your team is not registered for contest. Register as soon as possible</p>}</p>
             <button onClick={handleLogout} id="logout-btn">Logout</button>
           </div>
         ))
