@@ -1,8 +1,21 @@
 import React from "react";
 import "./Logininfo.scss";
 import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 const Logininfo = ({ user }) => {
+
+  // Function to log the user out
+  const handleLogout = () => {
+    // Remove the JWT token cookie
+    cookies.remove('access_token', { path: '/' });
+
+    // Optionally, you can redirect to a logout page or the home page
+    window.location.href = '/contest/main-contest'; // Redirect to the home page
+  };
+
   return (
     <div className="user-login-status-card">
       <div
@@ -23,7 +36,7 @@ const Logininfo = ({ user }) => {
           <div key={id} className="login">
             <h3> Your Team Name: </h3> <h1>{user.TEAM_NAME}</h1>
             <p>{user.Registered ? <p style={{ color: "green" }}>Registered For Contest</p> : <p style={{ color: "red" }}>Not Registered For Contest</p>}</p>
-            <button id="logout-btn">Logout</button>
+            <button onClick={handleLogout} id="logout-btn">Logout</button>
           </div>
         ))
       ) : (

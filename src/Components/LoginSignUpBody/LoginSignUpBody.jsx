@@ -115,9 +115,8 @@ const LoginSignUpBody = ({ onLogin }) => {
         });
 
         const data = await response.json();
-        console.log('jump');
         // Perform the login logic and if successful, navigate to the main contest route
-        onLogin(data);
+        onLogin(data.team);
         navigate(`/contest/main-contest`);
       } else {
         const error = await response.json();

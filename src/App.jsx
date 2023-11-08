@@ -20,15 +20,25 @@ import MainContest from "./Pages/Contest/MainContestPage/MainContest";
 import FAQPage from "./Pages/Contest/ContestFAQ/FAQPage";
 import faqs from "./Pages/Contest/ContestFAQ/FAQdata";
 import LoginSignUpPage from "./Pages/LoginSignup/LoginSignUpPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ConsoleLog from "./ConsoleLog";
+import Cookies from "universal-cookie";
 
+const cookies = new Cookies();
 
 function App() {
   const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    const token = cookies.get('access_token');
+
+    if (token) {
+      handleLogin(token);
+    }
+  }, [])
+
   ConsoleLog;
-  const handleLogin = async (userData) => {
-    const teamToken = userData.team;
+  const handleLogin = async (teamToken) => {
     try {
       const response = await fetch("https://codefinity-api.vercel.app/getuserdata", {
         method: "POST",
@@ -44,6 +54,8 @@ function App() {
         const teamData = await response.json();
         const currentTeam = [];
         currentTeam.push(teamData.team);
+        // Save the JWT token in a cookie
+        cookies.set('access_token', teamToken, { path: '/' });
         setUser(currentTeam);
       } else {
         const error = await response.json();
