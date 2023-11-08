@@ -2,49 +2,63 @@ import React, { useState, useEffect } from "react";
 import "./MainContest.scss";
 import AssembleNav from "../../../Components/Navbar/Navbar";
 import { AddToCalendarButton } from "add-to-calendar-button-react";
-import startTime, { startDate } from "../StartTime";
+import { startTime, endTime } from "../StartTime";
 import Footer from "../../../Components/Footer/Footer";
 import Logininfo from "../../../Components/Logininfo/Logininfo";
 import RulesBullet from "../../../Components/RulesBullet/RulesBullet";
 import { ContestDetails, ContestRules } from "../Data/ContestData";
 import ContestRegister from "../../../Components/RegisterForContest/ContestRegister";
 
-console.log(ContestDetails);
-console.log(ContestRules);
 
-const calculateTimeRemaining = (startTime) => {
-  const now = new Date().getTime();
+const calculateTimeRemaining = (startTime, endTime, currentTime) => {
   const start = new Date(startTime).getTime();
-  const difference = start - now;
+  const end = new Date(endTime).getTime();
 
-  if (difference <= 0) {
-    // Contest has started, return a message or handle it as needed
-    return "Contest Started";
+  if (currentTime < start) {
+    // Before contest starts, show timeRemainingToStart
+    const difference = start - currentTime;
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  } else if (currentTime < end) {
+    // Contest is ongoing, show timeRemainingToEnd
+    const difference = end - currentTime;
+    const hours = Math.floor(difference / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    return `${hours}h ${minutes}m ${seconds}s`;
+  } else {
+    // Contest has ended
+    return "Contest has ended";
   }
-
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 };
 
+
 const MainContest = ({ user }) => {
+  const [currentTime, setCurrentTime] = useState(new Date().getTime());
   const [timeRemaining, setTimeRemaining] = useState(
-    calculateTimeRemaining(startTime)
+    calculateTimeRemaining(startTime, endTime, currentTime)
   );
+
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeRemaining(calculateTimeRemaining(startTime));
+      const newCurrentTime = new Date().getTime();
+      setCurrentTime(newCurrentTime);
+      setTimeRemaining(calculateTimeRemaining(startTime, endTime, newCurrentTime));
     }, 1000);
 
     return () => {
       clearInterval(timer);
     };
-  }, [startTime]);
+  }, []);
+
+
   return (
     <div>
       <AssembleNav />
@@ -53,7 +67,15 @@ const MainContest = ({ user }) => {
 
         <div className="contest-start-badge">
           <div className="text">
-            <p>The contest will start in: {timeRemaining}</p>
+            <p>
+              {currentTime < startTime ? (
+                <p>The contest will start in: <b style={{ fontWeight: 600, color: "green" }}>{timeRemaining}</b></p>
+              ) : currentTime < endTime ? (
+                <p>The contest will end in: <b style={{ fontWeight: 600, color: "orange" }}>{timeRemaining}</b></p>
+              ) : (
+                <p><b style={{ fontWeight: 600, color: "red" }}>The Contest has ended</b></p>
+              )}
+            </p>
           </div>
           <div className="add-to-cal">
             <AddToCalendarButton

@@ -1,74 +1,88 @@
-import React, { useState, useEffect } from 'react'
-import './ContestRegister.scss'
-import startTime from '../../Pages/Contest/StartTime'
+import React, { useState, useEffect } from 'react';
+import './ContestRegister.scss';
+import { startTime, endTime } from '../../Pages/Contest/StartTime';
 import { Link } from 'react-router-dom';
 
-const calculateTimeRemaining = (startTime) => {
+const calculateTimeRemaining = (targetTime) => {
     const now = new Date().getTime();
-    const start = new Date(startTime).getTime();
-    const difference = start - now;
-
-    if (difference <= 0) {
-        // Contest has started, return a message or handle it as needed
-        return 0;
-    }
-
-    return 1;
+    const target = new Date(targetTime).getTime();
+    return target > now ? target - now : 0;
 };
 
 const ContestRegister = ({ user }) => {
-    const [timeRemaining, setTimeRemaining] = useState(
-        calculateTimeRemaining(startTime)
-    );
+    const timeRemainingToStart = calculateTimeRemaining(startTime);
+    const timeRemainingToEnd = calculateTimeRemaining(endTime);
+
     useEffect(() => {
         const timer = setInterval(() => {
-            setTimeRemaining(calculateTimeRemaining(startTime));
+            // Update time remaining every second
+            setTimeRemainingToStart(calculateTimeRemaining(startTime));
+            setTimeRemainingToEnd(calculateTimeRemaining(endTime));
         }, 1000);
 
         return () => {
             clearInterval(timer);
         };
-    }, [startTime]);
+    }, []);
+
+    const renderContent = () => {
+        if (user.length) {
+            if (timeRemainingToStart) {
+                return (
+                    <div className='user-register'>
+                        <h6>▶️ Register to participate in contest:</h6>
+                        <div>
+                            <button className='register-btn'>Register</button>
+                            <Link to="/contest/frequently-asked-questions">
+                                <button className='FAQ-btn'>FAQ about Contest</button>
+                            </Link>
+                        </div>
+                    </div>
+                );
+            } else if (timeRemainingToEnd) {
+                return (
+                    <div className='contest-start'>
+                        <h6>▶️ Start Contest:</h6>
+                        <div>
+                            <button className='start-btn'>Start</button>
+                            <Link to="/contest/frequently-asked-questions">
+                                <button className='FAQ-btn'>FAQ about Contest</button>
+                            </Link>
+                        </div>
+                    </div>
+                );
+            } else {
+                return (
+                    <div className='contest-ends'>
+                        <h6>▶️ Contest has Ended, check your standing:</h6>
+                        <div>
+                            <button className='ranking-btn'>Ranking</button>
+                            <Link to="/contest/frequently-asked-questions">
+                                <button className='FAQ-btn'>FAQ about Contest</button>
+                            </Link>
+                        </div>
+                    </div>
+                );
+            }
+        } else {
+            return (
+                <div className='no-user-register'>
+                    <a href="">
+                        To register for the contest, you must be logged in!!!
+                    </a>
+                    <Link to="/contest/frequently-asked-questions">
+                        <button className='FAQ-btn'>FAQ about Contest</button>
+                    </Link>
+                </div>
+            );
+        }
+    };
+
     return (
         <div>
-            {
-                user.length
-                    ?
-                    timeRemaining
-                        ?
-                        <div className='user-register'>
-                            <h6>📝 Register to participate in contest:</h6>
-                            <div>
-                                <button className='register-btn'>Register</button>
-                                <Link to="/contest/frequently-asked-questions">
-                                    <button className='FAQ-btn'>FAQ about Contest</button>
-                                </Link>
-                            </div>
+            {renderContent()}
+        </div>
+    );
+};
 
-                        </div>
-                        :
-                        <div className='contest-start'>
-                            <h6>▶️ Start Contest contest:</h6>
-                            <div>
-                                <button className='start-btn'>Start</button>
-                                <Link to="/contest/frequently-asked-questions">
-                                    <button className='FAQ-btn'>FAQ about Contest</button>
-                                </Link>
-                            </div>
-                        </div>
-                    :
-                    <div className='no-user-register'>
-                        <a href="">
-                            To register for the contest, you must be logged in!!!
-                        </a>
-                        <Link to="/contest/frequently-asked-questions">
-                            <button className='FAQ-btn'>FAQ about Contest</button>
-                        </Link>
-                    </div>
-
-            }
-        </div >
-    )
-}
-
-export default ContestRegister
+export default ContestRegister;

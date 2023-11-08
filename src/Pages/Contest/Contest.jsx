@@ -11,36 +11,54 @@ import Footer from '../../Components/Footer/Footer';
 import MainContest from "../../assets/images/main-contest.jpg"
 import practice from "../../assets/images/practice.png"
 import { Link } from 'react-router-dom';
-import startTime from './StartTime';
+import { startTime, endTime } from './StartTime';
 
-const calculateTimeRemaining = (startTime) => {
-    const now = new Date().getTime();
+const calculateTimeRemaining = (startTime, endTime, currentTime) => {
     const start = new Date(startTime).getTime();
-    const difference = start - now;
+    const end = new Date(endTime).getTime();
 
-    if (difference <= 0) {
-        // Contest has started, return a message or handle it as needed
-        return 'Contest Started';
+    if (currentTime < start) {
+        // Before contest starts, show timeRemainingToStart
+        const difference = start - currentTime;
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+            (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    } else if (currentTime < end) {
+        // Contest is ongoing, show timeRemainingToEnd
+        const difference = end - currentTime;
+        const hours = Math.floor(difference / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        return `${hours}h ${minutes}m ${seconds}s`;
+    } else {
+        // Contest has ended
+        return "Contest has ended";
     }
-
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 };
+
 const Contest = () => {
-    const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining(startTime));
+    const [currentTime, setCurrentTime] = useState(new Date().getTime());
+    const [timeRemaining, setTimeRemaining] = useState(
+        calculateTimeRemaining(startTime, endTime, currentTime)
+    );
+
     useEffect(() => {
         const timer = setInterval(() => {
-            setTimeRemaining(calculateTimeRemaining(startTime));
+            const newCurrentTime = new Date().getTime();
+            setCurrentTime(newCurrentTime);
+            setTimeRemaining(calculateTimeRemaining(startTime, endTime, newCurrentTime));
         }, 1000);
 
         return () => {
             clearInterval(timer);
         };
-    }, [startTime]);
+    }, []);
 
     return (
         <div>
@@ -131,12 +149,20 @@ const Contest = () => {
                             </div>
                             <div className="contest-details">
                                 <h2>Codefinity Challenge</h2>
-                                <p>Starts in: {timeRemaining}</p>
-                                <p>Day and Time: Sunday, 8:00 am</p>
+                                <p>
+                                    {currentTime < startTime ? (
+                                        <p>Starts In: <b style={{ fontWeight: 600 }}>{timeRemaining}</b></p>
+                                    ) : currentTime < endTime ? (
+                                        <p>Ends in: <b style={{ fontWeight: 600 }}>{timeRemaining}</b></p>
+                                    ) : (
+                                        <p><b style={{ fontWeight: 600 }}>The Contest has ended</b></p>
+                                    )}
+                                </p>
+                                <p>Date: <b style={{ fontWeight: 600 }}>24th Nov 2023, 4:30 P.M.</b></p>
                             </div>
                             <div className="buttons">
                                 <Link to="/contest/main-contest">
-                                    <button href="/contest/main-contest">Register</button>
+                                    <button href="/contest/main-contest">Enter</button>
                                 </Link>
                                 <button id='ranking-btn'>Ranking</button>
                             </div>
