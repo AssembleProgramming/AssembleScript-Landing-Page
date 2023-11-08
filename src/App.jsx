@@ -55,7 +55,10 @@ function App() {
         const currentTeam = [];
         currentTeam.push(teamData.team);
         // Save the JWT token in a cookie
-        cookies.set('access_token', teamToken, { path: '/' });
+        cookies.set('access_token', teamToken, { 
+          path: '/', // access on all pages
+          maxAge: 2592000 // max age 30 days
+       });
         setUser(currentTeam);
       } else {
         const error = await response.json();
