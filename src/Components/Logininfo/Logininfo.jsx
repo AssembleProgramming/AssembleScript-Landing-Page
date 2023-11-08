@@ -1,5 +1,6 @@
 import React from "react";
 import "./Logininfo.scss";
+import { Link } from "react-router-dom";
 
 const Logininfo = ({ user }) => {
   return (
@@ -38,7 +39,9 @@ const Logininfo = ({ user }) => {
             <h3>no user logged in</h3>
             <p>login to register for contest!</p>
           </div>
-          <button className="login-btn">Login</button>
+          <Link to="/login-signup">
+            <button className="login-btn">Login</button>
+          </Link>
         </div>
       )}
     </div>

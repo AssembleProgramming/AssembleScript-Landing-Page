@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './style.scss'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Loader from './Pages/Loader/Loader.jsx';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Import the favicon.ico file
 import favicon from './assets/logo.png';

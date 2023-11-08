@@ -19,16 +19,17 @@ import Team from "./Pages/Team/Team";
 import MainContest from "./Pages/Contest/MainContestPage/MainContest";
 import FAQPage from "./Pages/Contest/ContestFAQ/FAQPage";
 import faqs from "./Pages/Contest/ContestFAQ/FAQdata";
+import LoginSignUpPage from "./Pages/LoginSignup/LoginSignUpPage";
 
 function App() {
-  const User = [
-    {
-      teamName: "Avengers",
-      leaderName: "Tony Stark",
-      memberName: "Steve Rogers",
-    },
-  ];
-  // const User = [];
+  // const User = [
+  //   {
+  //     teamName: "Avengers",
+  //     leaderName: "Tony Stark",
+  //     memberName: "Steve Rogers",
+  //   },
+  // ];
+  const User = [];
   const Naam = `
   ▄████████    ▄████████    ▄████████    ▄████████   ▄▄▄▄███▄▄▄▄   ▀█████████▄   ▄█        ▄████████       ▄████████  ▄████████    ▄████████    ▄█     ▄███████▄     ███     
  ███    ███   ███    ███   ███    ███   ███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███ ███       ███    ███      ███    ███ ███    ███   ███    ███   ███    ███    ███ ▀█████████▄ 
@@ -69,6 +70,7 @@ function App() {
               element={<MainContest user={User} />}
             />
             <Route path="/team" element={<Team />} />
+            <Route path="/login-signup" element={<LoginSignUpPage />} />
           </Routes>
         </BrowserRouter>
       </div>

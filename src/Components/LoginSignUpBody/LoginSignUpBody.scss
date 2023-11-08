@@ -1,0 +1,225 @@
+.login-signup-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: 60px 30px;
+    background-color: #edeff1;
+    margin-top: 60px;
+
+    .login-section,
+    .register-section {
+        border-radius: 5px;
+        padding: 20px 20px;
+        margin: 0px;
+        width: 500px;
+        display: inline-block;
+        background: #fff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        padding: 0 0 30px 0;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+        text-align: left;
+        font-size: 0.875rem;
+        font-weight: 700;
+        padding: 5px 0;
+    }
+
+    input {
+        width: 100%;
+        padding: 14px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #121316;
+        border-radius: 5px;
+        background: transparent;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    .sign-in-button,
+    .register-in-button {
+        padding: 15px;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        width: 100%;
+        border: 2px solid #7444ff;
+        border-radius: 5px;
+        background: #7444ff;
+        color: #fff;
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        background: #6137de;
+    }
+
+    button:disabled,
+    button[disabled] {
+        background-color: #cccccc;
+        color: #666666;
+        border: 1px solid #999999;
+        cursor: not-allowed;
+        opacity: 0.7;
+        box-shadow: none;
+        /* Remove box-shadow for a flatter appearance */
+        transition: background-color 0.3s, color 0.3s;
+        /* Add a smooth transition effect */
+    }
+
+    p {
+        margin-top: 10px;
+
+        span {
+            color: rgb(0, 110, 255);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        span:hover {
+            color: rgb(3, 99, 226);
+        }
+
+        font-size: 15px;
+    }
+
+    .check-box {
+        width: 20px;
+        margin-right: 10px;
+    }
+
+    .check-box-label {
+        margin: 0;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .policy {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #edeff1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+    .policy-content {
+        width: 40%;
+        height: 85%;
+        background-color: white;
+        scroll-behavior: smooth;
+        overflow-y: scroll;
+        text-align: left;
+        padding: 30px;
+        padding-top: 0;
+        color: black;
+
+        h4 {
+            align-self: center;
+        }
+
+        .wrapper {
+            color: white;
+            font-size: 22px;
+            margin-right: 5px;
+        }
+
+        @-webkit-keyframes rainbow {
+            0% {
+                background-position: 0% 82%
+            }
+
+            50% {
+                background-position: 100% 19%
+            }
+
+            100% {
+                background-position: 0% 82%
+            }
+        }
+
+        @-moz-keyframes rainbow {
+            0% {
+                background-position: 0% 82%
+            }
+
+            50% {
+                background-position: 100% 19%
+            }
+
+            100% {
+                background-position: 0% 82%
+            }
+        }
+
+        @-o-keyframes rainbow {
+            0% {
+                background-position: 0% 82%
+            }
+
+            50% {
+                background-position: 100% 19%
+            }
+
+            100% {
+                background-position: 0% 82%
+            }
+        }
+
+        @keyframes rainbow {
+            0% {
+                background-position: 0% 82%
+            }
+
+            50% {
+                background-position: 100% 19%
+            }
+
+            100% {
+                background-position: 0% 82%
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .login-signup-body {
+        padding: 60px 15px;
+
+        .login-section,
+        .register-section {
+            border-radius: 5px;
+            padding: 20px 10px;
+            margin: 0px;
+            width: 100%;
+        }
+
+        .policy {
+            position: absolute;
+            top: 30px;
+        }
+
+        .policy-content {
+            width: 90%;
+            height: 85%;
+        }
+    }
+}

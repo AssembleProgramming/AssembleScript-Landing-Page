@@ -67,9 +67,11 @@ const ContestRegister = ({ user }) => {
         } else {
             return (
                 <div className='no-user-register'>
-                    <a href="">
-                        To register for the contest, you must be logged in!!!
-                    </a>
+                    <Link to="/login-signup">
+                        <a>
+                            To register for the contest, you must be logged in!!!
+                        </a>
+                    </Link>
                     <Link to="/contest/frequently-asked-questions">
                         <button className='FAQ-btn'>FAQ about Contest</button>
                     </Link>
