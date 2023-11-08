@@ -43,13 +43,13 @@ const Team = () => {
                                         <p>Full Stack Developer</p>
                                         <div className="social-links">
                                             <a target="_blank" href="https://github.com/SahilK-027">
-                                                <i class="fa-brands fa-github"></i>
+                                                <i className="fa-brands fa-github"></i>
                                             </a>
                                             <a
                                                 target="_blank"
                                                 href="https://www.linkedin.com/in/sahil-kandhare-661b99226/"
                                             >
-                                                <i class="fa-brands fa-linkedin"></i>
+                                                <i className="fa-brands fa-linkedin"></i>
                                             </a>
                                             {/* <a target="_blank" href="https://github.com/SahilK-027">
                         <i className="fa-brands fa-instagram"></i>
@@ -70,13 +70,13 @@ const Team = () => {
                                                 target="_blank"
                                                 href="https://github.com/shashankbhosagi"
                                             >
-                                                <i class="fa-brands fa-github"></i>
+                                                <i className="fa-brands fa-github"></i>
                                             </a>
                                             <a
                                                 target="_blank"
                                                 href="https://www.linkedin.com/in/shashank-bhosagi-8b9432206/"
                                             >
-                                                <i class="fa-brands fa-linkedin"></i>
+                                                <i className="fa-brands fa-linkedin"></i>
                                             </a>
                                             <a
                                                 target="_blank"

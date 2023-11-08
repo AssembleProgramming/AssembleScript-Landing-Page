@@ -69,11 +69,11 @@ const MainContest = ({ user }) => {
           <div className="text">
             <p>
               {currentTime < startTime ? (
-                <p>The contest will start in: <b style={{ fontWeight: 600, color: "green" }}>{timeRemaining}</b></p>
+                <span>The contest will start in: <b style={{ fontWeight: 600, color: "green" }}>{timeRemaining}</b></span>
               ) : currentTime < endTime ? (
-                <p>The contest will end in: <b style={{ fontWeight: 600, color: "orange" }}>{timeRemaining}</b></p>
+                <span>The contest will end in: <b style={{ fontWeight: 600, color: "orange" }}>{timeRemaining}</b></span>
               ) : (
-                <p><b style={{ fontWeight: 600, color: "red" }}>The Contest has ended</b></p>
+                <span><b style={{ fontWeight: 600, color: "red" }}>The Contest has ended</b></span>
               )}
             </p>
           </div>
@@ -107,10 +107,9 @@ const MainContest = ({ user }) => {
                 Assemble Programming
               </a>
               .
-              <p>
-                Login and Register for the contest in advance and fill out the
-                form.
-              </p>
+              <br />
+              Login and Register for the contest in advance and fill out the
+              form.
             </p>
 
             <h5 style={{ marginTop: 20 }}>🏆Prizes🏆</h5>

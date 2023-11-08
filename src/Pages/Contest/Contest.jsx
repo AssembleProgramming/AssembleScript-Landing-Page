@@ -151,11 +151,11 @@ const Contest = () => {
                                 <h2>Codefinity Challenge</h2>
                                 <p>
                                     {currentTime < startTime ? (
-                                        <p>Starts In: <b style={{ fontWeight: 600 }}>{timeRemaining}</b></p>
+                                        <span>Starts In: <b style={{ fontWeight: 600 }}>{timeRemaining}</b></span>
                                     ) : currentTime < endTime ? (
-                                        <p>Ends in: <b style={{ fontWeight: 600 }}>{timeRemaining}</b></p>
+                                        <span>Ends in: <b style={{ fontWeight: 600 }}>{timeRemaining}</b></span>
                                     ) : (
-                                        <p><b style={{ fontWeight: 600 }}>The Contest has ended</b></p>
+                                        <span><b style={{ fontWeight: 600 }}>The Contest has ended</b></span>
                                     )}
                                 </p>
                                 <p>Date: <b style={{ fontWeight: 600 }}>24th Nov 2023, 4:30 P.M.</b></p>
