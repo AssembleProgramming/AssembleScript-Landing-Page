@@ -1,15 +1,14 @@
 import React from 'react'
 import "./LoginSignUpPage.scss"
-
-import LoginSignUpBody from '../../components/LoginSignUpBody/LoginSignUpBody'
 import AssembleNav from '../../Components/Navbar/Navbar'
 import Footer from '../../Components/Footer/Footer'
+import LoginSignUpBody from '../../Components/LoginSignUpBody/LoginSignUpBody'
 
-const LoginSignUpPage = () => {
+const LoginSignUpPage = ({onLogin}) => {
     return (
         <div className='Login-SignUp-Page-Container'>
             <AssembleNav />
-            <LoginSignUpBody />
+            <LoginSignUpBody onLogin={onLogin} />
             <Footer />
         </div>
     )

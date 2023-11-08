@@ -15,19 +15,26 @@
         height: 100%;
         display: flex;
         justify-content: space-around;
-        align-items: flex-start;
+        align-items: center;
         flex-direction: column;
         padding: 5px 12px;
 
         h3 {
             font-size: 18px;
             color: #00000077;
+            margin: 0;
 
             span {
                 font-weight: 600;
                 font-size: 18px;
                 color: #7444ff;
             }
+        }
+        p{
+            margin: 0;
+        }
+        h1{
+            font-size: 22px;
         }
 
         #logout-btn {

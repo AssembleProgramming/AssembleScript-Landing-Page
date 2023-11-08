@@ -3,6 +3,7 @@ import './LoginSignUpBody.scss';
 import data from './TermsOfService';
 import { ToastContainer, toast } from 'react-toastify';
 import logo from "../../assets/logo.png"
+import { useNavigate } from 'react-router-dom';
 
 const LoginSignUpBody = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -11,18 +12,17 @@ const LoginSignUpBody = ({ onLogin }) => {
   const [teamName, setTeamName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [isRegisterButtonDisabled, setRegisterButtonDisabled] = useState(false);
+  const [isButtonDisabled, setButtonDisabled] = useState(false);
+  const navigate = useNavigate();
 
   const toggleLoginRegister = () => {
     setIsLogin(!isLogin);
   };
 
-
   const handleRegistration = async (e) => {
     e.preventDefault();
     // Disable the button when the registration process starts
-    setRegisterButtonDisabled(true);
-
+    setButtonDisabled(true);
 
     if (password !== confirmPassword) {
       toast.error('Password and Confirmation Password do not match.', {
@@ -33,6 +33,7 @@ const LoginSignUpBody = ({ onLogin }) => {
         progress: undefined,
         theme: "light",
       });
+      setButtonDisabled(false); // Enable the button after displaying the error
       return;
     }
 
@@ -71,9 +72,8 @@ const LoginSignUpBody = ({ onLogin }) => {
         });
       }
     } catch (error) {
-      // Handle network or other errors
       console.error("Error:", error);
-      toast.error('An error occurred. Please try again later.', {
+      toast.error('A network error occurred. Please try again later.', {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -81,10 +81,68 @@ const LoginSignUpBody = ({ onLogin }) => {
         progress: undefined,
         theme: "light",
       });
-    }
-    finally {
+    } finally {
       // Enable the button after API work is done (success or error)
-      setRegisterButtonDisabled(false);
+      setButtonDisabled(false);
+    }
+  }
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    // Disable the button when the login process starts
+    setButtonDisabled(true);
+
+    try {
+      const response = await fetch("https://codefinity-api.vercel.app/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          TEAM_MAIL: teamEmail,
+          PASSWORD: password,
+        }),
+      });
+
+      if (response.ok) {
+        toast.success('Login Successful!!!', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          progress: undefined,
+          theme: "light",
+        });
+
+        const data = await response.json();
+        console.log('jump');
+        // Perform the login logic and if successful, navigate to the main contest route
+        onLogin(data);
+        navigate(`/contest/main-contest`);
+      } else {
+        const error = await response.json();
+        toast.error(`${error.message}`, {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error('A network error occurred. Please try again later.', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } finally {
+      // Enable the button after API work is done (success or error)
+      setButtonDisabled(false);
     }
   }
 
@@ -97,7 +155,7 @@ const LoginSignUpBody = ({ onLogin }) => {
             <img width={50} src={logo} alt="logo" />
             <h2>Log in to AssembleScript</h2>
           </div>
-          <form>
+          <form onSubmit={handleLogin}>
             <label>Team Email address</label>
             <input
               type="email"
@@ -115,7 +173,7 @@ const LoginSignUpBody = ({ onLogin }) => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <button type='submit' className='primary-button sign-in-button'>Log-In with Email</button>
+            <button type='submit' className='primary-button sign-in-button' disabled={isButtonDisabled}>Log-In with Email</button>
           </form>
           <p>
             Don't have an account? {' '}
@@ -247,7 +305,7 @@ const LoginSignUpBody = ({ onLogin }) => {
                   onClick={() => setIsVisiblePolicy(!isVisiblePolicy)}>Terms of Use and Privacy Policy.</span>
               </label>
             </div>
-            <button type='submit' className='primary-button register-in-button' disabled={isRegisterButtonDisabled} >Register with Email</button>
+            <button type='submit' className='primary-button register-in-button' disabled={isButtonDisabled} >Register with Email</button>
           </form>
           <p>
             Already have an account?{' '}

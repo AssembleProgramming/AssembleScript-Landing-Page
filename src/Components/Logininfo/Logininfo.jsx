@@ -21,15 +21,8 @@ const Logininfo = ({ user }) => {
       {user.length ? (
         user.map((user, id) => (
           <div key={id} className="login">
-            <h3>
-              logged in as: <span>{user.teamName}</span>
-            </h3>
-            <h3>
-              leader: <span>{user.leaderName}</span>
-            </h3>
-            <h3>
-              member: <span>{user.memberName}</span>
-            </h3>
+            <h3> Your Team Name: </h3> <h1>{user.TEAM_NAME}</h1>
+            <p>{user.Registered ? <p style={{ color: "green" }}>Registered For Contest</p> : <p style={{ color: "red" }}>Not Registered For Contest</p>}</p>
             <button id="logout-btn">Logout</button>
           </div>
         ))

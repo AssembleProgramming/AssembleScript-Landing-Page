@@ -107,10 +107,10 @@ const MainContest = ({ user }) => {
                 Assemble Programming
               </a>
               .
-              <h6>
+              <p>
                 Login and Register for the contest in advance and fill out the
                 form.
-              </h6>
+              </p>
             </p>
 
             <h5 style={{ marginTop: 20 }}>🏆Prizes🏆</h5>

@@ -20,28 +20,39 @@ import MainContest from "./Pages/Contest/MainContestPage/MainContest";
 import FAQPage from "./Pages/Contest/ContestFAQ/FAQPage";
 import faqs from "./Pages/Contest/ContestFAQ/FAQdata";
 import LoginSignUpPage from "./Pages/LoginSignup/LoginSignUpPage";
+import { useState } from "react";
+
 
 function App() {
-  // const User = [
-  //   {
-  //     teamName: "Avengers",
-  //     leaderName: "Tony Stark",
-  //     memberName: "Steve Rogers",
-  //   },
-  // ];
-  const User = [];
-  const Naam = `
-  ▄████████    ▄████████    ▄████████    ▄████████   ▄▄▄▄███▄▄▄▄   ▀█████████▄   ▄█        ▄████████       ▄████████  ▄████████    ▄████████    ▄█     ▄███████▄     ███     
- ███    ███   ███    ███   ███    ███   ███    ███ ▄██▀▀▀███▀▀▀██▄   ███    ███ ███       ███    ███      ███    ███ ███    ███   ███    ███   ███    ███    ███ ▀█████████▄ 
- ███    ███   ███    █▀    ███    █▀    ███    █▀  ███   ███   ███   ███    ███ ███       ███    █▀       ███    █▀  ███    █▀    ███    ███   ███▌   ███    ███    ▀███▀▀██ 
- ███    ███   ███          ███         ▄███▄▄▄     ███   ███   ███  ▄███▄▄▄██▀  ███      ▄███▄▄▄          ███        ███         ▄███▄▄▄▄██▀   ███▌   ███    ███     ███   ▀ 
-▀███████████ ▀███████████ ▀███████████ ▀▀███▀▀▀     ███   ███   ███ ▀▀███▀▀▀██▄  ███     ▀▀███▀▀▀        ▀██████████ ███        ▀▀███▀▀▀▀▀     ███▌ ▀█████████▀      ███     
- ███    ███          ███          ███   ███    █▄  ███   ███   ███   ███    ██▄ ███       ███    █▄              ███ ███    █▄  ▀███████████   ███    ███            ███     
- ███    ███    ▄█    ███    ▄█    ███   ███    ███ ███   ███   ███   ███    ███ ███▌    ▄ ███    ███       ▄█    ███ ███    ███   ███    ███   ███    ███            ███     
- ███    █▀   ▄████████▀   ▄████████▀    ██████████  ▀█   ███   █▀  ▄█████████▀  █████▄▄██ ██████████     ▄████████▀  ████████▀    ███    ███   █▀    ▄████▀         ▄████▀  -By SBSKcodes
-                                                                                ▀                                                 ███    ███                               
- `;
-  console.log(Naam);
+  const [user, setUser] = useState([]);
+
+  const handleLogin = async (userData) => {
+    const teamToken = userData.team;
+    try {
+      const response = await fetch("https://codefinity-api.vercel.app/getuserdata", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: teamToken,
+        }),
+      });
+
+      if (response.ok) {
+        const teamData = await response.json();
+        const currentTeam = [];
+        currentTeam.push(teamData.team);
+        setUser(currentTeam);
+      } else {
+        const error = await response.json();
+        console.log(error);
+      }
+    } catch (error) {
+      console.error("Network Error:", error);
+    }
+  };
+
   return (
     <>
       <div className="app">
@@ -67,10 +78,10 @@ function App() {
             <Route path="/contest/frequently-asked-questions" element={<FAQPage faqs={faqs} />} />
             <Route
               path="/contest/main-contest"
-              element={<MainContest user={User} />}
+              element={<MainContest user={user} />}
             />
             <Route path="/team" element={<Team />} />
-            <Route path="/login-signup" element={<LoginSignUpPage />} />
+            <Route path="/login-signup" element={<LoginSignUpPage onLogin={handleLogin} />} />
           </Routes>
         </BrowserRouter>
       </div>
