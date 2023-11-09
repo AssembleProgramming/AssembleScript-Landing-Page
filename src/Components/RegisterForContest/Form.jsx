@@ -25,6 +25,8 @@ const Form = ({ display, visibleForm, user }) => {
 
     const [favoriteAvenger, setFavoriteAvenger] = useState('');
 
+    const [isButtonDisabled, setButtonDisabled] = useState(false);
+
     const navigate = useNavigate();
 
     const closeRegistrationForm = () => {
@@ -37,7 +39,8 @@ const Form = ({ display, visibleForm, user }) => {
 
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
-
+        // Disable the button when the registration process starts
+        setButtonDisabled(true);
         const registrationData = {
             TEAM_MAIL: user[0].TEAM_MAIL,
             TEAM_ID: user[0]._id,
@@ -86,7 +89,7 @@ const Form = ({ display, visibleForm, user }) => {
 
             } else {
                 const error = await response.json();
-                if(error.message === "This team is already registered."){
+                if (error.message === "This team is already registered.") {
                     navigate(`/contest/main-contest`);
                 }
                 toast.error(`${error.message}`, {
@@ -108,6 +111,10 @@ const Form = ({ display, visibleForm, user }) => {
                 progress: undefined,
                 theme: "light",
             });
+        }
+        finally {
+            // Enable the button after API work is done (success or error)
+            setButtonDisabled(false);
         }
     }
     return (
@@ -333,7 +340,7 @@ const Form = ({ display, visibleForm, user }) => {
                             />
 
                             {/* Submit button */}
-                            <button type="submit">Submit</button>
+                            <button type="submit" disabled={isButtonDisabled}>Submit</button>
                         </form>
                     </div>
                 </div>
