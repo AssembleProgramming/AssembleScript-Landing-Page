@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./MainContest.scss";
 import AssembleNav from "../../../Components/Navbar/Navbar";
 import { AddToCalendarButton } from "add-to-calendar-button-react";
@@ -9,48 +9,70 @@ import RulesBullet from "../../../Components/RulesBullet/RulesBullet";
 import { ContestDetails, ContestRules } from "../Data/ContestData";
 import ContestRegister from "../../../Components/RegisterForContest/ContestRegister";
 
-
 const calculateTimeRemaining = (startTime, endTime, currentTime) => {
   const start = new Date(startTime).getTime();
   const end = new Date(endTime).getTime();
 
   if (currentTime < start) {
-    // Before contest starts, show timeRemainingToStart
     const difference = start - currentTime;
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    return formatTime(difference);
   } else if (currentTime < end) {
-    // Contest is ongoing, show timeRemainingToEnd
     const difference = end - currentTime;
-    const hours = Math.floor(difference / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-    return `${hours}h ${minutes}m ${seconds}s`;
+    return formatTime(difference);
   } else {
-    // Contest has ended
     return "Contest has ended";
   }
 };
 
+const formatTime = (difference) => {
+  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+};
+
+const Countdown = ({ startTime, endTime, currentTime }) => {
+  const timeRemaining = useMemo(() => calculateTimeRemaining(startTime, endTime, currentTime), [startTime, endTime, currentTime]);
+
+  return (
+    <div className="contest-start-badge">
+      <div className="text">
+        <p>
+          {currentTime < startTime ? (
+            <span>The contest will start in: <b style={{ fontWeight: 600, color: "green" }}>{timeRemaining}.</b></span>
+          ) : currentTime < endTime ? (
+            <span>The contest will end in: <b style={{ fontWeight: 600, color: "orange" }}>{timeRemaining}.</b></span>
+          ) : (
+            <span><b style={{ fontWeight: 600, color: "red" }}>The contest has ended.</b></span>
+          )}
+        </p>
+      </div>
+      <div className="add-to-cal">
+        <AddToCalendarButton
+          buttonStyle="text"
+          name="AssembleScript Contest"
+          options={["Apple", "Google"]}
+          location="Jspm's RSCOE, Tathawade"
+          startDate="2023-10-23"
+          endDate="2023-10-23"
+          startTime="10:15"
+          endTime="23:30"
+          timeZone="Asia/Calcutta"
+        ></AddToCalendarButton>
+      </div>
+    </div>
+  );
+};
 
 const MainContest = ({ user }) => {
   const [currentTime, setCurrentTime] = useState(new Date().getTime());
-  const [timeRemaining, setTimeRemaining] = useState(
-    calculateTimeRemaining(startTime, endTime, currentTime)
-  );
 
   useEffect(() => {
     const timer = setInterval(() => {
       const newCurrentTime = new Date().getTime();
       setCurrentTime(newCurrentTime);
-      setTimeRemaining(calculateTimeRemaining(startTime, endTime, newCurrentTime));
     }, 1000);
 
     return () => {
@@ -58,39 +80,13 @@ const MainContest = ({ user }) => {
     };
   }, []);
 
-
   return (
     <div>
       <AssembleNav />
       <div className="main-contest-page">
         <h2>Codefinity Challenge</h2>
 
-        <div className="contest-start-badge">
-          <div className="text">
-            <p>
-              {currentTime < startTime ? (
-                <span>The contest will start in: <b style={{ fontWeight: 600, color: "green" }}>{timeRemaining}.</b></span>
-              ) : currentTime < endTime ? (
-                <span>The contest will end in: <b style={{ fontWeight: 600, color: "orange" }}>{timeRemaining}.</b></span>
-              ) : (
-                <span><b style={{ fontWeight: 600, color: "red" }}>The contest has ended.</b></span>
-              )}
-            </p>
-          </div>
-          <div className="add-to-cal">
-            <AddToCalendarButton
-              buttonStyle="text"
-              name="AssembleScript Contest"
-              options={["Apple", "Google"]}
-              location="Jspm's RSCOE, Tathawade"
-              startDate="2023-10-23"
-              endDate="2023-10-23"
-              startTime="10:15"
-              endTime="23:30"
-              timeZone="Asia/Calcutta"
-            ></AddToCalendarButton>
-          </div>
-        </div>
+        <Countdown startTime={startTime} endTime={endTime} currentTime={currentTime} />
 
         <div className="contest-info">
           <div className="col-left">
@@ -115,11 +111,11 @@ const MainContest = ({ user }) => {
             <h5 style={{ marginTop: 20 }}>🏆Prizes🏆</h5>
             <ul>
               <li>
-                Contestants ranked 1st will win a AssembleScript Waterbottel.
+                Contestants ranked 1st will win a AssembleScript Waterbottle.
               </li>
               <li>Contestants ranked 2nd~5th will win surprise goodies.</li>
               <li>
-                Remaning all participants will recieve laptop stickers and lot
+                Remaining all participants will receive laptop stickers and a lot
                 of enjoyment!!
               </li>
             </ul>
@@ -149,7 +145,6 @@ const MainContest = ({ user }) => {
 
           </div>
         </div>
-
 
         <div className="register-start-compo">
           <ContestRegister user={user} />

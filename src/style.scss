@@ -19,6 +19,12 @@ body {
   background: #fff;
 }
 
+
+/* CSS to hide the scrollbar when body has overflow hidden */
+body.modal-open {
+  overflow: hidden;
+}
+
 ::selection {
   color: #fff;
   background: #4a32c3;

@@ -1,0 +1,122 @@
+.contest-registration-form-container {
+    position: fixed;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(105, 102, 102, 0.759);
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .registration-form {
+        overflow-y: scroll;
+        margin-top: 70px;
+        width: 40%;
+        height: 85vh;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        background-color: #f4f4f4;
+        border-radius: 6px;
+        background-clip: padding-box;
+
+        .info-we-collect {
+            padding: 20px;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 0;
+
+            span {
+                color: #007bff;
+            }
+        }
+
+        form {
+            padding: 20px;
+            padding-top: 0;
+            display: flex;
+            flex-direction: column;
+
+            .required {
+                color: red;
+            }
+
+            label {
+                display: block;
+                margin-top: 10px;
+                text-align: left;
+                font-size: 0.875rem;
+                font-weight: 700;
+                padding: 5px 0;
+            }
+
+            input,
+            select {
+                width: 100%;
+                padding: 10px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                border: 1px solid #121316;
+                border-radius: 5px;
+                background: #fff;
+                font-size: 1rem;
+                font-weight: 400;
+            }
+
+            button {
+                margin-top: 16px;
+                padding: 10px;
+                background-color: #4b32c3;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            .member-add-btn{
+                margin-top: 16px;
+                padding: 10px;
+                background-color: #007bff2e;
+                color: black;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                border: 2px solid #007bff;
+            }
+
+            .team-member-section {
+                border: 2px solid #007bff;
+                border-radius: 6px;
+                background-color: #007bff2e;
+                padding: 5px 10px;
+
+                .mem-name {
+                    margin: 0 !important;
+                }
+
+                .team-member-section-info {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 5px;
+                    font-size: 15px;
+                    font-weight: 400;
+                    color: #007bff;
+                    p{
+                        margin-bottom: 8px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 500px) {
+    .contest-registration-form-container {    
+        .registration-form {
+            overflow-y: scroll;
+            margin-top: 70px;
+            width: 90%;
+        }
+    }
+}

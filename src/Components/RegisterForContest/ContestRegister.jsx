@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ContestRegister.scss';
 import { startTime, endTime } from '../../Pages/Contest/StartTime';
 import { Link } from 'react-router-dom';
+import Form from './Form';
 
 const calculateTimeRemaining = (targetTime) => {
     const now = new Date().getTime();
@@ -12,6 +13,7 @@ const calculateTimeRemaining = (targetTime) => {
 const ContestRegister = ({ user }) => {
     const [timeRemainingToStart, setTimeRemainingToStart] = useState(calculateTimeRemaining(startTime));
     const [timeRemainingToEnd, setTimeRemainingToEnd] = useState(calculateTimeRemaining(endTime));
+    const [isFormVisible, setFormVisible] = useState(false);
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -25,6 +27,11 @@ const ContestRegister = ({ user }) => {
         };
     }, []);
 
+
+    const displayRegistrationForm = () => {
+        document.body.classList.add('modal-open');
+        setFormVisible(true);
+    }
     const renderContent = (user) => {
         if (user.length) {
             if (timeRemainingToStart) {
@@ -36,7 +43,7 @@ const ContestRegister = ({ user }) => {
                             {
                                 !user[0].Registered
                                     ?
-                                    <button className='register-btn'>Register</button>
+                                    <button className='register-btn' onClick={displayRegistrationForm}>Register</button>
                                     :
                                     <button className='registered-btn'><i class="fa-solid fa-circle-check"></i> Registered</button>
                             }
@@ -103,6 +110,7 @@ const ContestRegister = ({ user }) => {
     return (
         <div>
             {renderContent(user)}
+            <Form display={isFormVisible} visibleForm={setFormVisible} />
         </div>
     );
 };
