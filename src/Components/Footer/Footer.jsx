@@ -187,8 +187,8 @@ const Footer = () => {
           <Col className="text-center">
             <FooterText>
               For inquiries, contact us at{" "}
-              <ContactEmail href="mailto:sbskcode@gmail.com">
-                sbskcode@gmail.com
+              <ContactEmail href="mailto:assemblescript@gmail.com">
+                assemblescript@gmail.com
               </ContactEmail>
             </FooterText>
           </Col>
