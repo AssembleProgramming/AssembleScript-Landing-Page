@@ -20,6 +20,7 @@ function setFavicon() {
 
 // Call the setFavicon function before rendering the app
 setFavicon();
+console.log("🛡️ AssembleScript -by SBSKcodes 🛡️");
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <App />

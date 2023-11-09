@@ -3,7 +3,7 @@ import './LoginSignUpBody.scss';
 import data from './TermsOfService';
 import { ToastContainer, toast } from 'react-toastify';
 import logo from "../../assets/logo.png"
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginSignUpBody = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -172,6 +172,33 @@ const LoginSignUpBody = ({ onLogin }) => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: "center",
+              fontSize: "13px !important"
+            }}>
+              <p style={{
+                margin: 8,
+                textAlign: 'left',
+              }}>
+                You will be signed in for 30days.
+              </p>
+              <Link to={"/forgot-password"}>
+                <p
+                  style={{
+                    margin: 8,
+                    color: "rgb(0, 110, 255)",
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                    textAlign: "right"
+                  }}>
+                  Forgot password?
+                </p>
+              </Link>
+            </div>
+
+
             <button type='submit' className='primary-button sign-in-button' disabled={isButtonDisabled}>Log-In with Email</button>
           </form>
           <p>

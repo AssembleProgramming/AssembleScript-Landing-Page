@@ -21,8 +21,8 @@ import FAQPage from "./Pages/Contest/ContestFAQ/FAQPage";
 import faqs from "./Pages/Contest/ContestFAQ/FAQdata";
 import LoginSignUpPage from "./Pages/LoginSignup/LoginSignUpPage";
 import { useEffect, useState } from "react";
-import ConsoleLog from "./ConsoleLog";
 import Cookies from "universal-cookie";
+import ForgotPassword from "./Pages/Contest/ForgotPasswordPage/ForgotPassword";
 
 const cookies = new Cookies();
 
@@ -37,7 +37,6 @@ function App() {
     }
   }, [])
 
-  ConsoleLog;
   const handleLogin = async (teamToken) => {
     try {
       const response = await fetch("https://codefinity-api.vercel.app/getuserdata", {
@@ -55,10 +54,10 @@ function App() {
         const currentTeam = [];
         currentTeam.push(teamData.team);
         // Save the JWT token in a cookie
-        cookies.set('access_token', teamToken, { 
+        cookies.set('access_token', teamToken, {
           path: '/', // access on all pages
           maxAge: 2592000 // max age 30 days
-       });
+        });
         setUser(currentTeam);
       } else {
         const error = await response.json();
@@ -92,12 +91,10 @@ function App() {
             <Route path="/playground" element={<Playground />} />
             <Route path="/contest" element={<Contest />} />
             <Route path="/contest/frequently-asked-questions" element={<FAQPage faqs={faqs} />} />
-            <Route
-              path="/contest/main-contest"
-              element={<MainContest user={user} />}
-            />
+            <Route path="/contest/main-contest" element={<MainContest user={user} />} />
             <Route path="/team" element={<Team />} />
             <Route path="/login-signup" element={<LoginSignUpPage onLogin={handleLogin} />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
           </Routes>
         </BrowserRouter>
       </div>
