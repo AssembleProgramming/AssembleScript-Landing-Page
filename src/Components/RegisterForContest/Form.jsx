@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import './Form.scss'
 
 
-const Form = ({ display, visibleForm }) => {
+const Form = ({ display, visibleForm, user }) => {
     const [leaderName, setLeaderName] = useState('');
     const [leaderMail, setLeaderMail] = useState('');
     const [leaderPhone, setLeaderPhone] = useState('');
@@ -23,6 +25,8 @@ const Form = ({ display, visibleForm }) => {
 
     const [favoriteAvenger, setFavoriteAvenger] = useState('');
 
+    const navigate = useNavigate();
+
     const closeRegistrationForm = () => {
         document.body.classList.remove('modal-open');
         visibleForm(false);
@@ -31,6 +35,81 @@ const Form = ({ display, visibleForm }) => {
         setShowMemberForm(true);
     };
 
+    const handleRegisterSubmit = async (e) => {
+        e.preventDefault();
+
+        const registrationData = {
+            TEAM_MAIL: user[0].TEAM_MAIL,
+            TEAM_ID: user[0]._id,
+
+            LEADER_NAME: leaderName,
+            LEADER_MAIL: leaderMail,
+            LEADER_PHONE: leaderPhone,
+            LEADER_YEAR: leaderYear,
+            LEADER_DEPT: leaderDepartment,
+            LEADER_DIV: leaderDiv,
+            LEADER_RNO: leaderRollNo,
+
+            MEMBER_NAME: memberName.length ? memberName : null,
+            MEMBER_MAIL: memberMail.length ? memberMail : null,
+            MEMBER_PHONE: memberPhone.length ? memberPhone : null,
+            MEMBER_YEAR: memberYear.length ? memberYear : null,
+            MEMBER_DEPT: memberDepartment.length ? memberDepartment : null,
+            MEMBER_DIV: memberDiv.length ? memberDiv : null,
+            MEMBER_RNO: memberRollNo.length ? memberRollNo : null,
+
+            FAV_AVENGER: favoriteAvenger.length ? favoriteAvenger : null,
+        }
+
+        try {
+            const response = await fetch("https://codefinity-api.vercel.app/contest-registration", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(registrationData),
+            });
+
+            if (response.ok) {
+                toast.success('Congratulations Registration Successful!!!', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+
+                setInterval(() => {
+                    window.location.reload();
+                }, 2000);
+
+            } else {
+                const error = await response.json();
+                if(error.message === "This team is already registered."){
+                    navigate(`/contest/main-contest`);
+                }
+                toast.error(`${error.message}`, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    progress: undefined,
+                    theme: "light",
+                })
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            toast.error('A network error occurred. Please try again later.', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+    }
     return (
         <div>
             {display ? (
@@ -69,7 +148,7 @@ const Form = ({ display, visibleForm }) => {
                             </div>
                         </div>
                         <p className='info-we-collect'>We use the information you provide to manage your account, identify you, and send you important updates. We may use your information to respond to your inquiries, provide customer support, and improve the application. <span>We will not share or sell your personal information</span> to third parties for marketing or advertising purposes.</p>
-                        <form>
+                        <form onSubmit={handleRegisterSubmit}>
                             {/* Leader fields */}
                             <label htmlFor="leaderName">Leader Name <span className='required'>*</span>:</label>
                             <input
@@ -108,7 +187,7 @@ const Form = ({ display, visibleForm }) => {
                                 onChange={(e) => setLeaderYear(e.target.value)}
                                 required={true}
                             >
-                                <option value={""} disabled>--Select--</option>
+                                <option value="" disabled>--Select--</option>
                                 <option value="FY">FY</option>
                                 <option value="SY">SY</option>
                                 <option value="TY">TY</option>
@@ -122,7 +201,7 @@ const Form = ({ display, visibleForm }) => {
                                 onChange={(e) => setLeaderDepartment(e.target.value)}
                                 required={true}
                             >
-                                <option value={""} disabled>--Select--</option>
+                                <option value="" disabled>--Select--</option>
                                 <option value="CSBS">CSBS</option>
                                 <option value="IT">IT</option>
                                 <option value="COMPUTER">COMPUTER</option>
@@ -158,11 +237,11 @@ const Form = ({ display, visibleForm }) => {
                                         <p style={{
                                             margin: 0,
                                             fontSize: 20,
-                                            cursor: 'pointer'  
-                                        }} onClick={()=>{setShowMemberForm(!showMemberForm)}}><i class="fa-regular fa-circle-xmark"></i></p>
+                                            cursor: 'pointer'
+                                        }} onClick={() => { setShowMemberForm(!showMemberForm) }}><i class="fa-regular fa-circle-xmark"></i></p>
                                     </div>
 
-                                    <label className='mem-name' htmlFor="memberName">Team Member Name:</label>
+                                    <label className='mem-name' htmlFor="memberName">Team Member's Name:</label>
                                     <input
                                         type="text"
                                         id="memberName"
@@ -171,7 +250,7 @@ const Form = ({ display, visibleForm }) => {
                                         onChange={(e) => setMemberName(e.target.value)}
                                     />
 
-                                    <label htmlFor="memberMail">Team Member Mail:</label>
+                                    <label htmlFor="memberMail">Team Member's Mail:</label>
                                     <input
                                         type="email"
                                         id="memberMail"
@@ -180,7 +259,7 @@ const Form = ({ display, visibleForm }) => {
                                         onChange={(e) => setMemberMail(e.target.value)}
                                     />
 
-                                    <label htmlFor="memberPhone">Team Member Phone No.:</label>
+                                    <label htmlFor="memberPhone">Team Member's Phone No.:</label>
                                     <input
                                         type="tel"
                                         id="memberPhone"
@@ -195,7 +274,7 @@ const Form = ({ display, visibleForm }) => {
                                         value={memberYear}
                                         onChange={(e) => setMemberYear(e.target.value)}
                                     >
-                                        <option value={""} disabled>--Select--</option>
+                                        <option value="" disabled>--Select--</option>
                                         <option value="FY">FY</option>
                                         <option value="SY">SY</option>
                                         <option value="TY">TY</option>
@@ -208,7 +287,7 @@ const Form = ({ display, visibleForm }) => {
                                         value={memberDepartment}
                                         onChange={(e) => setMemberDepartment(e.target.value)}
                                     >
-                                        <option value={""} disabled>--Select--</option>
+                                        <option value="" disabled>--Select--</option>
                                         <option value="CSBS">CSBS</option>
                                         <option value="IT">IT</option>
                                         <option value="COMPUTER">COMPUTER</option>
@@ -261,6 +340,17 @@ const Form = ({ display, visibleForm }) => {
             ) : (
                 <></>
             )}
+
+            <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                theme="light"
+            />
         </div>
     );
 }

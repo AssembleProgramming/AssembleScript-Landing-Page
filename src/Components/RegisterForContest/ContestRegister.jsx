@@ -110,7 +110,7 @@ const ContestRegister = ({ user }) => {
     return (
         <div>
             {renderContent(user)}
-            <Form display={isFormVisible} visibleForm={setFormVisible} />
+            <Form display={isFormVisible} visibleForm={setFormVisible} user={user} />
         </div>
     );
 };

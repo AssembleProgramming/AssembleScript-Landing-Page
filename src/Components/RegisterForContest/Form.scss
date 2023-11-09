@@ -13,7 +13,7 @@
     .registration-form {
         overflow-y: scroll;
         margin-top: 70px;
-        width: 40%;
+        width: 40vw;
         height: 85vh;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         background-color: #f4f4f4;
@@ -111,7 +111,17 @@
 }
 
 
-@media (max-width: 500px) {
+@media (max-width: 1000px) {
+    .contest-registration-form-container {    
+        .registration-form {
+            overflow-y: scroll;
+            margin-top: 70px;
+            width: 70%;
+        }
+    }
+}
+
+@media (max-width: 780px) {
     .contest-registration-form-container {    
         .registration-form {
             overflow-y: scroll;
