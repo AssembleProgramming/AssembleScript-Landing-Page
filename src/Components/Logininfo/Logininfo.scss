@@ -1,5 +1,5 @@
 .user-login-status-card {
-    height: 250px;
+    height: 260px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,6 +54,7 @@
             padding-bottom: 8px;
             border: none;
             transition: all 0.3s ease;
+            margin-bottom: 8px;
         }
 
         #logout-btn:hover{

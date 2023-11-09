@@ -11,7 +11,7 @@ const calculateTimeRemaining = (targetTime) => {
 
 const ContestRegister = ({ user }) => {
     const [timeRemainingToStart, setTimeRemainingToStart] = useState(calculateTimeRemaining(startTime));
-    const [timeRemainingToEnd, setTimeRemainingToEnd] =  useState(calculateTimeRemaining(endTime));
+    const [timeRemainingToEnd, setTimeRemainingToEnd] = useState(calculateTimeRemaining(endTime));
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -25,14 +25,22 @@ const ContestRegister = ({ user }) => {
         };
     }, []);
 
-    const renderContent = () => {
+    const renderContent = (user) => {
         if (user.length) {
             if (timeRemainingToStart) {
                 return (
                     <div className='user-register'>
                         <h6>▶️ Register to participate in contest:</h6>
                         <div>
-                            <button className='register-btn'>Register</button>
+
+                            {
+                                !user[0].Registered
+                                    ?
+                                    <button className='register-btn'>Register</button>
+                                    :
+                                    <button className='registered-btn'><i class="fa-solid fa-circle-check"></i> Registered</button>
+                            }
+
                             <Link to="/contest/frequently-asked-questions">
                                 <button className='FAQ-btn'>FAQ about Contest</button>
                             </Link>
@@ -44,12 +52,24 @@ const ContestRegister = ({ user }) => {
                     <div className='contest-start'>
                         <h6>▶️ Start Contest:</h6>
                         <div>
-                            <button className='start-btn'>Start</button>
+                            {
+                                user[0].Registered
+                                    ?
+                                    <button className='start-btn'>Start</button>
+                                    :
+                                    <p style={{
+                                        color: "red",
+                                        marginBottom: 10,
+                                        padding: "0 5px"
+                                    }}>
+                                        You are unable to participate in the contest as your team has not registered.
+                                    </p>
+                            }
                             <Link to="/contest/frequently-asked-questions">
                                 <button className='FAQ-btn'>FAQ about Contest</button>
                             </Link>
                         </div>
-                    </div>
+                    </div >
                 );
             } else {
                 return (
@@ -82,7 +102,7 @@ const ContestRegister = ({ user }) => {
 
     return (
         <div>
-            {renderContent()}
+            {renderContent(user)}
         </div>
     );
 };

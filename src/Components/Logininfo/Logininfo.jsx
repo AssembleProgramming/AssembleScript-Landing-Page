@@ -38,7 +38,7 @@ const Logininfo = ({ user }) => {
               <h6> Your Team Name: </h6> <h3>{user.TEAM_NAME}</h3>
             </div>
 
-            <p>{user.Registered ? <p style={{ color: "green", textAlign: 'center' }}>Your team is registered for contest. All the best !!!</p> : <p style={{ color: "red",textAlign: 'center', fontSize: 14 }}>Your team is not registered for contest. Register as soon as possible</p>}</p>
+            <p>{user.Registered ? <p style={{ color: "green", textAlign: 'center' }}>Your team is registered for contest. All the best !!!</p> : <p style={{ color: "red",textAlign: 'center', fontSize: 14 }}>Your team is not registered for contest. Register as soon as possible.</p>}</p>
             <button onClick={handleLogout} id="logout-btn">Logout</button>
           </div>
         ))
