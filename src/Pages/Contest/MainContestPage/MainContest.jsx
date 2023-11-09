@@ -69,11 +69,11 @@ const MainContest = ({ user }) => {
           <div className="text">
             <p>
               {currentTime < startTime ? (
-                <span>The contest will start in: <b style={{ fontWeight: 600, color: "green" }}>{timeRemaining}</b></span>
+                <span>The contest will start in: <b style={{ fontWeight: 600, color: "green" }}>{timeRemaining}.</b></span>
               ) : currentTime < endTime ? (
-                <span>The contest will end in: <b style={{ fontWeight: 600, color: "orange" }}>{timeRemaining}</b></span>
+                <span>The contest will end in: <b style={{ fontWeight: 600, color: "orange" }}>{timeRemaining}.</b></span>
               ) : (
-                <span><b style={{ fontWeight: 600, color: "red" }}>The Contest has ended</b></span>
+                <span><b style={{ fontWeight: 600, color: "red" }}>The contest has ended.</b></span>
               )}
             </p>
           </div>
