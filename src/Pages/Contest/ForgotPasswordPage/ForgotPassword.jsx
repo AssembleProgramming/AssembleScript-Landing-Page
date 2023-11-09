@@ -4,6 +4,7 @@ import AssembleNav from '../../../Components/Navbar/Navbar';
 import Footer from '../../../Components/Footer/Footer';
 import logo from "../../../assets/logo.png"
 import { ToastContainer, toast } from 'react-toastify';
+import SERVER_LINK from '../../../API';
 
 const ForgotPassword = () => {
     const [teamEmail, setTeamEmail] = useState('');
@@ -14,7 +15,7 @@ const ForgotPassword = () => {
         setButtonDisabled(true);
 
         try {
-            const response = await fetch("https://codefinity-api.vercel.app/forgot-password", {
+            const response = await fetch(`${SERVER_LINK}/forgot-password`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

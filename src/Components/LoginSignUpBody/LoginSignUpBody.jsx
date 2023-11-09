@@ -4,6 +4,7 @@ import data from './TermsOfService';
 import { ToastContainer, toast } from 'react-toastify';
 import logo from "../../assets/logo.png"
 import { Link, useNavigate } from 'react-router-dom';
+import SERVER_LINK from '../../API';
 
 const LoginSignUpBody = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -38,7 +39,7 @@ const LoginSignUpBody = ({ onLogin }) => {
     }
 
     try {
-      const response = await fetch("https://codefinity-api.vercel.app/signup", {
+      const response = await fetch(`${SERVER_LINK}/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -93,7 +94,7 @@ const LoginSignUpBody = ({ onLogin }) => {
     setButtonDisabled(true);
 
     try {
-      const response = await fetch("https://codefinity-api.vercel.app/login", {
+      const response = await fetch(`${SERVER_LINK}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

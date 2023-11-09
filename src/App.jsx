@@ -23,6 +23,7 @@ import LoginSignUpPage from "./Pages/LoginSignup/LoginSignUpPage";
 import { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
 import ForgotPassword from "./Pages/Contest/ForgotPasswordPage/ForgotPassword";
+import SERVER_LINK from "./API";
 
 const cookies = new Cookies();
 
@@ -39,7 +40,7 @@ function App() {
 
   const handleLogin = async (teamToken) => {
     try {
-      const response = await fetch("https://codefinity-api.vercel.app/getuserdata", {
+      const response = await fetch(`${SERVER_LINK}/getuserdata`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

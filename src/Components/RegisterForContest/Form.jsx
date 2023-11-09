@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import './Form.scss'
+import SERVER_LINK from '../../API';
 
 
 const Form = ({ display, visibleForm, user }) => {
@@ -65,7 +66,7 @@ const Form = ({ display, visibleForm, user }) => {
         }
 
         try {
-            const response = await fetch("https://codefinity-api.vercel.app/contest-registration", {
+            const response = await fetch(`${SERVER_LINK}/contest-registration`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
