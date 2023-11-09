@@ -1,7 +1,7 @@
 import React, { Suspense, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
-import Shield from '../../Components/Shield'
+import Shield from '../../Components/AllGLBS/Shield';
 import Button from 'react-bootstrap/Button';
 import RepoStats from '../../Components/GitStats/CurrentStats'
 import AssembleNav from '../../Components/Navbar/Navbar'
@@ -10,7 +10,7 @@ import './Home.scss'
 import Footer from '../../Components/Footer/Footer';
 import CodeExampleSection from '../../Components/CodeExample/CodeExample';
 import Nav from 'react-bootstrap/Nav';
-import { Experience } from "../../Components/Experience"
+import { Experience } from "../../Components/AllGLBS/Experience"
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import gauntlet from "../../assets/gauntlet.png"
 import hoverSound from "./snap.mp3"
