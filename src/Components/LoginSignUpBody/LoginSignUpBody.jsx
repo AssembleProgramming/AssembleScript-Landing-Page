@@ -262,7 +262,7 @@ const LoginSignUpBody = ({ onLogin }) => {
                     color: 'rgb(3, 99, 226)',
                     cursor: 'pointer'
                   }}
-                > <a  href="/terms-of-service">Terms of Use and Privacy Policy</a>.</span>
+                > <a target='_blank' href="/terms-of-service">Terms of Use and Privacy Policy</a>.</span>
               </label>
             </div>
             <button type='submit' className='primary-button register-in-button' disabled={isButtonDisabled} >Register with Email</button>

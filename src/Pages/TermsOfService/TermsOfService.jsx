@@ -13,8 +13,8 @@ const TermsOfService = () => {
                 <h1>AssembleScript <span> Terms of Service</span> </h1>
 
                 <p>
-                    These terms of service are entered into between you and AssembleScript, CO. for the use of our application in relation to our training tools. By accessing our websites (the "Services"), you acknowledge that you have read, understood, and agree to the most recent version of these Terms of Service ("Terms").
-
+                    These terms of service are entered into between you and AssembleScript, CO. for the use of our application. By accessing our websites (the "Services"), you acknowledge that you have read, understood, and agree to the most recent version of these Terms of Service ("Terms").
+                    <br />
                     We reserve the right to revise these Terms at any time. If we do, we will post the modified Terms on this page and indicate the date of most the recent change above. You agree to read all notifications we send you and to periodically check this page for updates to these Terms. Your continued use of the Services constitutes acceptance of these Terms and any modifications thereto. If you object to any changes, your sole recourse is to cease use of the Services.
                 </p>
                 {data.map((item, index) => (

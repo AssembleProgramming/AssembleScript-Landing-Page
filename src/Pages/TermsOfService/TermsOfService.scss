@@ -25,6 +25,8 @@ $primary-color: #4b32c3;
                 font-family: 'Inter';
                 font-weight: 600;
                 color: #333;
+                letter-spacing: 1px;
+                margin-left: 5px;
             }
 
             padding-bottom: 60px;
@@ -34,7 +36,7 @@ $primary-color: #4b32c3;
 
         .term-section {
             display: flex;
-            align-items: center;
+            // align-items: center;
             margin: 20px 0;
             border-bottom: 1px solid #ddd;
             padding-bottom: 20px;
@@ -47,6 +49,7 @@ $primary-color: #4b32c3;
 
             .term-content {
                 h2 {
+                    padding-top: 4px;
                     font-size: 20px;
                     color: $primary-color;
                     margin-bottom: 10px;
@@ -56,6 +59,7 @@ $primary-color: #4b32c3;
                     font-size: 16px;
                     color: #333;
                     font-weight: 500;
+                    margin: 0;
                 }
             }
         }
@@ -74,6 +78,7 @@ $primary-color: #4b32c3;
 
         .term-icon {
             margin-bottom: 10px;
+            margin-right: 0 !important;
         }
 
         .term-content {
