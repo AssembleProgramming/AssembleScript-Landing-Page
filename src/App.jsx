@@ -26,6 +26,7 @@ import ForgotPassword from "./Pages/Contest/ForgotPasswordPage/ForgotPassword";
 import SERVER_LINK from "./API";
 import CodefinityPage from "./Pages/Contest/CodefinityPage/CodefinityPage";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
+import TermsOfService from "./Pages/TermsOfService/TermsOfService";
 
 const cookies = new Cookies();
 
@@ -96,8 +97,9 @@ function App() {
             <Route path="/team" element={<Team />} />
             <Route path="/login-signup" element={<LoginSignUpPage onLogin={handleLogin} />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
 
-            
+
             <Route path="/contest" element={<Contest />} />
             <Route path="/contest/frequently-asked-questions" element={<FAQPage faqs={faqs} />} />
             <Route path="/contest/main-contest" element={<MainContest user={user} />} />

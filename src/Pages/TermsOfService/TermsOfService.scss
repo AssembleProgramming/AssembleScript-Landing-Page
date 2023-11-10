@@ -1,0 +1,89 @@
+// TermsOfService.scss
+$primary-color: #4b32c3;
+
+.terms-container-wrapper {
+    background-image: url('../../assets/images/assembleBg.png');
+    width: 100vw;
+    height: 100%;
+
+
+    .terms-container {
+        max-width: 800px;
+        margin: 80px auto;
+        margin-bottom: 0px;
+        padding: 20px;
+
+        h1 {
+            color: $primary-color;
+            text-align: center;
+            font-family: "avengerFont";
+            letter-spacing: 3px;
+            font-size: 40px;
+
+            span {
+                font-size: 30px;
+                font-family: 'Inter';
+                font-weight: 600;
+                color: #333;
+            }
+
+            padding-bottom: 60px;
+            padding-top: 30px;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.204);
+        }
+
+        .term-section {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+
+            .term-icon {
+                font-size: 24px;
+                margin-right: 20px;
+                color: $primary-color;
+            }
+
+            .term-content {
+                h2 {
+                    font-size: 20px;
+                    color: $primary-color;
+                    margin-bottom: 10px;
+                }
+
+                p {
+                    font-size: 16px;
+                    color: #333;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .terms-container {
+        padding: 10px;
+    }
+
+    .term-section {
+        flex-direction: column;
+        text-align: center;
+
+        .term-icon {
+            margin-bottom: 10px;
+        }
+
+        .term-content {
+            h2 {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+}

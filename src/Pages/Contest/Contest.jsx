@@ -66,7 +66,7 @@ const Contest = () => {
             <div className="contest-head">
                 <div className='contest-title'>
                     <h1>AssembleScript Contest</h1>
-                    <p>Compete and earn your reward !!!</p>
+                    <p style={{ color: "#fff" }}>Compete and earn your reward !!!</p>
                 </div>
                 <Carousel interval={5000} wrap={true} slide={true}>
                     <Carousel.Item>
@@ -77,7 +77,7 @@ const Contest = () => {
                         />
                         <Carousel.Caption className='contest-carousel-about'>
                             <h3>With great power comes great responsibility</h3>
-                            <p>Spider-Man's web dissolves within an hour and yet is strong enough to hold The Hulk.</p>
+                            <p style={{ color: "#fff" }}>Spider-Man's web dissolves within an hour and yet is strong enough to hold The Hulk.</p>
                         </Carousel.Caption>
                     </Carousel.Item>
 
@@ -89,7 +89,7 @@ const Contest = () => {
                         />
                         <Carousel.Caption className='contest-carousel-about'>
                             <h3>I can do this all day.</h3>
-                            <p>
+                            <p style={{ color: "#fff" }}>
                                 Steve Roger's body has the upper-most limits of human perfection in strength, stamina, agility, and durability.
                             </p>
                         </Carousel.Caption>
@@ -102,7 +102,7 @@ const Contest = () => {
                         />
                         <Carousel.Caption className='contest-carousel-about'>
                             <h3>I dress up as an obscure moon-god and strike fear in the hearts of men</h3>
-                            <p>
+                            <p style={{ color: "#fff" }}>
                                 We Don't Know How Many Personalities Moon Knight Has.
                             </p>
                         </Carousel.Caption>
@@ -116,7 +116,7 @@ const Contest = () => {
                         />
                         <Carousel.Caption className='contest-carousel-about'>
                             <h3>I've got red in my ledger. I'd like to wipe it out.</h3>
-                            <p>
+                            <p style={{ color: "#fff" }}>
                                 She is skilled in many forms of martial arts including aikido, judo, karate, savate, and boxing
                             </p>
                         </Carousel.Caption>
@@ -130,7 +130,7 @@ const Contest = () => {
                         />
                         <Carousel.Caption className='contest-carousel-about'>
                             <h3>Avengers Assemble !!!</h3>
-                            <p>
+                            <p style={{ color: "#fff" }}>
                                 The Avengers have been around a long time and they've proven to be very unique
                             </p>
                         </Carousel.Caption>

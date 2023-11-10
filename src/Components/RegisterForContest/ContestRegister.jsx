@@ -32,6 +32,7 @@ const ContestRegister = ({ user }) => {
         document.body.classList.add('modal-open');
         setFormVisible(true);
     }
+    
     const renderContent = (user) => {
         if (user.length) {
             if (timeRemainingToStart) {

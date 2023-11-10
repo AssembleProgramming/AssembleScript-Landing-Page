@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './LoginSignUpBody.scss';
-import data from './TermsOfService';
 import { ToastContainer, toast } from 'react-toastify';
 import logo from "../../assets/logo.png"
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,7 +7,6 @@ import SERVER_LINK from '../../API';
 
 const LoginSignUpBody = ({ onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
-  const [isVisiblePolicy, setIsVisiblePolicy] = useState(false);
   const [teamEmail, setTeamEmail] = useState('');
   const [teamName, setTeamName] = useState('');
   const [password, setPassword] = useState('');
@@ -149,7 +147,6 @@ const LoginSignUpBody = ({ onLogin }) => {
     }
   }
 
-
   return (
     <div className="login-signup-body">
       {isLogin ? (
@@ -212,74 +209,6 @@ const LoginSignUpBody = ({ onLogin }) => {
         </div>
       ) : (
         <div className="register-section">
-          {
-            isVisiblePolicy &&
-            (
-              <div className='policy' >
-                <div className="policy-content card">
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    position: 'sticky',
-                    top: 0,
-                    background: 'white',
-                    paddingTop: 20,
-                    paddingBottom: 20,
-                    borderBottom: "1px solid #dadada"
-                  }}>
-                    <h4
-                      style={{
-                        margin: 0
-                      }}
-                    >Terms of Service and Privacy Policy</h4>
-                    <div>
-                      <i style={{
-                        fontSize: 22,
-                        cursor: 'pointer',
-                        color: 'black'
-                      }} className="fa-solid fa-xmark"
-                        onClick={() => setIsVisiblePolicy(!isVisiblePolicy)}
-                      >
-                      </i>
-                    </div>
-                  </div>
-                  <p>
-                    By using the AssembleScript application, you agree to comply with and be bound by these Terms of Service. If you do not agree to these Terms, please do not use the application.
-                  </p>
-                  {
-                    data.map((item, idx) => (
-                      <div style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "flex-start",
-                        flexDirection: 'column'
-                      }} key={idx}>
-                        <h6 style={{
-                          color: '#7444ff',
-                          margin: 0,
-                          display: "flex",
-                          alignItems: "center",
-                          fontSize: 18,
-                        }}>
-                          <span
-                            className='wrapper'
-                            style={{ color: "#7444ff" }}
-                            dangerouslySetInnerHTML={{ __html: item.icon }} />
-                          &nbsp;
-                          {item.title}:
-                        </h6>
-                        <p style={{
-                          marginTop: 3,
-                          color: 'black'
-                        }}>{item.info}</p>
-                      </div>
-                    ))
-                  }
-                </div>
-              </div>
-            )
-          }
           <div>
             <img width={50} src={logo} alt="logo" />
             <h2>Register to AssembleScript</h2>
@@ -333,7 +262,7 @@ const LoginSignUpBody = ({ onLogin }) => {
                     color: 'rgb(3, 99, 226)',
                     cursor: 'pointer'
                   }}
-                  onClick={() => setIsVisiblePolicy(!isVisiblePolicy)}>Terms of Use and Privacy Policy.</span>
+                > <a  href="/terms-of-service">Terms of Use and Privacy Policy</a>.</span>
               </label>
             </div>
             <button type='submit' className='primary-button register-in-button' disabled={isButtonDisabled} >Register with Email</button>

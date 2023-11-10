@@ -53,12 +53,12 @@
     .register-in-button {
         padding: 15px;
         cursor: pointer;
-        margin-top: 10px;
+        margin-top: 20px;
         margin-bottom: 20px;
         width: 100%;
-        border: 2px solid #7444ff;
+        border: 2px solid #4b32c3;
         border-radius: 5px;
-        background: #7444ff;
+        background: #4b32c3;
         color: #fff;
         transition: all 0.3s ease;
     }
@@ -79,8 +79,6 @@
     }
 
     p {
-        margin-top: 10px;
-
         span {
             color: rgb(0, 110, 255);
             text-decoration: underline;
@@ -106,98 +104,6 @@
         font-size: 12px;
         font-weight: 400;
     }
-
-    .policy {
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: #edeff1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow-x: hidden;
-        overflow-y: hidden;
-    }
-
-    .policy-content {
-        width: 40%;
-        height: 85%;
-        background-color: white;
-        scroll-behavior: smooth;
-        overflow-y: scroll;
-        text-align: left;
-        padding: 30px;
-        padding-top: 0;
-        color: black;
-
-        h4 {
-            align-self: center;
-        }
-
-        .wrapper {
-            color: white;
-            font-size: 22px;
-            margin-right: 5px;
-        }
-
-        @-webkit-keyframes rainbow {
-            0% {
-                background-position: 0% 82%
-            }
-
-            50% {
-                background-position: 100% 19%
-            }
-
-            100% {
-                background-position: 0% 82%
-            }
-        }
-
-        @-moz-keyframes rainbow {
-            0% {
-                background-position: 0% 82%
-            }
-
-            50% {
-                background-position: 100% 19%
-            }
-
-            100% {
-                background-position: 0% 82%
-            }
-        }
-
-        @-o-keyframes rainbow {
-            0% {
-                background-position: 0% 82%
-            }
-
-            50% {
-                background-position: 100% 19%
-            }
-
-            100% {
-                background-position: 0% 82%
-            }
-        }
-
-        @keyframes rainbow {
-            0% {
-                background-position: 0% 82%
-            }
-
-            50% {
-                background-position: 100% 19%
-            }
-
-            100% {
-                background-position: 0% 82%
-            }
-        }
-    }
 }
 
 @media (max-width: 500px) {
@@ -210,16 +116,6 @@
             padding: 20px 10px;
             margin: 0px;
             width: 100%;
-        }
-
-        .policy {
-            position: absolute;
-            top: 30px;
-        }
-
-        .policy-content {
-            width: 90%;
-            height: 85%;
         }
     }
 }
