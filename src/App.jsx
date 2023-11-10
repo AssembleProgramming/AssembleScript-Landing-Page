@@ -24,6 +24,8 @@ import { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
 import ForgotPassword from "./Pages/Contest/ForgotPasswordPage/ForgotPassword";
 import SERVER_LINK from "./API";
+import CodefinityPage from "./Pages/Contest/CodefinityPage/CodefinityPage";
+import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 
 const cookies = new Cookies();
 
@@ -90,12 +92,18 @@ function App() {
             <Route path="/docs/builtinmethods" element={<Builtinmethods />} />
             <Route path="/docs/functions" element={<Functions />} />
             <Route path="/playground" element={<Playground />} />
-            <Route path="/contest" element={<Contest />} />
-            <Route path="/contest/frequently-asked-questions" element={<FAQPage faqs={faqs} />} />
-            <Route path="/contest/main-contest" element={<MainContest user={user} />} />
+
             <Route path="/team" element={<Team />} />
             <Route path="/login-signup" element={<LoginSignUpPage onLogin={handleLogin} />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+
+            
+            <Route path="/contest" element={<Contest />} />
+            <Route path="/contest/frequently-asked-questions" element={<FAQPage faqs={faqs} />} />
+            <Route path="/contest/main-contest" element={<MainContest user={user} />} />
+            <Route path="/contest/codefinity-2023" element={<CodefinityPage user={user} />} />
+
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
       </div>

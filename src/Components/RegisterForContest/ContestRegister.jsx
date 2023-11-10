@@ -62,7 +62,9 @@ const ContestRegister = ({ user }) => {
                             {
                                 user[0].Registered
                                     ?
-                                    <button className='start-btn'>Start</button>
+                                    <Link to='/contest/codefinity-2023'>
+                                        <button className='start-btn'>Start</button>
+                                    </Link>
                                     :
                                     <p style={{
                                         color: "red",
