@@ -8,7 +8,6 @@ import Logininfo from "../../../Components/Logininfo/Logininfo";
 import RulesBullet from "../../../Components/RulesBullet/RulesBullet";
 import { ContestDetails, ContestRules } from "../Data/ContestData";
 import ContestRegister from "../../../Components/RegisterForContest/ContestRegister";
-import UserCard from "../../../Components/UserCard/UserCard";
 
 const calculateTimeRemaining = (startTime, endTime, currentTime) => {
   const start = new Date(startTime).getTime();
