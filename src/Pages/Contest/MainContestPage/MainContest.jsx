@@ -8,6 +8,7 @@ import Logininfo from "../../../Components/Logininfo/Logininfo";
 import RulesBullet from "../../../Components/RulesBullet/RulesBullet";
 import { ContestDetails, ContestRules } from "../Data/ContestData";
 import ContestRegister from "../../../Components/RegisterForContest/ContestRegister";
+import UserCard from "../../../Components/UserCard/UserCard";
 
 const calculateTimeRemaining = (startTime, endTime, currentTime) => {
   const start = new Date(startTime).getTime();
@@ -93,6 +94,43 @@ const MainContest = ({ user }) => {
             <Logininfo user={user} />
           </div>
           <div className="col-right">
+            {
+              user.length
+                ?
+                user[0].Registered
+                  ?
+                  <h6 style={{
+                    color: "green",
+                    border: "2px solid green",
+                    background: "#00800024",
+                    padding: 16,
+                    borderRadius: 6
+                  }}>
+                    <i style={{
+                      marginRight: 5
+                    }}
+                      class="fa-regular fa-circle-check"></i>
+                    Your team is registered for contest. All the best !!!
+                  </h6>
+                  :
+                  <h6 style={{
+                    color: "#dc0202",
+                    border: "2px solid #dc0202",
+                    background: "#80000024",
+                    padding: 16,
+                    borderRadius: 6
+                  }}>
+                    <i style={{
+                      marginRight: 5
+                    }}
+                      class="fa-regular fa-circle-xmark"></i>
+                    Your team is not registered for the contest. Register as soon as possible.
+                  </h6>
+                :
+                <>
+                </>
+            }
+
             <h4>
               Welcome to the <span id="codefinity">"Codefinity Challenge"</span>{" "}
               of AssembleScript

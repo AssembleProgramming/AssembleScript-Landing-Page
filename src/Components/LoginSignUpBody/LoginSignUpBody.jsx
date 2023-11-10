@@ -38,6 +38,8 @@ const LoginSignUpBody = ({ onLogin }) => {
       return;
     }
 
+    const TEAM_GRP_NO = Math.floor(Math.random() * 6);
+
     try {
       const response = await fetch(`${SERVER_LINK}/signup`, {
         method: "POST",
@@ -48,6 +50,7 @@ const LoginSignUpBody = ({ onLogin }) => {
           TEAM_NAME: teamName,
           TEAM_MAIL: teamEmail,
           PASSWORD: password,
+          TEAM_GRP_NO: TEAM_GRP_NO
         }),
       });
 

@@ -36,12 +36,13 @@
         width: 100%;
 
         .col-left {
-            width: 20%;
+            display: flex;
+            width: 300px;
         }
 
         .col-right {
             padding-left: 40px;
-            width: 80%;
+            width: calc(100vw - 300px);
 
             p {
                 margin: 0;

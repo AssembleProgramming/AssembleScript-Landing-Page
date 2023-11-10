@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import './Form.scss'
 import SERVER_LINK from '../../API';
-
+import QR from "../../assets/images/payment-QR.webp"
 
 const Form = ({ display, visibleForm, user }) => {
     const [leaderName, setLeaderName] = useState('');
@@ -13,9 +13,7 @@ const Form = ({ display, visibleForm, user }) => {
     const [leaderDepartment, setLeaderDepartment] = useState('');
     const [leaderDiv, setLeaderDiv] = useState('');
     const [leaderRollNo, setLeaderRollNo] = useState('');
-
     const [showMemberForm, setShowMemberForm] = useState(false);
-
     const [memberName, setMemberName] = useState('');
     const [memberMail, setMemberMail] = useState('');
     const [memberPhone, setMemberPhone] = useState('');
@@ -23,7 +21,8 @@ const Form = ({ display, visibleForm, user }) => {
     const [memberDepartment, setMemberDepartment] = useState('');
     const [memberDiv, setMemberDiv] = useState('');
     const [memberRollNo, setMemberRollNo] = useState('');
-
+    const [paymentMethod, setPaymentMethod] = useState('');
+    const [transactionId, setTransactionId] = useState('');
     const [favoriteAvenger, setFavoriteAvenger] = useState('');
 
     const [isButtonDisabled, setButtonDisabled] = useState(false);
@@ -62,9 +61,13 @@ const Form = ({ display, visibleForm, user }) => {
             MEMBER_DIV: memberDiv.length ? memberDiv : null,
             MEMBER_RNO: memberRollNo.length ? memberRollNo : null,
 
+            TRANSACTION_ID: transactionId,
+            PAYMENT_METHOD: paymentMethod,
+
             FAV_AVENGER: favoriteAvenger.length ? favoriteAvenger : null,
         }
 
+        console.log(registrationData);
         try {
             const response = await fetch(`${SERVER_LINK}/contest-registration`, {
                 method: "POST",
@@ -158,83 +161,93 @@ const Form = ({ display, visibleForm, user }) => {
                         <p className='info-we-collect'>We use the information you provide to manage your account, identify you, and send you important updates. We may use your information to respond to your inquiries, provide customer support, and improve the application. <span>We will not share or sell your personal information</span> to third parties for marketing or advertising purposes.</p>
                         <form onSubmit={handleRegisterSubmit}>
                             {/* Leader fields */}
-                            <label htmlFor="leaderName">Leader Name <span className='required'>*</span>:</label>
-                            <input
-                                type="text"
-                                id="leaderName"
-                                value={leaderName}
-                                placeholder="Enter team leader's full name"
-                                required={true}
-                                onChange={(e) => setLeaderName(e.target.value)}
-                            />
 
-                            <label htmlFor="leaderMail">Leader Mail <span className='required'>*</span>:</label>
-                            <input
-                                type="email"
-                                id="leaderMail"
-                                value={leaderMail}
-                                placeholder="Enter team leader's email address"
-                                required={true}
-                                onChange={(e) => setLeaderMail(e.target.value)}
-                            />
+                            <div className='required-section'>
+                                <div className='form-section-info'>
+                                    <i style={{
+                                        marginRight: 5
+                                    }} class="fa-solid fa-circle-info" /> Team Details:
 
-                            <label htmlFor="leaderPhone">Leader Phone No. <span className='required'>*</span>:</label>
-                            <input
-                                type="tel"
-                                id="leaderPhone"
-                                value={leaderPhone}
-                                placeholder="Enter team leader's phone number"
-                                required={true}
-                                onChange={(e) => setLeaderPhone(e.target.value)}
-                            />
+                                    <p>It's crucial to provide accurate information. If any of the team's details are incorrect, it could lead to disqualification.</p>
+                                </div>
+                                <label htmlFor="leaderName">Leader Name <span className='required'>*</span>:</label>
+                                <input
+                                    type="text"
+                                    id="leaderName"
+                                    value={leaderName}
+                                    placeholder="Enter team leader's full name"
+                                    required={true}
+                                    onChange={(e) => setLeaderName(e.target.value)}
+                                />
 
-                            <label htmlFor="leaderYear">Leader's Current Studying Year <span className='required'>*</span>:</label>
-                            <select
-                                id="leaderYear"
-                                value={leaderYear}
-                                onChange={(e) => setLeaderYear(e.target.value)}
-                                required={true}
-                            >
-                                <option value="" disabled>--Select--</option>
-                                <option value="FY">FY</option>
-                                <option value="SY">SY</option>
-                                <option value="TY">TY</option>
-                                <option value="BE">BE</option>
-                            </select>
+                                <label htmlFor="leaderMail">Leader Mail <span className='required'>*</span>:</label>
+                                <input
+                                    type="email"
+                                    id="leaderMail"
+                                    value={leaderMail}
+                                    placeholder="Enter team leader's email address"
+                                    required={true}
+                                    onChange={(e) => setLeaderMail(e.target.value)}
+                                />
 
-                            <label htmlFor="leaderDepartment">Leader's Department <span className='required'>*</span>:</label>
-                            <select
-                                id="leaderDepartment"
-                                value={leaderDepartment}
-                                onChange={(e) => setLeaderDepartment(e.target.value)}
-                                required={true}
-                            >
-                                <option value="" disabled>--Select--</option>
-                                <option value="CSBS">CSBS</option>
-                                <option value="IT">IT</option>
-                                <option value="COMPUTER">COMPUTER</option>
-                                <option value="ENTC">ENTC</option>
-                            </select>
+                                <label htmlFor="leaderPhone">Leader Phone No. <span className='required'>*</span>:</label>
+                                <input
+                                    type="tel"
+                                    id="leaderPhone"
+                                    value={leaderPhone}
+                                    placeholder="Enter team leader's phone number"
+                                    required={true}
+                                    onChange={(e) => setLeaderPhone(e.target.value)}
+                                />
 
-                            <label htmlFor="leaderDiv">Leader's Division: <span className='required'>*</span></label>
-                            <input
-                                type="text"
-                                id="leaderDiv"
-                                value={leaderDiv}
-                                placeholder="Enter team leader's division"
-                                required={true}
-                                onChange={(e) => setLeaderDiv(e.target.value)}
-                            />
+                                <label htmlFor="leaderYear">Leader's Current Studying Year <span className='required'>*</span>:</label>
+                                <select
+                                    id="leaderYear"
+                                    value={leaderYear}
+                                    onChange={(e) => setLeaderYear(e.target.value)}
+                                    required={true}
+                                >
+                                    <option value="" disabled>--Select--</option>
+                                    <option value="First Year">First Year</option>
+                                    <option value="Second Year">Second Year</option>
+                                    <option value="Third Year">Third Year</option>
+                                    <option value="Final Year">Final Year</option>
+                                </select>
 
-                            <label htmlFor="leaderRollNo">Leader's Roll NO: <span className='required'>*</span></label>
-                            <input
-                                type="text"
-                                id="leaderRollNo"
-                                value={leaderRollNo}
-                                placeholder="Enter team leader's roll no"
-                                required={true}
-                                onChange={(e) => setLeaderRollNo(e.target.value)}
-                            />
+                                <label htmlFor="leaderDepartment">Leader's Department <span className='required'>*</span>:</label>
+                                <select
+                                    id="leaderDepartment"
+                                    value={leaderDepartment}
+                                    onChange={(e) => setLeaderDepartment(e.target.value)}
+                                    required={true}
+                                >
+                                    <option value="" disabled>--Select--</option>
+                                    <option value="COMPUTER">COMPUTER</option>
+                                    <option value="CSBS">CSBS</option>
+                                    <option value="IT">IT</option>
+                                    <option value="ENTC">ENTC</option>
+                                </select>
+
+                                <label htmlFor="leaderDiv">Leader's Division: <span className='required'>*</span></label>
+                                <input
+                                    type="text"
+                                    id="leaderDiv"
+                                    value={leaderDiv}
+                                    placeholder="Enter team leader's division"
+                                    required={true}
+                                    onChange={(e) => setLeaderDiv(e.target.value)}
+                                />
+
+                                <label htmlFor="leaderRollNo">Leader's Roll NO: <span className='required'>*</span></label>
+                                <input
+                                    type="text"
+                                    id="leaderRollNo"
+                                    value={leaderRollNo}
+                                    placeholder="Enter team leader's roll no"
+                                    required={true}
+                                    onChange={(e) => setLeaderRollNo(e.target.value)}
+                                />
+                            </div>
 
                             {/* Member section */}
                             {showMemberForm && (
@@ -283,10 +296,10 @@ const Form = ({ display, visibleForm, user }) => {
                                         onChange={(e) => setMemberYear(e.target.value)}
                                     >
                                         <option value="" disabled>--Select--</option>
-                                        <option value="FY">FY</option>
-                                        <option value="SY">SY</option>
-                                        <option value="TY">TY</option>
-                                        <option value="BE">BE</option>
+                                        <option value="First Year">First Year</option>
+                                        <option value="Second Year">Second Year</option>
+                                        <option value="Third Year">Third Year</option>
+                                        <option value="Final Year">Final Year</option>
                                     </select>
 
                                     <label htmlFor="memberDepartment">Team Member's Department:</label>
@@ -296,9 +309,9 @@ const Form = ({ display, visibleForm, user }) => {
                                         onChange={(e) => setMemberDepartment(e.target.value)}
                                     >
                                         <option value="" disabled>--Select--</option>
+                                        <option value="COMPUTER">COMPUTER</option>
                                         <option value="CSBS">CSBS</option>
                                         <option value="IT">IT</option>
-                                        <option value="COMPUTER">COMPUTER</option>
                                         <option value="ENTC">ENTC</option>
                                     </select>
 
@@ -329,6 +342,50 @@ const Form = ({ display, visibleForm, user }) => {
                                     }} class="fa-solid fa-user-plus"></i> Add Team Member
                                 </button>
                             )}
+
+                            {/* Payment method */}
+
+                            <div className='form-section-info'>
+                                <i style={{
+                                    marginRight: 5
+                                }} class="fa-solid fa-circle-info" />
+                                Payment Method:
+
+                                <p>The registration fee for the contest is <span style={{
+                                    color: "red"
+                                }}>INR 20/-</span> and payment is mandatory with no refunds. We will not be responsible if you pay and don't attend the contest. Only Google Pay or Phone Pay are acceptable payment methods. Using any other payment method will result in disqualification. Provide correct transaction ID as all IDs will be verified. Any incorrect IDs will also lead to disqualification.</p>
+                            </div>
+
+                            <label htmlFor="paymentMethod">Select Payment Method <span className='required'>*</span>:</label>
+                            <select
+                                id="paymentMethod"
+                                value={paymentMethod}
+                                onChange={(e) => setPaymentMethod(e.target.value)}
+                                required={true}
+                            >
+                                <option value="" disabled>--Select--</option>
+                                <option value="Google Pay">Google Pay</option>
+                                <option value="Phone Pay">Phone Pay</option>
+                            </select>
+
+                            <label> Payment QR Code:</label>
+                            <div className="payment" style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}>
+                                <img width={"50%"} src={QR} alt="QR-Code" />
+                            </div>
+
+                            <label htmlFor='transactionId'>Transaction Id <span className='required'>*</span>:</label>
+                            <input
+                                type="text"
+                                id="transactionId"
+                                value={transactionId}
+                                placeholder="Enter transaction ID"
+                                required={true}
+                                onChange={(e) => setTransactionId(e.target.value)}
+                            />
 
                             {/* Favorite Avenger */}
                             <label htmlFor="favoriteAvenger">Favorite Avenger:</label>
