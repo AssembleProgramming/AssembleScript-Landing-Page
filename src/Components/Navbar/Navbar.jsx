@@ -44,6 +44,7 @@ function AssembleNav() {
             <Nav.Link href="/playground">Playground</Nav.Link>
             <Nav.Link href="/team">Team</Nav.Link>
             <Nav.Link href="/contest">Contest</Nav.Link>
+            <Nav.Link href="/terms-of-service">Terms</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link

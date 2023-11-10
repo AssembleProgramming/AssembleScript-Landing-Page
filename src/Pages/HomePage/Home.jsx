@@ -90,11 +90,12 @@ const Home = () => {
                                 <span className="assemble-script">
                                     AssembleScript
                                 </span>
+                                <br />
                                 <TypeAnimation
                                     sequence={[
                                         `Unleash Your Inner Developer`,
                                         1500,
-                                        `Unleash Your Inner Avenger`,
+                                        `Unleash Your Inner Avenger...`,
                                         1500,
                                     ]}
                                     wrapper="span"
