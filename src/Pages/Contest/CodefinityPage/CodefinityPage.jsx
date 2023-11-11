@@ -155,11 +155,11 @@ const CodefinityPage = ({ user }) => {
                                                         )}
 
                                                         {activeButton === 2 && (
-                                                            <ContestQuestionTwo />
+                                                            <ContestQuestionTwo user={user} />
                                                         )}
 
                                                         {activeButton === 3 && (
-                                                            <ContestQuestionThree />
+                                                            <ContestQuestionThree user={user} />
                                                         )}
                                                     </div>
                                                 </div>
@@ -227,7 +227,27 @@ const CodefinityPage = ({ user }) => {
                         }
                     </div>
                     :
-                    <PageNotFound />
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            height: '100vh', 
+                            flexDirection: 'column'
+                        }}
+                    >
+                        <div
+                            style={{
+                                border: '4px solid rgba(0, 0, 0, 0.1)',
+                                borderTop: '4px solid #7444ff',
+                                borderRadius: '50%',
+                                width: '80px',
+                                height: '80px',
+                                animation: 'spin 1s linear infinite',
+                            }}
+                        >
+                        </div>
+                    </div>
                 :
                 <>
                     <AssembleNav />

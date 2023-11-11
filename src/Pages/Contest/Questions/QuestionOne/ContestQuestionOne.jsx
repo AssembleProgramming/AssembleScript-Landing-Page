@@ -7,22 +7,16 @@ import { setupGlobalScope } from '../../../../Compiler/BackEnd/Scope/globalScope
 import { evaluate } from '../../../../Compiler/BackEnd/Interpreter/interpreter';
 import SERVER_LINK from '../../../../API';
 import { ToastContainer, toast } from 'react-toastify';
+import { startTime } from '../../StartTime';
+import QuestionOne from './QuestionOneCode';
+import QuestionOneTest from './QuestionOneTestCases';
 
 const ContestQuestionOne = ({ user }) => {
 
   const isDisabledBtn = user[0].QUESTION_ONE_STATUS;
   const teamMail = user[0].TEAM_MAIL;
 
-  let DEFAULTcode = `assemble factorial_loop(n) {
-ifWorthy(n == 0 || n == 1){
-  snap 1;
-}
-newAvenger result = 1;
-wakandaForEach(i in 1 to n) {
-  result = result * i;
-}
-snap result;
-}`;
+  let DEFAULTcode = QuestionOne;
 
 
   const [leftWidth, setLeftWidth] = useState('50%');
@@ -57,15 +51,8 @@ snap result;
   const handleCodeSubmit = () => {
     let inputText = getEditorData();
 
-    inputText += `assemble test_factorial_loop() {
-      vision("Testing factorial_loop...");
-      assertEqual(factorial_loop(0), 1);
-      assertEqual(factorial_loop(1), 1);
-      assertEqual(factorial_loop(5), 120);
-      assertEqual(factorial_loop(10), 3628800);
-    }
-    test_factorial_loop();
-    `
+    inputText += QuestionOneTest;
+    
     const parser = new Parser();
     const env = setupGlobalScope();
 
@@ -85,8 +72,11 @@ snap result;
   }
 
   const handleCorrectSubmission = async () => {
+    let ST = startTime;
+    const currentTime = new Date();
+    const timePassedInMinutes = (currentTime - ST) / (1000 * 60);
+
     try {
-      console.log(teamMail);
       const response = await fetch(`${SERVER_LINK}/submit-question-one`, {
         method: "POST",
         headers: {
@@ -94,6 +84,7 @@ snap result;
         },
         body: JSON.stringify({
           TEAM_MAIL: teamMail,
+          LAST_SUBMISSION_TIME_STAMP: timePassedInMinutes
         }),
       });
 
@@ -122,6 +113,8 @@ snap result;
       });
     }
   }
+
+
   return (
     <>
       <div className='question'>
@@ -188,7 +181,7 @@ snap result;
                               background: '#ffc1071f',
                               paddingTop: 50,
                               textAlign: 'center'
-                            }}>Judging...</p>
+                            }}>Judging...⚡️</p>
                           )
                           :
                           <></>
@@ -259,6 +252,7 @@ snap result;
                 onClick={() => {
                   if (handleCodeSubmit() === 1) {
                     setSubmissionAccepted(1);
+                    console.log('object')
                     handleCorrectSubmission(); // Call additional function here
                   } else {
                     setSubmissionAccepted(0);
