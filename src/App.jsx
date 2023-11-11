@@ -27,6 +27,7 @@ import SERVER_LINK from "./API";
 import CodefinityPage from "./Pages/Contest/CodefinityPage/CodefinityPage";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 import TermsOfService from "./Pages/TermsOfService/TermsOfService";
+import PracticeContest from "./Pages/Contest/PracticeContest/PracticeContest";
 
 const cookies = new Cookies();
 
@@ -104,6 +105,7 @@ function App() {
             <Route path="/contest/frequently-asked-questions" element={<FAQPage faqs={faqs} />} />
             <Route path="/contest/main-contest" element={<MainContest user={user} />} />
             <Route path="/contest/codefinity-2023" element={<CodefinityPage user={user} />} />
+            <Route path="/contest/practice" element={<PracticeContest />} />
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>

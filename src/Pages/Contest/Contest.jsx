@@ -177,15 +177,19 @@ const Contest = () => {
                                 <h2>Practice Contest</h2>
                                 <p>The practice contest is only to get familiarize with the platform</p>
                             </div>
+
                             <div className="buttons">
-                                <button>Practice</button>
+                                <Link to="/contest/practice">
+                                    <button>Practice</button>
+                                </Link>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
             <Footer />
-        </div>
+        </div >
     )
 }
 

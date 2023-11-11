@@ -156,18 +156,18 @@
                 .buttons {
                     button {
                         width: 100px;
-                        background-color: #7300ff; // Marvel red
+                        background-color: #4b32c3; 
                         color: #fff;
                         border: none;
                         padding: 10px 20px;
                         margin: 5px;
                         border-radius: 10px;
                         cursor: pointer;
-                        transition: background-color 0.3s; // Smooth button color transition
+                        transition: background-color 0.3s;
                     }
 
                     button:hover {
-                        background-color: rgb(99, 4, 195); // Slightly darker red on hover
+                        background-color: #5136d3;
                     }
                 }
             }
