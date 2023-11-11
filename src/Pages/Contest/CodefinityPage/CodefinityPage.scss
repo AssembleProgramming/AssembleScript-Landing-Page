@@ -3,6 +3,7 @@
     padding-bottom: 0px;
     width: 100vw;
     overflow-x: hidden;
+    overflow-y: hidden;
 
     .contest-page-container-inner {
         width: 100%;
@@ -28,7 +29,7 @@
                     font-weight: 800;
                     color: #ea1b24;
                     padding: 10px;
-                    font-size: 120px;
+                    font-size: 130px;
                     font-family: 'Inter', sans-serif;
                     margin: 0;
                 }
@@ -68,23 +69,27 @@
     }
 
     .contest-started {
-        padding-top: 25px;
+        padding-top: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
         width: 100vw;
-        height: 100vh;
+        height: 100%;
+        overflow-y: hidden;
 
         .contest-questions {
-            padding: 0 20px;
+            padding: 0 0px;
+            width: 100%;
+            overflow-y: hidden;
+            padding: 0 5px;
 
             .question-buttons {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 margin-bottom: 10px;
-                padding: 0 5px;
-                padding-top: 20px;
+                padding: 0 30px;
+                padding-top: 0px;
 
                 .countdown {
                     display: flex;
@@ -111,7 +116,7 @@
                             padding: 5px 10px;
 
                             span {
-                                color: #ea1b24;
+                                color: #4a32c3;
                             }
                         }
                     }

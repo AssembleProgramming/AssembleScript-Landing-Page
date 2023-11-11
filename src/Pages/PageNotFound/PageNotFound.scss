@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     overflow-y: hidden;
+    background-image: url("../../assets/images/assembleBg.png");
 
     .page-notfound-container-inner {
         width: 100%;
@@ -22,7 +23,7 @@
                 font-weight: 800;
                 color: #ea1b24;
                 padding: 10px;
-                font-size: 130px;
+                font-size: 140px;
                 padding-bottom: 0;
                 font-family: 'Inter', sans-serif;
                 margin: 0;
@@ -90,9 +91,9 @@
 
                 a {
                     margin: 0px !important;
-                    width: 100%;
+                    width: 100% !important;
                     button {
-                        width: 100%;
+                        width: 100% !important;
                     }
                 }
 

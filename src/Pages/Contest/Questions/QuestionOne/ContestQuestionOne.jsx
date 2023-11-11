@@ -222,7 +222,7 @@ snap result;
 
         <div className="right-code-main-container">
           <div className="editor-code-container">
-            <h1> <i style={{ color: "#2ac245" }} class="fa-solid fa-terminal"></i> Code</h1>
+            <h1> <i style={{ color: "#2ac245" }} class="fa-solid fa-code"></i> Code</h1>
             <Editor
               className='editor'
               height="88%"
