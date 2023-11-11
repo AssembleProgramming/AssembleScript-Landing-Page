@@ -5,6 +5,10 @@ import { startTime, endTime } from '../StartTime'
 import deadpool from "../../../assets/images/contest-not-started.webp"
 import { Link } from 'react-router-dom'
 import PageNotFound from '../../PageNotFound/PageNotFound'
+import ContestQuestionOne from '../Questions/QuestionOne/ContestQuestionOne'
+import ContestQuestionTwo from '../Questions/QuestionTwo/ContestQuestionTwo'
+import ContestQuestionThree from '../Questions/QuestionThree/ContestQuestionThree'
+import bg from "../../../assets/images/assembleBg.png"
 
 
 const calculateTimeRemaining = (startTime, endTime, currentTime) => {
@@ -39,7 +43,7 @@ const Countdown = ({ startTime, endTime, currentTime }) => {
             <div className="text">
                 {
                     currentTime < endTime ? (
-                        <h3>Contest will end in: <span>{timeRemaining}</span></h3>
+                        <h3>Time Left: <span>{timeRemaining}</span></h3>
                     ) : (
                         <span><b style={{ fontWeight: 600, color: "red" }}>The contest has ended.</b></span>
                     )
@@ -66,7 +70,7 @@ const CodefinityPage = ({ user }) => {
         }, 1000);
 
         const handleResize = () => {
-            setIsMobile(window.innerWidth < 768); // Adjust the threshold as needed
+            setIsMobile(window.innerWidth < 850);
         };
 
         // Initial check on mount
@@ -115,73 +119,87 @@ const CodefinityPage = ({ user }) => {
                                                     </Link>
                                                 </div>
                                             </div>
-                                            <div
-                                                style={{
-                                                    display: 'flex',
-                                                    justifyContent: 'center',
-                                                    width: "100%"
-                                                }}
-                                                className="dead-pool">
-                                                <img style={{
-                                                    width: "70%",
-                                                    position: 'relative',
-                                                    bottom: '100px',
-                                                    pointerEvents: 'none'
-                                                }} src={deadpool} alt="img" />
-                                            </div>
                                         </div>
                                     </div>
                                 )
                                 :
+                                // Contest started
                                 currentTime < endTime
                                     ?
-                                    (
-                                        <div className="contest-started">
-                                            <div className="contest-page-header">
-                                                <h1>Welcome to Codefinity-2023</h1>
-                                                <Countdown startTime={startTime} endTime={endTime} currentTime={currentTime} />
+                                    user[0].Registered
+                                        ?
+                                        (
+                                            <div className="contest-started">
+                                                <div className="contest-questions">
+                                                    <div className="question-buttons">
+                                                        <h5 style={{ margin: 0 }}>LoggedIn As:  <span style={{ color: "#4b32c3", fontWeight: 600 }}>{user[0].TEAM_NAME}</span> </h5>
+
+                                                        <div className='question-btn-container'>
+                                                            {[1, 2, 3].map((buttonNumber) => (
+                                                                <button
+                                                                    key={buttonNumber}
+                                                                    className={buttonNumber === activeButton ? 'active' : ''}
+                                                                    onClick={() => handleButtonClick(buttonNumber)}
+                                                                >
+                                                                    {buttonNumber}
+                                                                </button>
+                                                            ))}
+                                                        </div>
+
+                                                        <Countdown startTime={startTime} endTime={endTime} currentTime={currentTime} />
+                                                    </div>
+
+                                                    <div className="question-divs">
+                                                        {activeButton === 1 && (
+                                                            <ContestQuestionOne user={user} />
+                                                        )}
+
+                                                        {activeButton === 2 && (
+                                                            <ContestQuestionTwo />
+                                                        )}
+
+                                                        {activeButton === 3 && (
+                                                            <ContestQuestionThree />
+                                                        )}
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <h5 style={{
-                                                padding: "10px 0px"
-                                            }}>LoggedIn As:  <span style={{ color: "#4b32c3", fontWeight: 600 }}>{user[0].TEAM_NAME}</span> </h5>
-                                            <div className="contest-questions">
-                                                <div className="question-buttons">
-                                                    {[1, 2, 3].map((buttonNumber) => (
-                                                        <button
-                                                            key={buttonNumber}
-                                                            className={buttonNumber === activeButton ? 'active' : ''}
-                                                            onClick={() => handleButtonClick(buttonNumber)}
-                                                        >
-                                                            {buttonNumber}
-                                                        </button>
-                                                    ))}
-                                                </div>
-
-                                                <div className="question-divs">
-                                                    {activeButton === 1 && (
-                                                        <div className="question-text">
-                                                            <p>Question 1</p>
-                                                            {/* Add your question content for question 1 here */}
-                                                        </div>
-                                                    )}
-
-                                                    {activeButton === 2 && (
-                                                        <div className="question-text">
-                                                            <p>Question 2</p>
-                                                            {/* Add your question content for question 2 here */}
-                                                        </div>
-                                                    )}
-
-                                                    {activeButton === 3 && (
-                                                        <div className="question-text">
-                                                            <p>Question 3</p>
-                                                            {/* Add your question content for question 3 here */}
-                                                        </div>
-                                                    )}
-                                                </div>
+                                        )
+                                        :
+                                        <div style={{
+                                            width: "100%",
+                                            height: "93vh",
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                            flexDirection: "column",
+                                            backgroundImage: `url(${bg})`
+                                        }}>
+                                            <h1 style={{
+                                                fontWeight: 800,
+                                                color: "#ea1b24",
+                                                padding: 10,
+                                                fontSize: 130,
+                                                fontFamily: "'Inter', sans-serif",
+                                                margin: 0,
+                                            }}>Oops!</h1>
+                                            <h3>You are not registered for the contest.</h3>
+                                            <p>
+                                                If you have any questions or need assistance, please contact our support team at <a href="mailto:assemblescript@gmail.com">assemblescript@gmail.com</a>
+                                            </p>
+                                            <div id='buttons'>
+                                                <Link to="/playground">
+                                                    <button>Playground</button>
+                                                </Link>
+                                                <Link to="/">
+                                                    <button>Home</button>
+                                                </Link>
+                                                <Link to="/docs/latest">
+                                                    <button>Documentation</button>
+                                                </Link>
                                             </div>
                                         </div>
-                                    )
+                                    // Contest ended
                                     :
                                     (
                                         <div className='contest-page-container-inner'>
@@ -202,20 +220,6 @@ const CodefinityPage = ({ user }) => {
                                                             <button>Leaderboard</button>
                                                         </Link>
                                                     </div>
-                                                </div>
-                                                <div
-                                                    style={{
-                                                        display: 'flex',
-                                                        justifyContent: 'center',
-                                                        width: "100%"
-                                                    }}
-                                                    className="dead-pool">
-                                                    <img style={{
-                                                        width: "70%",
-                                                        position: 'relative',
-                                                        bottom: '100px',
-                                                        pointerEvents: 'none'
-                                                    }} src={deadpool} alt="img" />
                                                 </div>
                                             </div>
                                         </div>
@@ -240,7 +244,7 @@ const CodefinityPage = ({ user }) => {
                     </div>
                 </>
             }
-        </div>
+        </div >
     )
 }
 

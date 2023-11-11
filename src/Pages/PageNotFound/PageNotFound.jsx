@@ -30,20 +30,6 @@ const PageNotFound = () => {
                             </Link>
                         </div>
                     </div>
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            width: "100%"
-                        }}
-                        className="dead-pool">
-                        <img style={{
-                            width: "70%",
-                            position: 'relative',
-                            bottom: '150px',
-                            pointerEvents: 'none'
-                        }} src={deadpool} alt="img" />
-                    </div>
                 </div>
             </div>
         </div>

@@ -20,7 +20,7 @@ export function setupGlobalScope() {
     console.log("❌Test failed!");
     console.log("⚠️ Expected: ", expected);
     console.log("⚠️ Output: ", actual);
-    throw `Failed execution`;
+    throw `Your Code does not pass all the test cases. Please retry by checking your logic.`;
   };
   const env = new Environment();
   /** ===========================================================================================
