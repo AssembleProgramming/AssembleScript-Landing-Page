@@ -164,7 +164,9 @@ const Contest = () => {
                                 <Link to="/contest/main-contest">
                                     <button href="/contest/main-contest">Enter</button>
                                 </Link>
-                                <button id='ranking-btn'>Ranking</button>
+                                <Link to="/contest/codefinity-rankings">
+                                    <button id='ranking-btn'>Ranking</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
