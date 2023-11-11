@@ -37,12 +37,11 @@
 
                     // line-height: px;
                     .assemble-script {
-                        font-family: "avengerFont";
-                        letter-spacing: 3px;
+                        // letter-spacing: 3px;
                         font-size: 4.5vw;
                         color: #4b32c3;
-                        font-weight: 400;
-                        padding-top: 6px;
+                        font-weight: 600;
+                        // padding-top: 6px;
                     }
 
                     height: 25vh;
@@ -139,15 +138,14 @@
 
                 .home-title-container {
                     .main-title {
-                        font-size: 20px;
+                        font-size: 30px;
                         font-weight: 800;
                         line-height: 38px;
                         transition: all 0.3s ease;
 
                         .assemble-script {
                             font-family: 'Inter', sans-serif;
-                            // letter-spacing: 3px;
-                            font-size: 32px;
+                            font-size: 30px;
                             color: #4b32c3;
                             font-weight: 600;
                         }

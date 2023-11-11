@@ -25,7 +25,7 @@ const Rankings = () => {
                 console.error('Error fetching data:', error);
             }
             finally {
-                setLoading(true);
+                setLoading(false);
             }
         };
 
@@ -40,8 +40,6 @@ const Rankings = () => {
         // If CONTEST_SCORE is the same, sort by LAST_SUBMISSION_TIME_STAMP in ascending order
         return a.LAST_SUBMISSION_TIME_STAMP - b.LAST_SUBMISSION_TIME_STAMP;
     });
-    console.log(sortedData)
-
 
     return (
         <div style={{

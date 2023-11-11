@@ -220,7 +220,10 @@
 
     .main-contest-cards {
         padding: 30px 0px;
-
+        h3{
+             font-size: 30px;   
+             margin-top: 0;    
+        }
         .contest-cards {
             display: flex;
             justify-content: center;
@@ -233,6 +236,7 @@
                     margin: 0px;
                     margin-bottom: 30px;
                 }
+                
             }
 
             .practice-contest {
