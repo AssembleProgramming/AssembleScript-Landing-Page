@@ -279,8 +279,6 @@ export function tokenize(sourceCode: string): Token[] {
       tokens.push(getToken(src.shift(), TokenType.BinaryOperator, line_cnt));
     } else if (src[0] === ";") {
       tokens.push(getToken(src.shift(), TokenType.Semicolon, line_cnt));
-    } else if (src[0] === "!") {
-      tokens.push(getToken(src.shift(), TokenType.NotOperator, line_cnt));
     } else if (src[0] === ":") {
       tokens.push(getToken(src.shift(), TokenType.Colon, line_cnt));
     } else if (src[0] === ",") {
@@ -317,8 +315,11 @@ export function tokenize(sourceCode: string): Token[] {
       else if (isSkippable(src[0])) {
         // Skip the current character
         src.shift();
-      } // Handle unrecognized characters
-      else {
+      } else if (src[0] === "!") {
+        tokens.push(
+          getToken(src.shift(), TokenType.NotOperator, line_cnt),
+        );
+      } else {
         throw `SyntaxError:line:${line_cnt}: Unrecognised character ${
           src[0]
         } found.`;
