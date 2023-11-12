@@ -75,57 +75,59 @@ const Rankings = () => {
                 </p>
             </div>
 
-            <Table bordered>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Team Name</th>
-                        <th>Q 1) (10)</th>
-                        <th>Q 2) (20)</th>
-                        <th>Q 3) (20)</th>
-                        <th>Contest Score</th>
-                        <th>Finish Time <i class="fa-solid fa-circle-question" id="tool-tip"></i></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {loading ? (
-                        // Display loading skeleton while waiting for data
+            <div className="tab">
+                <Table bordered>
+                    <thead>
                         <tr>
-                            <td colSpan="7">
-                                <Skeleton count={20} height={35} />
-                            </td>
+                            <th>Rank</th>
+                            <th>Team Name</th>
+                            <th>Q 1) (10)</th>
+                            <th>Q 2) (20)</th>
+                            <th>Q 3) (20)</th>
+                            <th>Contest Score</th>
+                            <th>Finish Time <i class="fa-solid fa-circle-question" id="tool-tip"></i></th>
                         </tr>
-                    ) : (
-                        // Display the sorted data in the table
-                        sortedData.map((entry, index) => (
-                            <tr key={entry._id}>
-                                <td>{((currentPage - 1) * 20) + (index + 1)}</td>
-                                <td>{entry.TEAM_NAME}</td>
-                                <td>{
-                                    entry.QUESTION_ONE_STATUS ?
-                                        <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
-                                        <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
-                                }
+                    </thead>
+                    <tbody>
+                        {loading ? (
+                            // Display loading skeleton while waiting for data
+                            <tr>
+                                <td colSpan="7">
+                                    <Skeleton count={20} height={35} />
                                 </td>
-                                <td>{
-                                    entry.QUESTION_TWO_STATUS ?
-                                        <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
-                                        <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
-                                }
-                                </td>
-                                <td>{
-                                    entry.QUESTION_THREE_STATUS ?
-                                        <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
-                                        <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
-                                }
-                                </td>
-                                <td>{entry.CONTEST_SCORE}</td>
-                                <td>{entry.LAST_SUBMISSION_TIME_STAMP ? entry.LAST_SUBMISSION_TIME_STAMP : "--"}</td>
                             </tr>
-                        ))
-                    )}
-                </tbody>
-            </Table>
+                        ) : (
+                            // Display the sorted data in the table
+                            sortedData.map((entry, index) => (
+                                <tr key={entry._id}>
+                                    <td>{((currentPage - 1) * 20) + (index + 1)}</td>
+                                    <td>{entry.TEAM_NAME}</td>
+                                    <td>{
+                                        entry.QUESTION_ONE_STATUS ?
+                                            <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
+                                            <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
+                                    }
+                                    </td>
+                                    <td>{
+                                        entry.QUESTION_TWO_STATUS ?
+                                            <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
+                                            <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
+                                    }
+                                    </td>
+                                    <td>{
+                                        entry.QUESTION_THREE_STATUS ?
+                                            <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
+                                            <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
+                                    }
+                                    </td>
+                                    <td>{entry.CONTEST_SCORE}</td>
+                                    <td>{entry.LAST_SUBMISSION_TIME_STAMP ? entry.LAST_SUBMISSION_TIME_STAMP : "--"}</td>
+                                </tr>
+                            ))
+                        )}
+                    </tbody>
+                </Table>
+            </div>
 
             {/* Add Pagination */}
             <div className="pagination">
