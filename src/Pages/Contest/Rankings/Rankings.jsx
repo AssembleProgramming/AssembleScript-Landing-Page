@@ -5,6 +5,8 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import './Rankings.scss';
 import SERVER_LINK from '../../../API';
 import AssembleNav from '../../../Components/Navbar/Navbar';
+import { Tooltip } from 'react-tooltip';
+
 
 const Rankings = () => {
     const [contestRegister, setContestRegister] = useState([]);
@@ -44,50 +46,77 @@ const Rankings = () => {
     return (
         <div style={{
             marginTop: 72,
-            padding: 40
+            padding: 40,
+            paddingTop: 20
         }}>
             <AssembleNav />
-            <h2>Codefinity Rankings</h2>
-            <Table striped bordered>
+            <h2 style={{ marginBottom: 10 }}>Ranking of Codefinity-2023 </h2>
+            <div className="how-we-calculate-ranking" style={{ marginBottom: 30 }}>
+                <h5>Note</h5>
+                <p>
+                    <strong style={{ color: "#4b32c3" }}>How We Calculate Ranking?</strong>
+                </p>
+                <p>
+                    The ranking is determined based on the contest score and the time of submission. Each team's contest score is a cumulative total of points earned across different problems. The teams are then ranked in descending order of their contest scores.
+                    <br />
+                    In the event of tied contest scores, we further sort the teams based on the timestamp of their last submission. Teams with earlier submissions are given a higher rank. This ensures a fair and dynamic ranking that reflects both performance and timely participation.
+                </p>
+                <p>
+                    <strong style={{ color: "#4b32c3" }}>How We Calculate Timestamp?</strong>
+                </p>
+                <p>
+                    To calculate the timestamp, we use the contest start time (ST) as a reference point. The current time is obtained, and the duration in minutes since the start of the contest is calculated using the formula:
+                </p>
+                <pre>
+                    Finish Time = (currentSubmissionTime - contestStartTime) / (1000 * 60)
+                </pre>
+                <p>
+                    This timestamp is then used to determine the order of submissions in cases where teams have the same contest score.
+                </p>
+            </div>
+
+            <Table bordered>
                 <thead>
                     <tr>
+                        <th>Rank</th>
                         <th>Team Name</th>
-                        <th>Problem 1</th>
-                        <th>Problem 2</th>
-                        <th>Problem 3</th>
+                        <th>Q 1) (10)</th>
+                        <th>Q 2) (20)</th>
+                        <th>Q 3) (20)</th>
                         <th>Contest Score</th>
-                        <th>Submission Time</th>
+                        <th>Finish Time <i class="fa-solid fa-circle-question" id="tool-tip"></i></th>
                     </tr>
                 </thead>
                 <tbody>
                     {loading ? (
                         // Display loading skeleton while waiting for data
                         <tr>
-                            <td colSpan="6">
+                            <td colSpan="7">
                                 <Skeleton count={20} height={35} />
                             </td>
                         </tr>
                     ) : (
                         // Display the sorted data in the table
-                        sortedData.map((entry) => (
+                        sortedData.map((entry, index) => (
                             <tr key={entry._id}>
-                                <td>{entry.LEADER_NAME}</td>
+                                <td>{((currentPage - 1) * 20) + (index + 1)}</td>
+                                <td>{entry.TEAM_NAME}</td>
                                 <td>{
                                     entry.QUESTION_ONE_STATUS ?
-                                        <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}>{entry.QUESTION_ONE_STATUS.toString()}</p> :
-                                        <p style={{ color: "red", margin: 0, background: "#ffeaea" }}>{entry.QUESTION_ONE_STATUS.toString()}</p>
+                                        <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
+                                        <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
                                 }
                                 </td>
                                 <td>{
                                     entry.QUESTION_TWO_STATUS ?
-                                        <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}>{entry.QUESTION_TWO_STATUS.toString()}</p> :
-                                        <p style={{ color: "red", margin: 0, background: "#ffeaea" }}>{entry.QUESTION_TWO_STATUS.toString()}</p>
+                                        <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
+                                        <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
                                 }
                                 </td>
                                 <td>{
                                     entry.QUESTION_THREE_STATUS ?
-                                        <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}>{entry.QUESTION_THREE_STATUS.toString()}</p> :
-                                        <p style={{ color: "red", margin: 0, background: "#ffeaea" }}>{entry.QUESTION_THREE_STATUS.toString()}</p>
+                                        <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
+                                        <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
                                 }
                                 </td>
                                 <td>{entry.CONTEST_SCORE}</td>
@@ -104,6 +133,20 @@ const Rankings = () => {
                 <span>{currentPage} / 5</span>
                 <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === 5}>Next</button>
             </div>
+
+
+            <Tooltip anchorSelect="#tool-tip" place="top">
+                <p style={{
+                    textAlign: "center",
+                    color: "#fff",
+                    margin: 0,
+                    fontWeight: 600
+                }}>
+                    Acceptance time of your
+                    <br />
+                    last solved problem
+                </p>
+            </Tooltip>
         </div>
     );
 };
