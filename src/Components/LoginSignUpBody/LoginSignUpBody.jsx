@@ -153,7 +153,7 @@ const LoginSignUpBody = ({ onLogin }) => {
         <div className="login-section">
           <div>
             <img width={50} src={logo} alt="logo" />
-            <h2>Log in to AssembleScript</h2>
+            <h2>Log In to AssembleScript</h2>
           </div>
           <form onSubmit={handleLogin}>
             <label>Team Email address</label>
@@ -204,14 +204,14 @@ const LoginSignUpBody = ({ onLogin }) => {
           </form>
           <p>
             Don't have an account? {' '}
-            <span onClick={toggleLoginRegister}>Register</span>.
+            <span onClick={toggleLoginRegister}>Sign-Up</span>.
           </p>
         </div>
       ) : (
         <div className="register-section">
           <div>
             <img width={50} src={logo} alt="logo" />
-            <h2>Register to AssembleScript</h2>
+            <h2>Sign Up to AssembleScript</h2>
           </div>
 
           <form onSubmit={handleRegistration}>
@@ -265,7 +265,7 @@ const LoginSignUpBody = ({ onLogin }) => {
                 > <a target='_blank' href="/terms-of-service">Terms of Use and Privacy Policy</a>.</span>
               </label>
             </div>
-            <button type='submit' className='primary-button register-in-button' disabled={isButtonDisabled} >Register with Email</button>
+            <button type='submit' className='primary-button register-in-button' disabled={isButtonDisabled} >SignUp with Email</button>
           </form>
           <p>
             Already have an account?{' '}

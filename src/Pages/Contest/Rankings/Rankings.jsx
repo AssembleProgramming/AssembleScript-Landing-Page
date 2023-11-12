@@ -12,6 +12,7 @@ const Rankings = () => {
     const [contestRegister, setContestRegister] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
+    const [numberAvailablePages, setNumberAvailablePages] = useState(1);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,6 +24,14 @@ const Rankings = () => {
                 }
                 const data = await response.json();
                 setContestRegister(data.teams);
+
+                if (data.count % 20 == 0) {
+                    const pageNumbers = data.count / 20;
+                    setNumberAvailablePages(pageNumbers);
+                } else {
+                    const pageNumbers = Math.floor(data.count / 20);
+                    setNumberAvailablePages(pageNumbers + 1);
+                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -52,16 +61,16 @@ const Rankings = () => {
             <AssembleNav />
             <h2 style={{ marginBottom: 10 }}>Ranking of Codefinity-2023 </h2>
             <div className="how-we-calculate-ranking" style={{ marginBottom: 30 }}>
-                <h5>Note</h5>
-                <p>
-                    <strong style={{ color: "#4b32c3" }}>How We Calculate Ranking?</strong>
+                <h5>Note: </h5>
+                <p style={{ marginBottom: 5 }}>
+                    <strong style={{ color: "#4b32c3"}}>How We Calculate Ranking?</strong>
                 </p>
                 <p>
                     The ranking is determined based on the contest score and the time of submission. Each team's contest score is a cumulative total of points earned across different problems. The teams are then ranked in descending order of their contest scores.
                     <br />
                     In the event of tied contest scores, we further sort the teams based on the timestamp of their last submission. Teams with earlier submissions are given a higher rank. This ensures a fair and dynamic ranking that reflects both performance and timely participation.
                 </p>
-                <p>
+                <p style={{ marginBottom: 5 }}>
                     <strong style={{ color: "#4b32c3" }}>How We Calculate Timestamp?</strong>
                 </p>
                 <p>
@@ -132,8 +141,8 @@ const Rankings = () => {
             {/* Add Pagination */}
             <div className="pagination">
                 <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
-                <span>{currentPage} / 5</span>
-                <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === 5}>Next</button>
+                <span>{currentPage} / {numberAvailablePages} </span>
+                <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage >= numberAvailablePages}>Next</button>
             </div>
 
 
