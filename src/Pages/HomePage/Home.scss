@@ -1,7 +1,6 @@
 .section1 {
     height: 100vh;
     border-bottom: 1px solid #e5e7eb;
-    background-image: url('../../assets/images/assembleBg.png');
 
     .webgl {
         height: 100vh;
@@ -19,32 +18,24 @@
         position: absolute;
         top: 0;
         left: 0;
-        padding: 160px 100px 0px 100px;
+        padding: 140px 100px 0px 100px;
 
         .left {
             display: flex;
             flex-direction: column;
-            width: 49vw;
+            width: 40vw;
+            height: 100%;
 
             .home-title-container {
                 .main-title {
-                    font-size: 4vw;
+                    font-size: 3.5vw;
                     font-weight: 800;
 
-                    #line-break {
-                        display: none;
-                    }
-
-                    // line-height: px;
                     .assemble-script {
-                        // letter-spacing: 3px;
-                        font-size: 4.5vw;
                         color: #4b32c3;
-                        font-weight: 600;
-                        // padding-top: 6px;
                     }
 
-                    height: 25vh;
+                    // height: 25vh;
                 }
             }
 
@@ -52,6 +43,9 @@
                 margin-top: 15px;
                 font-size: 20px;
                 color: #667085;
+                position: relative;
+                top: 0;
+                left: 0;
             }
 
             .main-btn-container {
@@ -99,11 +93,6 @@
                 .home-title-container {
                     .main-title {
                         font-size: 3vw;
-                        height: 20vh;
-
-                        #line-break {
-                            display: initial;
-                        }
                     }
                 }
             }
@@ -116,7 +105,6 @@
                 .home-title-container {
                     .main-title {
                         font-size: 2.8vw;
-                        height: 20vh;
                     }
                 }
             }
@@ -138,20 +126,13 @@
 
                 .home-title-container {
                     .main-title {
-                        font-size: 30px;
+                        font-size: 35px;
                         font-weight: 800;
                         line-height: 38px;
                         transition: all 0.3s ease;
 
                         .assemble-script {
-                            font-family: 'Inter', sans-serif;
-                            font-size: 30px;
                             color: #4b32c3;
-                            font-weight: 600;
-                        }
-
-                        #line-break {
-                            display: block;
                         }
                     }
 
@@ -214,7 +195,6 @@
 #section2 {
     height: 100%;
     display: flex;
-    background-image: url('../../assets/images/assembleBg.png');
 
     .canvas-container {
         width: 50vw;
@@ -289,7 +269,6 @@
 
 @media (max-width: 850px) {
     #section2 {
-
         margin-top: 120px;
         height: 100%;
         display: flex;
@@ -373,7 +352,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('../../assets/images/assembleBg.png');
 
     .section3-title {
         width: 100%;

@@ -1,12 +1,14 @@
+// Footer.js
+
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import styled from "styled-components";
 
 const FooterContainer = styled.footer`
   background-color: #f8f9fa;
-  padding: 40px;
+  padding: 20px;
   color: #6c757d;
-  padding-top: 70px;
+  margin-top: 50px;
 `;
 
 const FooterText = styled.p`
@@ -14,21 +16,7 @@ const FooterText = styled.p`
   margin-bottom: 10px;
 `;
 
-const CopyrightText = styled.p`
-  font-size: 14px;
-  margin: 0px;
-  color: #6c757d;
-`;
-
 const DeveloperLink = styled.a`
-  color: #4b32c3;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const CreditLink = styled.a`
   color: #4b32c3;
   text-decoration: none;
   &:hover {
@@ -42,6 +30,12 @@ const ContactEmail = styled.a`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+const CopyrightText = styled.p`
+  font-size: 14px;
+  margin: 0px;
+  color: #6c757d;
 `;
 
 const Footer = () => {
@@ -75,124 +69,6 @@ const Footer = () => {
           </Col>
         </Row>
 
-
-        <Row>
-          <Col className="text-center">
-            <FooterText>
-              Credits:
-              <CreditLink
-                href="https://skfb.ly/6QWMH"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                "Captain America Shield" by ElliotGriffiths ,
-              </CreditLink>
-              <CreditLink
-                href="https://skfb.ly/oIPZn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                "Disney Infinity 3.0 - AVG Hulkbuster" by JohnLogostini,
-              </CreditLink>
-
-              <CreditLink
-                href="https://skfb.ly/oIT6y"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                "Disney Infinity 3.0 - AVG Black Panther" by JohnLogostini,
-              </CreditLink>
-
-              <CreditLink
-                href="https://skfb.ly/oIRB9"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                "Disney Infinity 2.0 - SPD Spider-Man" by JohnLogostini,
-              </CreditLink>
-
-              <CreditLink
-                href="https://skfb.ly/oIWCn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                "Disney Infinity 2.0 - AVG Iron Man" by JohnLogostini,
-              </CreditLink>
-
-              <CreditLink
-                href="https://skfb.ly/oJsKF"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                "Disney Infinity 2.0 - AVG Falcon Movie" by JohnLogostini,
-              </CreditLink>
-
-              <CreditLink
-                href="https://skfb.ly/oIUUz"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                "Disney Infinity 3.0 - AVG Ultron" by JohnLogostini,
-              </CreditLink>
-
-              <CreditLink
-                href="https://skfb.ly/oIUR9"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                "Disney Infinity 3.0 - ANT Ant-Man" by JohnLogostini,
-              </CreditLink>
-
-              <CreditLink
-                href="https://skfb.ly/oIX8D"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                "Disney Infinity 3.0 - AVG Vision" by JohnLogostini,
-              </CreditLink>
-
-
-              <CreditLink
-                href="https://skfb.ly/oJA6n"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                "Disney Infinity 2.0 - AVG Winter Soldier" by JohnLogostini,
-              </CreditLink>
-
-              <CreditLink
-                href="https://skfb.ly/oIX6X"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                "DI 3.0 - AVG Captain America The First Avenger" by JohnLogostini,
-              </CreditLink>
-
-              {" "}
-              all are licensed under Creative Commons Attribution (
-              <CreditLink
-                href="http://creativecommons.org/licenses/by-nc/4.0/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                CC BY 4.0
-              </CreditLink>
-              ). <br />
-            </FooterText>
-          </Col>
-        </Row>
-
-
-        <Row>
-          <Col className="text-center">
-            <FooterText>
-              For inquiries, contact us at{" "}
-              <ContactEmail href="mailto:assemblescript@gmail.com">
-                assemblescript@gmail.com
-              </ContactEmail>
-            </FooterText>
-          </Col>
-        </Row>
         <Row>
           <Col className="text-center">
             <CopyrightText>
@@ -200,11 +76,15 @@ const Footer = () => {
               Unauthorized use, reproduction, or distribution of this software
               is strictly prohibited. Avengers, assemble your scripts and fight
               against evil forces!
+              For inquiries, contact us at{" "}
+              <ContactEmail href="mailto:assemblescript@gmail.com">
+                assemblescript@gmail.com
+              </ContactEmail>
             </CopyrightText>
           </Col>
         </Row>
       </Container>
-    </FooterContainer>
+    </FooterContainer >
   );
 };
 

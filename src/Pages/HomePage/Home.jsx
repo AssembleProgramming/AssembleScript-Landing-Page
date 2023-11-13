@@ -100,7 +100,7 @@ const Home = () => {
                                     ]}
                                     wrapper="span"
                                     speed={50}
-                                    style={{ display: 'inline-block' }}
+                                    // style={{ display: 'inline-block' }}
                                 />
                             </h1>
                         </div>
