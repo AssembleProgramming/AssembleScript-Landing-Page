@@ -9,6 +9,7 @@ import ContestQuestionOne from '../Questions/QuestionOne/ContestQuestionOne'
 import ContestQuestionTwo from '../Questions/QuestionTwo/ContestQuestionTwo'
 import ContestQuestionThree from '../Questions/QuestionThree/ContestQuestionThree'
 import bg from "../../../assets/images/assembleBg.png"
+import { useNavigate } from "react-router-dom"
 
 
 const calculateTimeRemaining = (startTime, endTime, currentTime) => {
@@ -59,6 +60,8 @@ const CodefinityPage = ({ user }) => {
 
     const [isMobile, setIsMobile] = useState(false);
 
+    const navigate = useNavigate();
+
     const handleButtonClick = (buttonNumber) => {
         setActiveButton(buttonNumber);
     };
@@ -86,6 +89,10 @@ const CodefinityPage = ({ user }) => {
             clearInterval(timer);
         };
     }, []);
+
+    const redirect = () => {
+        navigate(`/contest/main-contest`);
+    }
 
     return (
         <div>
@@ -227,27 +234,7 @@ const CodefinityPage = ({ user }) => {
                         }
                     </div>
                     :
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            height: '100vh', 
-                            flexDirection: 'column'
-                        }}
-                    >
-                        <div
-                            style={{
-                                border: '4px solid rgba(0, 0, 0, 0.1)',
-                                borderTop: '4px solid #7444ff',
-                                borderRadius: '50%',
-                                width: '80px',
-                                height: '80px',
-                                animation: 'spin 1s linear infinite',
-                            }}
-                        >
-                        </div>
-                    </div>
+                    redirect()
                 :
                 <>
                     <AssembleNav />

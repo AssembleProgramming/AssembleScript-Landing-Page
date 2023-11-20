@@ -57,3 +57,24 @@ th {
   color: #4b32c3 !important;
   background: #f6f6fe !important;
 }
+
+
+::-webkit-scrollbar {
+  height: 0px;
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #555555;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

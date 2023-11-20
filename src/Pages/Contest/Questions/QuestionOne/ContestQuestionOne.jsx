@@ -52,7 +52,7 @@ const ContestQuestionOne = ({ user }) => {
     let inputText = getEditorData();
 
     inputText += QuestionOneTest;
-    
+
     const parser = new Parser();
     const env = setupGlobalScope();
 
@@ -171,7 +171,6 @@ const ContestQuestionOne = ({ user }) => {
                           (
                             <p style={{
                               color: "white",
-                              padding: 10,
                               margin: 0,
                               fontWeight: 600,
                               fontSize: 14,
@@ -179,7 +178,7 @@ const ContestQuestionOne = ({ user }) => {
                               height: "100%",
                               border: '2px solid #ffc107',
                               background: '#ffc1071f',
-                              paddingTop: 50,
+                              paddingTop: 65,
                               textAlign: 'center'
                             }}>Judging...⚡️</p>
                           )
@@ -190,8 +189,8 @@ const ContestQuestionOne = ({ user }) => {
                       <p
                         style={{
                           color: "white",
-                          padding: 50,
-                          margin: 0,
+                          paddingTop: 65,
+                          margin: "auto",
                           fontWeight: 600,
                           fontSize: 18,
                           textAlign: 'center',

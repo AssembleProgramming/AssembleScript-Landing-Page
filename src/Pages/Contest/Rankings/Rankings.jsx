@@ -12,27 +12,20 @@ import Footer from '../../../Components/Footer/Footer';
 const Rankings = () => {
     const [contestRegister, setContestRegister] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [numberAvailablePages, setNumberAvailablePages] = useState(1);
 
     useEffect(() => {
+       
         const fetchData = async () => {
+            
             setLoading(true);
             try {
-                const response = await fetch(`${SERVER_LINK}/contest-register-all?page=${currentPage}`);
+                const response = await fetch(`${SERVER_LINK}/contest-register-all`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 const data = await response.json();
                 setContestRegister(data.teams);
 
-                if (data.count % 20 == 0) {
-                    const pageNumbers = data.count / 20;
-                    setNumberAvailablePages(pageNumbers);
-                } else {
-                    const pageNumbers = Math.floor(data.count / 20);
-                    setNumberAvailablePages(pageNumbers + 1);
-                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -42,14 +35,12 @@ const Rankings = () => {
         };
 
         fetchData();
-    }, [currentPage]);
+    },[]);
 
     const sortedData = contestRegister.sort((a, b) => {
-        // Sort by CONTEST_SCORE in descending order
         if (b.CONTEST_SCORE !== a.CONTEST_SCORE) {
             return b.CONTEST_SCORE - a.CONTEST_SCORE;
         }
-        // If CONTEST_SCORE is the same, sort by LAST_SUBMISSION_TIME_STAMP in ascending order
         return a.LAST_SUBMISSION_TIME_STAMP - b.LAST_SUBMISSION_TIME_STAMP;
     });
 
@@ -111,7 +102,7 @@ const Rankings = () => {
                                 // Display the sorted data in the table
                                 sortedData.map((entry, index) => (
                                     <tr key={entry._id}>
-                                        <td>{((currentPage - 1) * 20) + (index + 1)}</td>
+                                        <td>{(index + 1)}</td>
                                         <td>{entry.TEAM_NAME}</td>
                                         <td>{
                                             entry.QUESTION_ONE_STATUS ?
@@ -139,14 +130,6 @@ const Rankings = () => {
                         </tbody>
                     </Table>
                 </div>
-
-                {/* Add Pagination */}
-                <div className="pagination">
-                    <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
-                    <span>{currentPage} / {numberAvailablePages} </span>
-                    <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage >= numberAvailablePages}>Next</button>
-                </div>
-
 
                 <Tooltip anchorSelect="#tool-tip" place="top">
                     <p style={{
