@@ -25,7 +25,7 @@ const Logininfo = ({ user }) => {
           </div>
           <div className="no-login">
             <div>
-              <h3>no user logged in</h3>
+              <h3>No user logged in</h3>
               <p>login to register for contest!</p>
             </div>
             <Link to="/login-signup">

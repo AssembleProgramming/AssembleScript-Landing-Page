@@ -90,6 +90,7 @@ function App() {
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Home />} />
+
                 <Route path="/docs/*" element={<Docs />} />
                 <Route path="/docs/latest" element={<Docs />} />
                 <Route path="/docs/keywords" element={<Keywords />} />
@@ -104,6 +105,7 @@ function App() {
                 <Route path="/docs/operators" element={<Operators />} />
                 <Route path="/docs/builtinmethods" element={<Builtinmethods />} />
                 <Route path="/docs/functions" element={<Functions />} />
+
                 <Route path="/playground" element={<Playground />} />
 
                 <Route path="/team" element={<Team />} />
@@ -111,7 +113,7 @@ function App() {
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/terms-of-service" element={<TermsOfService />} />
 
-
+                
                 <Route path="/contest" element={<Contest />} />
                 <Route path="/contest/frequently-asked-questions" element={<FAQPage faqs={faqs} />} />
                 <Route path="/contest/main-contest" element={<MainContest user={user} />} />

@@ -14,9 +14,9 @@ const Rankings = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-       
+
         const fetchData = async () => {
-            
+
             setLoading(true);
             try {
                 const response = await fetch(`${SERVER_LINK}/contest-register-all`);
@@ -35,7 +35,7 @@ const Rankings = () => {
         };
 
         fetchData();
-    },[]);
+    }, []);
 
     const sortedData = contestRegister.sort((a, b) => {
         if (b.CONTEST_SCORE !== a.CONTEST_SCORE) {
@@ -78,7 +78,9 @@ const Rankings = () => {
                 </div>
 
                 <div className="tab">
-                    <Table bordered>
+                    <Table style={{
+                        boxShadow: "0px 0px 5px 5px rgba(0, 0, 0, 0.08)"
+                    }} bordered>
                         <thead>
                             <tr>
                                 <th>Rank</th>
@@ -99,33 +101,44 @@ const Rankings = () => {
                                     </td>
                                 </tr>
                             ) : (
-                                // Display the sorted data in the table
-                                sortedData.map((entry, index) => (
-                                    <tr key={entry._id}>
-                                        <td>{(index + 1)}</td>
-                                        <td>{entry.TEAM_NAME}</td>
-                                        <td>{
-                                            entry.QUESTION_ONE_STATUS ?
-                                                <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
-                                                <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
-                                        }
+                                sortedData.size
+                                    ?
+                                    sortedData.map((entry, index) => (
+                                        <tr key={entry._id}>
+                                            <td>{(index + 1)}</td>
+                                            <td>{entry.TEAM_NAME}</td>
+                                            <td>{
+                                                entry.QUESTION_ONE_STATUS ?
+                                                    <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
+                                                    <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
+                                            }
+                                            </td>
+                                            <td>{
+                                                entry.QUESTION_TWO_STATUS ?
+                                                    <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
+                                                    <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
+                                            }
+                                            </td>
+                                            <td>{
+                                                entry.QUESTION_THREE_STATUS ?
+                                                    <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
+                                                    <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
+                                            }
+                                            </td>
+                                            <td>{entry.CONTEST_SCORE}</td>
+                                            <td>{entry.LAST_SUBMISSION_TIME_STAMP ? entry.LAST_SUBMISSION_TIME_STAMP : "--"}</td>
+                                        </tr>
+                                    ))
+                                    :
+                                    <tr>
+                                        <td colSpan="7">
+                                            <h3 style={{
+                                                margin: 0,
+                                                padding: "80px 0",
+                                                color: "#6c6c6c"
+                                            }}>Nobody has submitted</h3>
                                         </td>
-                                        <td>{
-                                            entry.QUESTION_TWO_STATUS ?
-                                                <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
-                                                <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
-                                        }
-                                        </td>
-                                        <td>{
-                                            entry.QUESTION_THREE_STATUS ?
-                                                <p style={{ color: "green", margin: 0, background: "#cbfdcbcc" }}><i class="fa-solid fa-shield-halved"></i> Solved</p> :
-                                                <p style={{ color: "red", margin: 0, background: "#ffeaea" }}><i class="fa-solid fa-spider"></i> Un-Solved</p>
-                                        }
-                                        </td>
-                                        <td>{entry.CONTEST_SCORE}</td>
-                                        <td>{entry.LAST_SUBMISSION_TIME_STAMP ? entry.LAST_SUBMISSION_TIME_STAMP : "--"}</td>
                                     </tr>
-                                ))
                             )}
                         </tbody>
                     </Table>
