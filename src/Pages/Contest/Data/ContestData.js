@@ -4,13 +4,13 @@ export const ContestDetails = [
         list: [
             "The contest is open to programmers of all skill levels and backgrounds.",
             "Participants must have access to the internet to browse the documentation of AssembleScript.",
-            "As precaution we will be providing you the code written in any of the following mentioned language and you just have to translate that into AssembleScript. So proficiency in at least one of the following language is required. C, C++, JavaScript, TypeScript, Python, Rust, GO etc."
+            "As precaution we will be providing you the code written in any of the following mentioned language and you just have to translate that into AssembleScript. So proficiency in at least one of the following language is required. C, C++, JavaScript, TypeScript, Python."
         ]
     },
     {
         point: "Code Translation",
         list: [
-            "Participants will be provided with code snippets in languages like C, C++, JavaScript, TypeScript, Python, Rust, GO etc.",
+            "Participants will be provided with code snippets in languages like C, C++, JavaScript, TypeScript, Python.",
             "Their task is to translate the given code into AssembleScript.",
             "Submissions will be evaluated for correctness, adherence to AssembleScript syntax, and efficient usage of the language."
         ]

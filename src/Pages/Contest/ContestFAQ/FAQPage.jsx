@@ -20,7 +20,7 @@ const FAQPage = ({ faqs }) => {
                         className={`faq-question ${activeIndex === index ? 'active' : ''}`}
                         onClick={() => toggleAccordion(index)}
                     >
-                        <h2 className='question'>{faq.question}</h2>
+                        <h2>{faq.question}</h2>
                     </div>
                     <div
                         className={`faq-answer ${activeIndex === index ? 'open' : ''}`}

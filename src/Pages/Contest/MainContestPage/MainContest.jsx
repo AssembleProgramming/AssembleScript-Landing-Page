@@ -115,7 +115,7 @@ const MainContest = ({ user }) => {
                   <h6 style={{
                     color: "#dc0202",
                     border: "2px solid #dc0202",
-                    background: "#80000024",
+                    background: "#ff000017",
                     padding: 16,
                     borderRadius: 6
                   }}>
