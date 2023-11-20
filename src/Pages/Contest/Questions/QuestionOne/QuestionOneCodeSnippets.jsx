@@ -6,7 +6,7 @@ import 'prismjs/themes/prism-okaidia.css';
 import '../CodeSnippet.scss';
 
 const QuestionOneCodeSnippets = () => {
-    const languages = ['C', 'CPP', 'JavaScript', 'TypeScript', 'Python', 'Rust', 'GO'];
+    const languages = ['C', 'CPP', 'JavaScript', 'TypeScript', 'Python'];
     const [selectedLanguage, setSelectedLanguage] = useState('C');
 
     const codeSnippets = {
@@ -14,9 +14,7 @@ const QuestionOneCodeSnippets = () => {
         CPP: '#include <iostream>\n\nint main() {\n  std::cout << "Hello, World!\\n";\n  return 0;\n}',
         JavaScript: 'console.log("Hello, World!");',
         TypeScript: 'console.log("Hello, World!");',
-        Python: 'print("Hello, World!")',
-        Rust: 'fn main() {\n    println!("Hello, World!");\n}',
-        GO: 'package main\n\nimport "fmt"\n\nfunc main() {\n  fmt.Println("Hello, World!")\n}',
+        Python: 'print("Hello, World!")'
     };
 
     const handleLanguageChange = (selected) => {
@@ -25,11 +23,11 @@ const QuestionOneCodeSnippets = () => {
 
     return (
         <div className="code-snippet-container">
-            <h1><i style={{color: "#1990ff"}} class="fa-solid fa-file-lines"></i> Code Snippet</h1>
+            <h1><i style={{ color: "#1990ff" }} class="fa-solid fa-file-lines"></i> Code Snippet</h1>
             <div className="language-dropdown">
                 <p>Select the Language: </p>
                 <Dropdown onSelect={handleLanguageChange}>
-                    <Dropdown.Toggle  variant="secondary" id="dropdown-basic">
+                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                         {selectedLanguage}
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
