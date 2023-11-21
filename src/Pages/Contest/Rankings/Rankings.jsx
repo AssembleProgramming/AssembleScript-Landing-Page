@@ -101,7 +101,7 @@ const Rankings = () => {
                                     </td>
                                 </tr>
                             ) : (
-                                sortedData.size
+                                sortedData.length
                                     ?
                                     sortedData.map((entry, index) => (
                                         <tr key={entry._id}>
