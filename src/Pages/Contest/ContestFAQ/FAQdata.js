@@ -5,7 +5,7 @@ const faqs = [
     },
     {
         question: 'Q) Who can participate in the contest?',
-        answer: 'The contest is open to individuals and teams of all skill levels and backgrounds.',
+        answer: 'The contest is open to individuals of all skill levels and backgrounds.',
     },
     {
         question: 'Q) How do I register for the contest?',
@@ -13,7 +13,7 @@ const faqs = [
     },
     {
         question: 'Q) Can I participate as part of a team?',
-        answer: 'Yes, participants can choose to work individually or as part of a team. Teams must declare their members.',
+        answer: 'Team participation are not allowed.',
     },
     {
         question: 'Q) How are submissions evaluated?',

@@ -52,7 +52,7 @@ const data = [
     {
         title: "Registration",
         icon: `<i class="fa-solid fa-user-plus"></i>`,
-        info: "Registration is open to the first 100 teams only. Early registration ensures a chance to participate in the contest. Once the limit is reached, additional teams may join a waiting list for a potential opportunity to participate.",
+        info: "Registration is open to the first 100 users only. Early registration ensures a chance to participate in the contest. Once the limit is reached, additional users may join a waiting list for a potential opportunity to participate.",
     },
     {
         title: "Use of Cookies",

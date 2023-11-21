@@ -56,7 +56,7 @@ const UserCard = ({ user }) => {
                         src={stone_img[TEAM_GRP_NO]}
                         alt="stone"
                     />
-                    <p>Your Team Name:</p>
+                    <p>User Name:</p>
                     <h2>{user.TEAM_NAME} #{user.TEAM_NUMBER}</h2>
                     <p className="description">
                         {

@@ -42,7 +42,7 @@ export const ContestRules = [
     {
         point: "Team Participation",
         list: [
-            "Participants can choose to work individually or as part of a team. Teams must declare their members."
+            "Team participation is not allowed. Contestants must work individually."
         ]
     },
     {

@@ -59,9 +59,9 @@ const Rankings = () => {
                         <strong style={{ color: "#4b32c3" }}>How We Calculate Ranking?</strong>
                     </p>
                     <p>
-                        The ranking is determined based on the contest score and the time of submission. Each team's contest score is a cumulative total of points earned across different problems. The teams are then ranked in descending order of their contest scores.
+                        The ranking is determined based on the contest score and the time of submission. Each user's contest score is a cumulative total of points earned across different problems. The users are then ranked in descending order of their contest scores.
                         <br />
-                        In the event of tied contest scores, we further sort the teams based on the timestamp of their last submission. Teams with earlier submissions are given a higher rank. This ensures a fair and dynamic ranking that reflects both performance and timely participation.
+                        In the event of tied contest scores, we further sort the users based on the timestamp of their last submission. Users with earlier submissions are given a higher rank. This ensures a fair and dynamic ranking that reflects both performance and timely participation.
                     </p>
                     <p style={{ marginBottom: 5 }}>
                         <strong style={{ color: "#4b32c3" }}>How We Calculate Timestamp?</strong>
@@ -73,7 +73,7 @@ const Rankings = () => {
                         Finish Time = (currentSubmissionTime - contestStartTime) / (1000 * 60)
                     </pre>
                     <p>
-                        This timestamp is then used to determine the order of submissions in cases where teams have the same contest score.
+                        This timestamp is then used to determine the order of submissions in cases where users have the same contest score.
                     </p>
                 </div>
 
@@ -84,7 +84,7 @@ const Rankings = () => {
                         <thead>
                             <tr>
                                 <th>Rank</th>
-                                <th>Team Name</th>
+                                <th>Name</th>
                                 <th>Q 1) (10)</th>
                                 <th>Q 2) (20)</th>
                                 <th>Q 3) (20)</th>

@@ -72,7 +72,7 @@ const ContestRegister = ({ user }) => {
                                         marginBottom: 10,
                                         padding: "0 5px"
                                     }}>
-                                        You are unable to participate in the contest as your team has not registered.
+                                        You are unable to participate in the contest as you are not registered.
                                     </p>
                             }
                             <Link to="/contest/frequently-asked-questions">

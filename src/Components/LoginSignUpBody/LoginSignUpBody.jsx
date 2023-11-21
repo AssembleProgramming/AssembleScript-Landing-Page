@@ -156,7 +156,7 @@ const LoginSignUpBody = ({ onLogin }) => {
             <h2>Log In to AssembleScript</h2>
           </div>
           <form onSubmit={handleLogin}>
-            <label>Team Email address</label>
+            <label>Email address</label>
             <input
               type="email"
               placeholder="name@domain.com"
@@ -215,7 +215,7 @@ const LoginSignUpBody = ({ onLogin }) => {
           </div>
 
           <form onSubmit={handleRegistration}>
-            <label>Team Email address</label>
+            <label>Email address</label>
             <input
               type="email"
               placeholder="name@domain.com"
@@ -224,10 +224,10 @@ const LoginSignUpBody = ({ onLogin }) => {
               onChange={(e) => setTeamEmail(e.target.value)}
             />
 
-            <label>Team Name (Unique)*</label>
+            <label>User Name (Unique)*</label>
             <input
               type="text"
-              placeholder="Enter a unique name for your team"
+              placeholder="Enter a unique user name"
               required
               maxLength={14}
               value={teamName}

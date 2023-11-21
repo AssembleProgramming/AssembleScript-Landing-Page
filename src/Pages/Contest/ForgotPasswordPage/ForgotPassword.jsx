@@ -77,9 +77,9 @@ const ForgotPassword = () => {
                             width={30} src={logo} alt="logo" />
                         <h2>Forgot your password?</h2>
                     </div>
-                    <p>Please enter your team email you used to sign up for Assemblescript.</p>
+                    <p>Please enter your email you used to sign up for Assemblescript.</p>
                     <form onSubmit={handleForgotPasswordRequest}>
-                        <label>Team Email address</label>
+                        <label>Email address</label>
                         <input
                             value={teamEmail}
                             onChange={(e) => setTeamEmail(e.target.value)}

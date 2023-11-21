@@ -115,7 +115,7 @@ const MainContest = ({ user, isLoggingIn }) => {
                             marginRight: 5
                           }}
                             class="fa-regular fa-circle-check"></i>
-                          Your team is registered for contest. All the best !!!
+                          You are registered for contest. All the best !!!
                         </h6>
                         :
                         <h6 style={{
@@ -129,7 +129,7 @@ const MainContest = ({ user, isLoggingIn }) => {
                             marginRight: 5
                           }}
                             class="fa-regular fa-circle-xmark"></i>
-                          Your team is not registered for the contest. Register as soon as possible.
+                          You are not registered for the contest. Register as soon as possible.
                         </h6>
                       :
                       <>
@@ -154,11 +154,11 @@ const MainContest = ({ user, isLoggingIn }) => {
                   <h5 style={{ marginTop: 20 }}>🏆Prizes🏆</h5>
                   <ul>
                     <li>
-                      Contestants ranked 1st will win a AssembleScript Waterbottle.
+                      Contestant ranked 1st will win a AssembleScript Waterbottle.
                     </li>
-                    <li>Contestants ranked 2nd~5th will win surprise goodies.</li>
+                    <li>Contestants ranked 2nd~10th will win surprise goodies.</li>
                     <li>
-                      Remaining all participants will receive laptop stickers and a lot
+                      Remaining all participants will receive a lot
                       of enjoyment!!
                     </li>
                   </ul>
