@@ -4,17 +4,22 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Dropdown } from 'react-bootstrap';
 import 'prismjs/themes/prism-okaidia.css';
 import '../CodeSnippet.scss';
+import C_snippet from './CodeSnippets/Q1_C';
+import CPP_snippet from './CodeSnippets/Q1_CPP';
+import JS_snippet from './CodeSnippets/Q1_JS';
+import TS_snippet from './CodeSnippets/Q1_TS';
+import PY_snippet from './CodeSnippets/Q1_PY';
 
 const QuestionOneCodeSnippets = () => {
     const languages = ['C', 'CPP', 'JavaScript', 'TypeScript', 'Python'];
     const [selectedLanguage, setSelectedLanguage] = useState('C');
 
     const codeSnippets = {
-        C: '#include <stdio.h>\n\nint main() {\n  printf("Hello, World!\\n");\n  return 0;\n}',
-        CPP: '#include <iostream>\n\nint main() {\n  std::cout << "Hello, World!\\n";\n  return 0;\n}',
-        JavaScript: 'console.log("Hello, World!");',
-        TypeScript: 'console.log("Hello, World!");',
-        Python: 'print("Hello, World!")'
+        C: C_snippet,
+        CPP: CPP_snippet,
+        JavaScript: JS_snippet,
+        TypeScript: TS_snippet,
+        Python: PY_snippet
     };
 
     const handleLanguageChange = (selected) => {

@@ -1,6 +1,5 @@
 const PracticeTest =
-`
-assemble test_factorial_loop() {
+`assemble test_factorial_loop() {
     vision("Testing factorial_loop...");
     assertEqual(factorial_loop(0), 1);
     assertEqual(factorial_loop(1), 1);

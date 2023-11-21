@@ -36,14 +36,15 @@ vision(avengers[2]);    $ Output: Spider-Man $
 vision(avengers[3]);    $ Output: Black Widow $`;
 
   const Array_4 = `team avengers(4) = {"Captain America", "Iron Man", "Thor", "Hulk"};
-
-wakandaFor i in 0 to len(avengers) {
-    vision(avengers[i]);
+newAvenger it = 0;
+newAvenger n = 4;
+wakandaFor(it; it < n; it = it + 1) {
+    vision(avengers[it]);
 }`;
   const Array_5 = `team avengers(4) = {"Captain America", "Iron Man", "Thor", "Hulk"};
-
 newAvenger i = 0;
-fightUntil (i < len(avengers)) {
+newAvenger n = 4;
+fightUntil (i < n) {
     vision(avengers[i]);
     i = i + 1;
 }`;

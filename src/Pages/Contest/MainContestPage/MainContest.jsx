@@ -8,6 +8,7 @@ import Logininfo from "../../../Components/Logininfo/Logininfo";
 import RulesBullet from "../../../Components/RulesBullet/RulesBullet";
 import { ContestDetails, ContestRules } from "../Data/ContestData";
 import ContestRegister from "../../../Components/RegisterForContest/ContestRegister";
+import LoginLoader from "../../LoginLoader/LoginLoader";
 
 const calculateTimeRemaining = (startTime, endTime, currentTime) => {
   const start = new Date(startTime).getTime();
@@ -66,7 +67,7 @@ const Countdown = ({ startTime, endTime, currentTime }) => {
   );
 };
 
-const MainContest = ({ user }) => {
+const MainContest = ({ user, isLoggingIn }) => {
   const [currentTime, setCurrentTime] = useState(new Date().getTime());
 
   useEffect(() => {
@@ -82,112 +83,120 @@ const MainContest = ({ user }) => {
 
   return (
     <div>
-      <AssembleNav />
-      <div className="main-contest-page">
-        <h2>Codefinity Challenge</h2>
+      {
+        isLoggingIn
+          ?
+          <LoginLoader />
+          :
+          <>
+            <AssembleNav />
+            <div className="main-contest-page">
+              <h2>Codefinity Challenge</h2>
 
-        <Countdown startTime={startTime} endTime={endTime} currentTime={currentTime} />
+              <Countdown startTime={startTime} endTime={endTime} currentTime={currentTime} />
 
-        <div className="contest-info">
-          <div className="col-left">
-            <Logininfo user={user} />
-          </div>
-          <div className="col-right">
-            {
-              user.length
-                ?
-                user[0].Registered
-                  ?
-                  <h6 style={{
-                    color: "green",
-                    border: "2px solid green",
-                    background: "#00800024",
-                    padding: 16,
-                    borderRadius: 6
+              <div className="contest-info">
+                <div className="col-left">
+                  <Logininfo user={user} />
+                </div>
+                <div className="col-right">
+                  {
+                    user.length
+                      ?
+                      user[0].Registered
+                        ?
+                        <h6 style={{
+                          color: "green",
+                          border: "2px solid green",
+                          background: "#00800024",
+                          padding: 16,
+                          borderRadius: 6
+                        }}>
+                          <i style={{
+                            marginRight: 5
+                          }}
+                            class="fa-regular fa-circle-check"></i>
+                          Your team is registered for contest. All the best !!!
+                        </h6>
+                        :
+                        <h6 style={{
+                          color: "#dc0202",
+                          border: "2px solid #dc0202",
+                          background: "#ff000017",
+                          padding: 16,
+                          borderRadius: 6
+                        }}>
+                          <i style={{
+                            marginRight: 5
+                          }}
+                            class="fa-regular fa-circle-xmark"></i>
+                          Your team is not registered for the contest. Register as soon as possible.
+                        </h6>
+                      :
+                      <>
+                      </>
+                  }
+
+                  <h4>
+                    Welcome to the <span id="codefinity">"Codefinity Challenge"</span>{" "}
+                    of AssembleScript
+                  </h4>
+                  <p>
+                    This contest is sponsored by{" "}
+                    <a href="https://github.com/AssembleProgramming">
+                      Assemble Programming
+                    </a>
+                    .
+                    <br />
+                    Login and Register for the contest in advance and fill out the
+                    form.
+                  </p>
+
+                  <h5 style={{ marginTop: 20 }}>🏆Prizes🏆</h5>
+                  <ul>
+                    <li>
+                      Contestants ranked 1st will win a AssembleScript Waterbottle.
+                    </li>
+                    <li>Contestants ranked 2nd~5th will win surprise goodies.</li>
+                    <li>
+                      Remaining all participants will receive laptop stickers and a lot
+                      of enjoyment!!
+                    </li>
+                  </ul>
+
+                  <h5>🛡 Codefinity Challenge Rules.</h5>
+                  <p>
+                    The Codefinity Challenge tests your ability to translate code
+                    snippets from any programming language into AssembleScript. This
+                    challenge encourages creativity, logic, and familiarity with
+                    diverse coding languages. Please read it thoroughly to ensure a
+                    fair and enjoyable experience.
+                  </p>
+
+                  <div style={{
+                    marginTop: 20
                   }}>
-                    <i style={{
-                      marginRight: 5
-                    }}
-                      class="fa-regular fa-circle-check"></i>
-                    Your team is registered for contest. All the best !!!
-                  </h6>
-                  :
-                  <h6 style={{
-                    color: "#dc0202",
-                    border: "2px solid #dc0202",
-                    background: "#ff000017",
-                    padding: 16,
-                    borderRadius: 6
+                    <h5> 🔹 Contest Details</h5>
+                    <RulesBullet rules={ContestDetails} />
+                  </div>
+
+                  <div style={{
+                    marginTop: 20
                   }}>
-                    <i style={{
-                      marginRight: 5
-                    }}
-                      class="fa-regular fa-circle-xmark"></i>
-                    Your team is not registered for the contest. Register as soon as possible.
-                  </h6>
-                :
-                <>
-                </>
-            }
+                    <h5> 🔹 Contest Rules</h5>
+                    <RulesBullet rules={ContestRules} />
+                  </div>
 
-            <h4>
-              Welcome to the <span id="codefinity">"Codefinity Challenge"</span>{" "}
-              of AssembleScript
-            </h4>
-            <p>
-              This contest is sponsored by{" "}
-              <a href="https://github.com/AssembleProgramming">
-                Assemble Programming
-              </a>
-              .
-              <br />
-              Login and Register for the contest in advance and fill out the
-              form.
-            </p>
+                </div>
+              </div>
 
-            <h5 style={{ marginTop: 20 }}>🏆Prizes🏆</h5>
-            <ul>
-              <li>
-                Contestants ranked 1st will win a AssembleScript Waterbottle.
-              </li>
-              <li>Contestants ranked 2nd~5th will win surprise goodies.</li>
-              <li>
-                Remaining all participants will receive laptop stickers and a lot
-                of enjoyment!!
-              </li>
-            </ul>
-
-            <h5>🛡 Codefinity Challenge Rules.</h5>
-            <p>
-              The Codefinity Challenge tests your ability to translate code
-              snippets from any programming language into AssembleScript. This
-              challenge encourages creativity, logic, and familiarity with
-              diverse coding languages. Please read it thoroughly to ensure a
-              fair and enjoyable experience.
-            </p>
-
-            <div style={{
-              marginTop: 20
-            }}>
-              <h5> 🔹 Contest Details</h5>
-              <RulesBullet rules={ContestDetails} />
+              <div className="register-start-compo">
+                <ContestRegister user={user} />
+              </div>
             </div>
-
-            <div style={{
-              marginTop: 20
-            }}>
-              <h5> 🔹 Contest Rules</h5>
-              <RulesBullet rules={ContestRules} />
-            </div>
-
-          </div>
-        </div>
-
-        <div className="register-start-compo">
-          <ContestRegister user={user} />
-        </div>
-      </div>
-      <Footer />
+            <Footer />
+          </>
+      }
     </div>
   );
 };

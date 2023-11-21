@@ -12,6 +12,7 @@ import MainContest from "../../assets/images/main-contest.jpg"
 import practice from "../../assets/images/practice.png"
 import { Link } from 'react-router-dom';
 import { startTime, endTime } from './StartTime';
+import LoginLoader from '../LoginLoader/LoginLoader';
 
 const calculateTimeRemaining = (startTime, endTime, currentTime) => {
     const start = new Date(startTime).getTime();
@@ -43,6 +44,7 @@ const calculateTimeRemaining = (startTime, endTime, currentTime) => {
 };
 
 const Contest = () => {
+
     const [currentTime, setCurrentTime] = useState(new Date().getTime());
     const [timeRemaining, setTimeRemaining] = useState(
         calculateTimeRemaining(startTime, endTime, currentTime)

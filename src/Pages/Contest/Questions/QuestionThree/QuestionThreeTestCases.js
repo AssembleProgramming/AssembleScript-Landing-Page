@@ -1,12 +1,13 @@
 const QuestionThreeTest =
-`
-assemble test_factorial_loop() {
-    vision("Testing factorial_loop...");
-    assertEqual(factorial_loop(0), 1);
-    assertEqual(factorial_loop(1), 1);
-    assertEqual(factorial_loop(5), 120);
-    assertEqual(factorial_loop(10), 3628800);
+`assemble test_is_prime_sieve() {
+    assertEqual(is_prime_sieve(1), HYDRA);
+    assertEqual(is_prime_sieve(2), SHIELD);
+    assertEqual(is_prime_sieve(3), SHIELD);
+    assertEqual(is_prime_sieve(4), HYDRA);
+    assertEqual(is_prime_sieve(17), SHIELD);
+    assertEqual(is_prime_sieve(25), HYDRA);
 }
-test_factorial_loop();`;
+  
+test_is_prime_sieve();`;
 
 export default QuestionThreeTest;
