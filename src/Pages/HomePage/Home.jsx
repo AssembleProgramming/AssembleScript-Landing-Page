@@ -73,7 +73,8 @@ const Home = () => {
                 {
                     currentTime < startTime
                         ?
-                        < PopupModal />
+                        <></>
+                        // < PopupModal />
                         :
                         <></>
                 }
