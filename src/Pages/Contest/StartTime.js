@@ -1,3 +1,3 @@
 // (Note: Months are 0-based, so November is represented as 10)
-export const startTime = new Date(2023, 10, 21, 11, 30, 0); // 24th November 2023, 4:30 PM 
-export const endTime = new Date(2023, 10, 21, 12, 0, 0); // 24th November 2023, 5:30 PM
+export const startTime = new Date(2023, 11, 3, 10, 30, 0); // 3rd DEC 2023, 10:30 AM 
+export const endTime = new Date(2023, 11, 3, 12, 0, 0); // 3rd November 2023, 12:00 AM

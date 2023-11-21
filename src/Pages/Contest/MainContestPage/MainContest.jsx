@@ -55,8 +55,8 @@ const Countdown = ({ startTime, endTime, currentTime }) => {
           buttonStyle="text"
           name="AssembleScript Codefinity Contest"
           options={["Apple", "Google", "Outlook.com", "iCal"]}
-          startDate="2023-12-3"
-          endDate="2023-12-3"
+          startDate="2023-12-03"
+          endDate="2023-12-03"
           startTime="10:00"
           endTime="12:30"
           timeZone="Asia/Calcutta"

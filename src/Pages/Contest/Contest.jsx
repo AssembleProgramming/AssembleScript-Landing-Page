@@ -160,7 +160,7 @@ const Contest = () => {
                                         <span><b style={{ fontWeight: 600 }}>The Contest has ended</b></span>
                                     )}
                                 </p>
-                                <p>Date: <b style={{ fontWeight: 600 }}>24th Nov 2023, 4:30 P.M.</b></p>
+                                <p>Date: <b style={{ fontWeight: 600 }}>3rd Dec 2023, 10:30 A.M.</b></p>
                             </div>
                             <div className="buttons">
                                 <Link to="/contest/main-contest">
