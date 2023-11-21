@@ -251,8 +251,7 @@ const ContestQuestionOne = ({ user }) => {
                 onClick={() => {
                   if (handleCodeSubmit() === 1) {
                     setSubmissionAccepted(1);
-                    console.log('object')
-                    handleCorrectSubmission(); // Call additional function here
+                    handleCorrectSubmission();
                   } else {
                     setSubmissionAccepted(0);
                   }
