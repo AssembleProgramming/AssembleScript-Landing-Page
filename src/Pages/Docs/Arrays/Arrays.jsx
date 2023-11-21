@@ -49,11 +49,12 @@ fightUntil (i < n) {
     i = i + 1;
 }`;
 
-  const Array_6 = `team matrix[3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+  const Array_6 = `team male[10] = {"Captain America", "Iron Man" ,"Dr. Strange", "Hulk", "Hawkeye", "Spiderman", "Thor", "T'Challa", "Ant Man", "Moon Knight"};
+team female[7] = {"Black Widow","Captain Marvel","Wanda Maximoff","She Hulk","Ms Marvel","Gamora","Nebula"};
+team avenger[2] = {male, female};
 
-newAvenger element = matrix[1][2];
-  
-vision(element);    $ Output: 6 $`;
+vision(avengers[0][4]);  $ Output: 'Hawkeye' $
+vision(avengers[1][6]);  $ Output: 'Gamora' $`;
 
   useEffect(() => {
     const handleScroll = () => {

@@ -27,14 +27,14 @@ const Variables = () => {
 power = "Flight";`;
   const Variable_5 = `newAvenger globalVariable = "Global Variable";
 
-function exampleFunction() {
+assemble exampleFunction() {
     newAvenger localVariable = "Local Variable";
     vision(globalVariable);   $ Output: "Global Variable" $
     vision(localVariable);    $ Output: "Local Variable" $
 }
 
 vision(globalVariable);   $ Output: "Global Variable" $
-vision(localVariable);    $ Output: Error: 'localVariable' is not defined`;
+vision(localVariable);    $ Output: Error: 'localVariable' is not defined $`;
   const Variable_6 = `newEternal PI = 3.14159;`;
 
   useEffect(() => {
