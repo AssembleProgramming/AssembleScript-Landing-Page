@@ -68,9 +68,9 @@ const PopupModal = () => {
                         backgroundImage: `url(${images[modalImage]})`,
                     }}
                     className="popup-modal-container"
-                    initial={{ scale: 0 }}
+                    initial={{ opacity: 0, y: 50  }}
                     animate={{
-                        scale: 1,
+                        opacity: 1, y: 0,
                         transition: {
                             duration: 0.3
                         }
@@ -82,9 +82,9 @@ const PopupModal = () => {
                     <motion.button
                         onClick={closePopUP}
                         className="pop-up-more-btn"
-                        initial={{ scale: 0 }}
+                        initial={{ opacity: 0 }}
                         animate={{
-                            scale: 1,
+                            opacity: 1,
                             transition: {
                                 duration: 0.3
                             }
