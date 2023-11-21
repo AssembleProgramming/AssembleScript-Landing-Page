@@ -27,14 +27,14 @@ const Variables = () => {
 power = "Flight";`;
   const Variable_5 = `newAvenger globalVariable = "Global Variable";
 
-  function exampleFunction() {
-      newAvenger localVariable = "Local Variable";
-      vision(globalVariable);   $ Output: "Global Variable" $
-      vision(localVariable);    $ Output: "Local Variable" $
-  }
-  
-  vision(globalVariable);   $ Output: "Global Variable" $
-  vision(localVariable);    $ Output: Error: 'localVariable' is not defined`;
+function exampleFunction() {
+    newAvenger localVariable = "Local Variable";
+    vision(globalVariable);   $ Output: "Global Variable" $
+    vision(localVariable);    $ Output: "Local Variable" $
+}
+
+vision(globalVariable);   $ Output: "Global Variable" $
+vision(localVariable);    $ Output: Error: 'localVariable' is not defined`;
   const Variable_6 = `newEternal PI = 3.14159;`;
 
   useEffect(() => {
@@ -67,7 +67,7 @@ power = "Flight";`;
 
   return (
     <>
-      <AssembleNav/>
+      <AssembleNav />
       <div className="docs-page">
         <div className="container">
           <div className="row">
@@ -221,6 +221,9 @@ power = "Flight";`;
                     within the code. The scope of a variable is determined by
                     where it is declared.
                   </p>
+                  <SyntaxHighlighter language="javascript" style={oneDark}>
+                    {Variable_5}
+                  </SyntaxHighlighter>
                   <ul>
                     <li>
                       Global Scope: Variables declared outside of any block have
@@ -243,7 +246,7 @@ power = "Flight";`;
                     assignment.
                   </p>
                   <SyntaxHighlighter language="javascript" style={oneDark}>
-                    {Variable_4}
+                    {Variable_6}
                   </SyntaxHighlighter>
                   <p>
                     In the above example, PI is declared as a constant and is

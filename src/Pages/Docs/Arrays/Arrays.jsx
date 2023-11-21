@@ -16,15 +16,15 @@ const Arrays = () => {
     useRef(null),
   ]; // Refs for each section
   const [activeSection, setActiveSection] = useState(0); // Index of the active section
-  const Array_1 = `team avengers(4) = {'Captain America', 'Iron Man', 'Thor', 'Hulk'};`;
-  const Array_2 = `team avengers(4) = {"Captain America", "Iron Man", "Thor", "Hulk"};
+  const Array_1 = `team avengers[4] = {'Captain America', 'Iron Man', 'Thor', 'Hulk'};`;
+  const Array_2 = `team avengers[4] = {"Captain America", "Iron Man", "Thor", "Hulk"};
 
 newAvenger firstAvenger = avengers[0];
 newAvenger secondAvenger = avengers[1];
   
 vision(firstAvenger);     $ Output: 'Captain America' $
 vision(secondAvenger);    $ Output: 'Iron Man' $`;
-  const Array_3 = `team avengers(4) = {"Captain America", "Iron Man", "Thor", "Hulk"};
+  const Array_3 = `team avengers[4] = {"Captain America", "Iron Man", "Thor", "Hulk"};
 
 vision(avengers[2]);    $ Output: Thor $
 vision(avengers[3]);    $ Output: Hulk $
@@ -35,13 +35,13 @@ avengers[3] = "Black Widow";
 vision(avengers[2]);    $ Output: Spider-Man $
 vision(avengers[3]);    $ Output: Black Widow $`;
 
-  const Array_4 = `team avengers(4) = {"Captain America", "Iron Man", "Thor", "Hulk"};
+  const Array_4 = `team avengers[4] = {"Captain America", "Iron Man", "Thor", "Hulk"};
 newAvenger it = 0;
 newAvenger n = 4;
 wakandaFor(it; it < n; it = it + 1) {
     vision(avengers[it]);
 }`;
-  const Array_5 = `team avengers(4) = {"Captain America", "Iron Man", "Thor", "Hulk"};
+  const Array_5 = `team avengers[4] = {"Captain America", "Iron Man", "Thor", "Hulk"};
 newAvenger i = 0;
 newAvenger n = 4;
 fightUntil (i < n) {
@@ -49,7 +49,7 @@ fightUntil (i < n) {
     i = i + 1;
 }`;
 
-  const Array_6 = `team matrix(3) = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+  const Array_6 = `team matrix[3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
 newAvenger element = matrix[1][2];
   
@@ -85,7 +85,7 @@ vision(element);    $ Output: 6 $`;
 
   return (
     <>
-      <AssembleNav/>
+      <AssembleNav />
       <div className="docs-page">
         <div className="container">
           <div className="row">

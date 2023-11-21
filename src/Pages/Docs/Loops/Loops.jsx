@@ -8,18 +8,18 @@ import Sidebar from "../../../Components/SideBar/Sidebar";
 import Footer from "../../../Components/Footer/Footer";
 
 const Loops = () => {
-  const sectionRefs = [useRef(null), useRef(null)]; // Refs for each section
+  const sectionRefs = [useRef(null), useRef(null), useRef(null)]; // Refs for each section
   const [activeSection, setActiveSection] = useState(0); // Index of the active section
-  const Loops_1 = `wakandaFor iterator in start to end {
+  const Loops_1 = `wakandaForEach( iterator in start to end ){
     // Code to be executed
 }`;
-  const Loops_2 = `wakandaFor i in 1 to 5 {
+  const Loops_2 = `wakandaForEach( i in 1 to 5 ){
     vision(i);
 }`;
-  const Loops_3 = `wakandaFor i in start to end step stepValue {
+  const Loops_3 = `wakandaForEach( i in start to end step stepValue) {
     // Code to be executed
 }`;
-  const Loops_4 = `wakandaFor i in 0 to 10 step 2 {
+  const Loops_4 = `wakandaForEach( i in 0 to 10 step 2 ){
     vision(i);
 }`;
   const Loops_5 = `fightUntil condition {
@@ -30,6 +30,10 @@ const Loops = () => {
   fightUntil(health > 0) {
       vision("Still fighting! Health: " + health);
       health = health - 10;
+}`;
+  const Loops_7 = `newAvenger i;
+wakandaFor(i = 0; i < 20; i = i + 1){
+    vision(i);
 }`;
 
   useEffect(() => {
@@ -62,7 +66,7 @@ const Loops = () => {
 
   return (
     <>
-      <AssembleNav/>
+      <AssembleNav />
       <div className="docs-page">
         <div className="container">
           <div className="row">
@@ -82,11 +86,11 @@ const Loops = () => {
 
                 <div ref={sectionRefs[0]}>
                   <h1 className="sub-sectionHead">
-                    wakandaFor loop (For Loop)
+                    wakandaForEach loop (Range based For Loop)
                   </h1>
                   <p>
-                    The wakandaFor loop in AssembleScript is similar to the
-                    traditional for loop in other programming languages. It
+                    The wakandaForEach loop in AssembleScript is similar to the
+                    traditional forEach loop in other programming languages. It
                     allows you to execute a block of code for a specific number
                     of iterations.
                   </p>
@@ -106,8 +110,8 @@ const Loops = () => {
                     the values of i will be displayed.
                   </p>
                   <p>
-                    The wakandaFor loop also allows you to specify a step value
-                    to control the increment or decrement of the iterator.
+                    The wakandaForEach loop also allows you to specify a step
+                    value to control the increment or decrement of the iterator.
                   </p>
                   <SyntaxHighlighter language="javascript" style={oneDark}>
                     {Loops_3}
@@ -124,7 +128,22 @@ const Loops = () => {
                     with a step of 2, and only even numbers will be displayed.
                   </p>
                 </div>
+
                 <div ref={sectionRefs[1]}>
+                  <h1 className="sub-sectionHead">
+                    wakandaFor loop (For Loop)
+                  </h1>
+                  <p>
+                    For Loops Use the wakandaFor keyword for loops. Declare a
+                    new variable, specify the condition, and execute the code
+                    within the loop.
+                  </p>
+                  <SyntaxHighlighter language="javascript" style={oneDark}>
+                    {Loops_7}
+                  </SyntaxHighlighter>
+                </div>
+
+                <div ref={sectionRefs[2]}>
                   <h1 className="sub-sectionHead">
                     fightUntil loop (While Loop)
                   </h1>
@@ -161,9 +180,9 @@ const Loops = () => {
                   <p>
                     Loops are powerful constructs that allow you to repeat code
                     execution, iterate over collections, and solve problems that
-                    require repetitive actions. Use wakandaFor loops for a known
-                    number of iterations and fightUntil loops for executing code
-                    until a condition is met.
+                    require repetitive actions. Use wakandaForEach loops for a
+                    known number of iterations and fightUntil loops for
+                    executing code until a condition is met.
                   </p>
                 </div>
               </div>
@@ -180,13 +199,22 @@ const Loops = () => {
                         fontWeight: activeSection === 0 ? "600" : "400",
                       }}
                     >
-                      <i className="fa-solid fa-l"></i> wakandaFor loop (For
-                      Loop)
+                      <i className="fa-solid fa-l"></i> wakandaForEach loop
+                      (RangeBased For Loop)
                     </li>
                     <li
                       style={{
                         color: activeSection === 1 ? "#4b32c3" : "black",
                         fontWeight: activeSection === 1 ? "600" : "400",
+                      }}
+                    >
+                      <i className="fa-solid fa-l"></i> wakandaFor loop (For
+                      Loop)
+                    </li>
+                    <li
+                      style={{
+                        color: activeSection === 2 ? "#4b32c3" : "black",
+                        fontWeight: activeSection === 2 ? "600" : "400",
                       }}
                     >
                       <i className="fa-solid fa-l"></i> fightUntil loop (While
