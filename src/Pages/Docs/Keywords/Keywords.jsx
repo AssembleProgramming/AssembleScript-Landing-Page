@@ -36,14 +36,14 @@ const Keywords = () => {
     default:
       vision("Unknown dimension!");
     }`;
-  const Keywords_5 = `newAvenger isWorthy = true;
+  const Keywords_5 = `newAvenger isWorthy = SHIELD;
 
 ifWorthy(isWorthy) {
     vision("You are worthy!");
 } otherwise {
     vision("You are not worthy!");
 }`;
-  const Keywords_6 = `wakandaFor i in 0 to 10 {
+  const Keywords_6 = `wakandaForEach (i in 0 to 10) {
   ifWorthy(i == 5) {
       endGame;
   }
@@ -61,7 +61,7 @@ ifWorthy(isEnemy) {
 } otherwise {
     vision("You are not an enemy.");
 }`;
-  const Keywords_9 = `wakandaFor i in 1 to 5 {
+  const Keywords_9 = `wakandaForEach (i in 1 to 5){
     vision(i);
 }`;
   const Keywords_10 = `newAvenger health = 100;
