@@ -71,7 +71,7 @@ fightUntil(health > 0) {
     health = health - 10;
 }`;
   const Keywords_11 = `newAvenger power = null;`;
-  const Keywords_12 = `team avengers = ['Captain America', 'Iron Man', 'Thor', 'Hulk'];`;
+  const Keywords_12 = `team avengers[4] = {'Captain America', 'Iron Man', 'Thor', 'Hulk'};`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,7 +103,7 @@ fightUntil(health > 0) {
 
   return (
     <>
-      <AssembleNav/>
+      <AssembleNav />
       <div className="docs-page">
         <div className="container">
           <div className="row">
@@ -179,31 +179,12 @@ fightUntil(health > 0) {
                     {Keywords_3}
                   </SyntaxHighlighter>
                   <p>
-                    In the above example, power is a variable of type newAvenger
-                    that holds the value "Super Strength".
-                  </p>
-                </div>
-                <div ref={sectionRefs[3]}>
-                  <span style={{ color: "#4b32c3" }}>
-                    {" "}
-                    <h1 className="sub-sectionHead">newAvenger (let)</h1>
-                  </span>
-                  <p>
-                    In the Marvel universe, new heroes emerge to join forces and
-                    fight against evil. Similar to the let keyword in other
-                    programming languages, in AssembleScript, newAvenger
-                    represents the creation of a new variable, symbolizing the
-                    arrival of a new Avenger.
-                  </p>
-                  <SyntaxHighlighter language="css" style={oneDark}>
-                    {Keywords_4}
-                  </SyntaxHighlighter>
-                  <p>
                     In the above example, the message "Hello, Avengers!" will be
                     printed to the console.
                   </p>
                 </div>
-                <div ref={sectionRefs[4]}>
+
+                <div ref={sectionRefs[3]}>
                   <h1 className="sub-sectionHead">
                     <span style={{ color: "#4b32c3" }}>
                       {" "}
@@ -219,7 +200,7 @@ fightUntil(health > 0) {
                     and unpredictability encountered in different dimensions.
                   </p>
                   <SyntaxHighlighter language="css" style={oneDark}>
-                    {Keywords_5}
+                    {Keywords_4}
                   </SyntaxHighlighter>
                   <p>
                     In the above example, based on the value of dimension, the
@@ -227,7 +208,7 @@ fightUntil(health > 0) {
                     default block.
                   </p>
                 </div>
-                <div ref={sectionRefs[5]}>
+                <div ref={sectionRefs[4]}>
                   <h1 className="sub-sectionHead">
                     <span style={{ color: "#4b32c3" }}>
                       {" "}
@@ -244,7 +225,7 @@ fightUntil(health > 0) {
                     fulfilled.
                   </p>
                   <SyntaxHighlighter language="css" style={oneDark}>
-                    {Keywords_6}
+                    {Keywords_5}
                   </SyntaxHighlighter>
                   <p>
                     In the above example, based on the value of isWorthy, either
@@ -252,7 +233,7 @@ fightUntil(health > 0) {
                     displayed.
                   </p>
                 </div>
-                <div ref={sectionRefs[6]}>
+                <div ref={sectionRefs[5]}>
                   <span style={{ color: "#4b32c3" }}>
                     {" "}
                     <h1 className="sub-sectionHead">endGame (Break)</h1>
@@ -264,7 +245,7 @@ fightUntil(health > 0) {
                     signifying the end or termination of a loop.
                   </p>
                   <SyntaxHighlighter language="css" style={oneDark}>
-                    {Keywords_7}
+                    {Keywords_6}
                   </SyntaxHighlighter>
                   <p>
                     In the above example, the loop will iterate from 0 to 10.
@@ -272,7 +253,7 @@ fightUntil(health > 0) {
                     the loop and terminate its execution.
                   </p>
                 </div>
-                <div ref={sectionRefs[7]}>
+                <div ref={sectionRefs[6]}>
                   <span style={{ color: "#4b32c3" }}>
                     <h1 className="sub-sectionHead">SHIELD (True))</h1>
                   </span>
@@ -286,14 +267,14 @@ fightUntil(health > 0) {
                     validation.
                   </p>
                   <SyntaxHighlighter language="css" style={oneDark}>
-                    {Keywords_8}
+                    {Keywords_7}
                   </SyntaxHighlighter>
                   <p>
                     In the above example, if isMember is true (SHIELD), the
                     message "You are a member of SHIELD!" will be displayed.
                   </p>
                 </div>
-                <div ref={sectionRefs[8]}>
+                <div ref={sectionRefs[7]}>
                   <span style={{ color: "#4b32c3" }}>
                     <h1 className="sub-sectionHead">HYDRA (False)</h1>
                   </span>
@@ -306,14 +287,14 @@ fightUntil(health > 0) {
                     negation.
                   </p>
                   <SyntaxHighlighter language="css" style={oneDark}>
-                    {Keywords_9}
+                    {Keywords_8}
                   </SyntaxHighlighter>
                   <p>
                     In the above example, if isEnemy is false (HYDRA), the
                     message "You are not an enemy." will be displayed.
                   </p>
                 </div>
-                <div ref={sectionRefs[9]}>
+                <div ref={sectionRefs[8]}>
                   <h1 className="sub-sectionHead">
                     <span style={{ color: "#4b32c3" }}>
                       wakandaFor loop (For Loop)
@@ -327,14 +308,14 @@ fightUntil(health > 0) {
                     iteration and advancement.
                   </p>
                   <SyntaxHighlighter language="css" style={oneDark}>
-                    {Keywords_10}
+                    {Keywords_9}
                   </SyntaxHighlighter>
                   <p>
                     In the above example, the loop will iterate from 1 to 5, and
                     the values of i will be displayed.
                   </p>
                 </div>
-                <div ref={sectionRefs[10]}>
+                <div ref={sectionRefs[9]}>
                   <h1 className="sub-sectionHead">
                     <span style={{ color: "#4b32c3" }}>
                       fightUntil loop (While Loop)
@@ -348,7 +329,7 @@ fightUntil(health > 0) {
                     block of code until a condition is met.
                   </p>
                   <SyntaxHighlighter language="css" style={oneDark}>
-                    {Keywords_11}
+                    {Keywords_10}
                   </SyntaxHighlighter>
                   <p>
                     In the above example, the block of code inside the
@@ -356,7 +337,7 @@ fightUntil(health > 0) {
                     is greater than 0.
                   </p>
                 </div>
-                <div ref={sectionRefs[11]}>
+                <div ref={sectionRefs[10]}>
                   <h1 className="sub-sectionHead">
                     <span style={{ color: "#4b32c3" }}>null</span>{" "}
                   </h1>
@@ -368,11 +349,28 @@ fightUntil(health > 0) {
                     placeholder when no value is present.
                   </p>
                   <SyntaxHighlighter language="css" style={oneDark}>
-                    {Keywords_12}
+                    {Keywords_11}
                   </SyntaxHighlighter>
                   <p>
                     In the above example, power is assigned the value null,
                     indicating the absence of a specific power.
+                  </p>
+                </div>
+                <div ref={sectionRefs[11]}>
+                  <h1 className="sub-sectionHead">
+                    <span style={{ color: "#4b32c3" }}>team (array)</span>{" "}
+                  </h1>
+                  <p>
+                    The Avengers, a team of superheroes with diverse abilities,
+                    join forces to achieve common goals. In AssembleScript, the
+                    team keyword represents array, symbolizing the formation of
+                    an array or a team of values working together.
+                  </p>
+                  <SyntaxHighlighter language="css" style={oneDark}>
+                    {Keywords_12}
+                  </SyntaxHighlighter>
+                  <p>
+                    In the above example, a array named avengers is created.
                   </p>
                 </div>
               </div>

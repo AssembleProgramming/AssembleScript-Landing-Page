@@ -23,7 +23,7 @@ newAvenger temperature = 25.5;    $ Floating-point number $`;
   const datatypes_3 = `newAvenger isAvenger = SHIELD;
 newAvenger isEvil = HYDRA;`;
   const datatypes_4 = `newAvenger power = null;`;
-  const datatypes_5 = `team avengers(4) = {'Captain America', 'Iron Man', 'Thor', 'Hulk'};`;
+  const datatypes_5 = `team avengers[4] = {'Captain America', 'Iron Man', 'Thor', 'Hulk'};`;
   const datatypes_6 = `newAvenger age = 30;
 
 vision(typeOf(age));   $ Output: 'number' $`;
@@ -58,7 +58,7 @@ vision(typeOf(age));   $ Output: 'number' $`;
 
   return (
     <>
-      <AssembleNav/>
+      <AssembleNav />
       <div className="docs-page">
         <div className="container">
           <div className="row">

@@ -38,12 +38,12 @@ quantity /= 2;   $ quantity = 5 $`;
   const Operator_15 = `newAvenger result = 5 < 3;   $ result = false $`;
   const Operator_16 = `newAvenger result = 5 >= 3;   $ result = true $`;
   const Operator_17 = `newAvenger result = 5 <= 3;   $ result = false $`;
-  const Operator_18 = `newAvenger result = true && false;   $ result = false $`;
-  const Operator_19 = `newAvenger result = true || false;   $ result = true $`;
-  const Operator_20 = `newAvenger result = !true;   $ result = false $`;
+  const Operator_18 = `newAvenger result = SHIELD && HYDRA;   $ result = false $`;
+  const Operator_19 = `newAvenger result = SHIELD || HYDRA;   $ result = true $`;
+  const Operator_20 = `newAvenger result = !SHIELD;   $ result = false $`;
   const Operator_21 = `newAvenger name = "Iron";
 newAvenger fullName = name + " Man";   $ fullName = "Iron Man" $`;
-  const Operator_22 = `team avengers = ["Iron Man", "Captain America", "Thor"];
+  const Operator_22 = `team avengers[4] = {"Iron Man", "Captain America", "Thor"};
 newAvenger firstAvenger = avengers[0];   $ firstAvenger = "Iron Man" $`;
 
   useEffect(() => {
@@ -76,7 +76,7 @@ newAvenger firstAvenger = avengers[0];   $ firstAvenger = "Iron Man" $`;
 
   return (
     <>
-      <AssembleNav/>
+      <AssembleNav />
       <div className="docs-page">
         <div className="container">
           <div className="row">
@@ -140,36 +140,39 @@ newAvenger firstAvenger = avengers[0];   $ firstAvenger = "Iron Man" $`;
                     <SyntaxHighlighter language="javascript" style={oneDark}>
                       {Operator_7}
                     </SyntaxHighlighter>
-                    <li>
-                      Addition Assignment (+=): Adds a value to an existing
-                      variable and assigns the result back to the variable.
-                    </li>
-                    <SyntaxHighlighter language="javascript" style={oneDark}>
-                      {Operator_8}
-                    </SyntaxHighlighter>
-                    <li>
-                      Subtraction Assignment (-=): Subtracts a value from an
-                      existing variable and assigns the result back to the
-                      variable.
-                    </li>
-                    <SyntaxHighlighter language="javascript" style={oneDark}>
-                      {Operator_9}
-                    </SyntaxHighlighter>
-                    <li>
-                      Multiplication Assignment (*=): Multiplies an existing
-                      variable by a value and assigns the result back to the
-                      variable.
-                    </li>
-                    <SyntaxHighlighter language="javascript" style={oneDark}>
-                      {Operator_10}
-                    </SyntaxHighlighter>
-                    <li>
-                      Division Assignment (/=): Divides an existing variable by
-                      a value and assigns the result back to the variable.
-                    </li>
-                    <SyntaxHighlighter language="javascript" style={oneDark}>
-                      {Operator_11}
-                    </SyntaxHighlighter>
+
+                    {/* <div>
+                      <li>
+                        Addition Assignment (+=): Adds a value to an existing
+                        variable and assigns the result back to the variable.
+                      </li>
+                      <SyntaxHighlighter language="javascript" style={oneDark}>
+                        {Operator_8}
+                      </SyntaxHighlighter>
+                      <li>
+                        Subtraction Assignment (-=): Subtracts a value from an
+                        existing variable and assigns the result back to the
+                        variable.
+                      </li>
+                      <SyntaxHighlighter language="javascript" style={oneDark}>
+                        {Operator_9}
+                      </SyntaxHighlighter>
+                      <li>
+                        Multiplication Assignment (*=): Multiplies an existing
+                        variable by a value and assigns the result back to the
+                        variable.
+                      </li>
+                      <SyntaxHighlighter language="javascript" style={oneDark}>
+                        {Operator_10}
+                      </SyntaxHighlighter>
+                      <li>
+                        Division Assignment (/=): Divides an existing variable
+                        by a value and assigns the result back to the variable.
+                      </li>
+                      <SyntaxHighlighter language="javascript" style={oneDark}>
+                        {Operator_11}
+                      </SyntaxHighlighter>
+                    </div> */}
                   </ul>
                 </div>
                 <div ref={sectionRefs[2]}>

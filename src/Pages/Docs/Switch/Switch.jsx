@@ -21,44 +21,31 @@ const Switch = () => {
     ...
     default:
       // Code to be executed if no match is found
-    }`;
+}`;
   const Switch_2 = `newAvenger hero = "Thor";
 
-    multiverse (hero) {
-        madness "Iron Man":
-            vision("Billionaire, genius, philanthropist!");
-        madness "Captain America":
-            vision("The First Avenger!");
-        madness "Thor":
-            vision("God of Thunder!");
-        default:
-            vision("Unknown Avenger!");
-    }`;
-  const Switch_3 = `newAvenger rank = 3;
-
-    multiverse (rank) {
-        madness 1:
-            vision("Leader!");
-            break;
-        madness 2:
-        madness 3:
-            vision("Supporting Avengers!");
-            break;
-        default:
-            vision("Unknown Rank!");
-    }`;
+multiverse (hero) {
+    madness "Iron Man":
+        vision("Billionaire, genius, philanthropist!");
+    madness "Captain America":
+        vision("The First Avenger!");
+    madness "Thor":
+        vision("God of Thunder!");
+    default:
+        vision("Unknown Avenger!");
+}`;
   const Switch_4 = `newAvenger hero = "Black Widow";
 
-    multiverse (hero) {
-        madness "Iron Man":
-            vision("Billionaire, genius, philanthropist!");
-            endGame;
-        madness "Black Widow":
-            vision("Deadly assassin and spy!");
-            endGame;
-        default:
-            vision("Unknown Avenger!");
-    }`;
+multiverse (hero) {
+    madness "Iron Man":
+        vision("Billionaire, genius, philanthropist!");
+        endGame;
+    madness "Black Widow":
+        vision("Deadly assassin and spy!");
+        endGame;
+    default:
+        vision("Unknown Avenger!");
+}`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,7 +77,7 @@ const Switch = () => {
 
   return (
     <>
-      <AssembleNav/>
+      <AssembleNav />
       <div className="docs-page">
         <div className="container">
           <div className="row">
