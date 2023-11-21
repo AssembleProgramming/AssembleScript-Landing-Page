@@ -19,12 +19,18 @@ import { TypeAnimation } from 'react-type-animation';
 import MyLoader from '../Loader/Loader';
 import MyLoader2 from '../Loader/Loader2';
 import PopupModal from '../../Components/Contest-PopUp-Modal/PopupModal';
+import { startTime, endTime } from "../Contest/StartTime"
 
 const Home = () => {
     const [latestVersion, setLatestVersion] = useState("");
+    const [currentTime, setCurrentTime] = useState(new Date().getTime());
+
+    useEffect(() => {
+        setCurrentTime(new Date().getTime());
+    }, []);
+
     const experienceRef = useRef();
     const handleSnapClick = () => {
-        // Step 4: Call the function from the <Experience /> component using the ref
         if (experienceRef.current) {
             experienceRef.current.snapHandler();
             const audio = new Audio(transform);
@@ -33,7 +39,6 @@ const Home = () => {
     };
 
     const playHoverSound = () => {
-        // Create an audio element and play the sound on hover
         const audio = new Audio(hoverSound);
         audio.play();
     };
@@ -65,7 +70,13 @@ const Home = () => {
     return (
         <>
             <div>
-                <PopupModal />
+                {
+                    currentTime < startTime
+                        ?
+                        < PopupModal />
+                        :
+                        <></>
+                }
                 <section className='section1'>
                     <AssembleNav />
                     <Suspense fallback={<MyLoader />}>
@@ -188,6 +199,7 @@ const Home = () => {
                 </section>
                 <Footer />
             </div>
+
         </>
     )
 }
