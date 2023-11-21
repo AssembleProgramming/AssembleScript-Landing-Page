@@ -153,7 +153,9 @@ const Rankings = () => {
                     }}>
                         Acceptance time of your
                         <br />
-                        last solved problem
+                        last correct submission
+                        <br />
+                        in minutes.
                     </p>
                 </Tooltip>
 

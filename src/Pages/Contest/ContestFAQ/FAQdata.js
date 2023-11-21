@@ -1,11 +1,11 @@
 const faqs = [
     {
         question: 'Q) What is CodefinityChallenge?',
-        answer: 'CodefinityChallenge is a programming contest where participants translate code snippets from various programming languages into AssembleScript, a unique programming language.',
+        answer: 'CodefinityChallenge is a programming contest where participants translate code snippets from various programming languages into AssembleScript.',
     },
     {
         question: 'Q) Who can participate in the contest?',
-        answer: 'The contest is open to individuals and teams of all skill levels and backgrounds. Minors may participate with the consent of a legal guardian.',
+        answer: 'The contest is open to individuals and teams of all skill levels and backgrounds.',
     },
     {
         question: 'Q) How do I register for the contest?',
@@ -17,7 +17,7 @@ const faqs = [
     },
     {
         question: 'Q) How are submissions evaluated?',
-        answer: 'Submissions will be evaluated for correctness, adherence to AssembleScript syntax, and efficient usage of the language. Detailed scoring criteria will be provided.',
+        answer: 'Submissions will be evaluated for correctness, adherence to AssembleScript syntax, and efficient usage of the language. Detailed scoring criteria is provided on ranking page (https://assemblescript.vercel.app/contest/codefinity-rankings).',
     },
     {
         question: 'Q) Are there any prizes for the winners?',
@@ -25,19 +25,21 @@ const faqs = [
     },
     {
         question: 'Q) Can I use external resources during the contest?',
-        answer: 'Participants are encouraged to use the internet to browse the official documentation of AssembleScript. References and resources used must be properly cited if required.',
+        answer: 'Participants are encouraged to use the internet to browse the official documentation of AssembleScript.',
     },
     {
         question: 'Q) How long does the contest last?',
-        answer: 'The contest will have a specified start and end date, and participants are expected to adhere to the contest timeline.',
+        answer: 'The contest will last for 90 minutes. The contest will have a specified start and end date i.e 3rd Dec 2023 10:30 A.M. to 12:00 P.M. IST, and participants are expected to adhere to the contest timeline.',
     },
     {
-        question: 'Q) What happens if I am found to have cheated or violated the rules?',
+        question: 'Q) What happens if I found to have cheated or violated the rules?',
         answer: 'Cheating, plagiarism, or violations of the contest rules will result in disqualification.',
     },
     {
         question: 'Q) Who should I contact if I have questions or need support?',
-        answer: 'For inquiries and support, participants can contact the contest organizers via the provided contact information.',
+        answer: `For inquiries and support, participants can contact the contest organizers via the provided contact information.
+        Email: assemblescript@gmail.com
+        Contact No.: +919423022360`,
     },
     {
         question: 'Q) Can I modify my code submissions after the deadline?',
@@ -45,7 +47,7 @@ const faqs = [
     },
     {
         question: 'Q) What happens to my code submissions after the contest?',
-        answer: 'Participants retain ownership of their code submissions but grant the contest organizers a license to use them for promoting the Contest.',
+        answer: `Participants retain ownership of their code submissions. Once they submit the correct code, their submitted code is promptly erased from the database. We do not store any submitted code.`,
     },
     {
         question: 'Q) How are disputes and rule interpretations handled?',
