@@ -28,21 +28,23 @@ const QuestionTwoCodeSnippets = () => {
 
     return (
         <div className="code-snippet-container">
-            <h1><i style={{color: "#1990ff"}} class="fa-solid fa-file-lines"></i> Code Snippet</h1>
-            <div className="language-dropdown">
-                <p>Select the Language: </p>
-                <Dropdown onSelect={handleLanguageChange}>
-                    <Dropdown.Toggle  variant="secondary" id="dropdown-basic">
-                        {selectedLanguage}
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        {languages.map((language) => (
-                            <Dropdown.Item key={language} eventKey={language}>
-                                {language}
-                            </Dropdown.Item>
-                        ))}
-                    </Dropdown.Menu>
-                </Dropdown>
+            <div className='code-snippet-container-top'>
+                <h1><i style={{ color: "#1990ff" }} class="fa-solid fa-file-lines"></i> Code Snippet</h1>
+                <div className="language-dropdown">
+                    <p>Select the Language: </p>
+                    <Dropdown onSelect={handleLanguageChange}>
+                        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                            {selectedLanguage}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            {languages.map((language) => (
+                                <Dropdown.Item key={language} eventKey={language}>
+                                    {language}
+                                </Dropdown.Item>
+                            ))}
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </div>
             </div>
             <div className="code-container">
                 <SyntaxHighlighter language={selectedLanguage.toLowerCase()} style={oneDark} showLineNumbers>
