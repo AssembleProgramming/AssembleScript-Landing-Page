@@ -129,11 +129,11 @@ const PracticeQuestion = () => {
                       height: "100%",
                       border: "2px solid #2ac245",
                       background: "#2ac2451f",
-                      paddingTop: 50,
+                      paddingTop: 62.5,
                       textAlign: "center",
                     }}
                   >
-                    {output}
+                    🎉 Accepted
                   </p>
                 ) : (
                   <></>
