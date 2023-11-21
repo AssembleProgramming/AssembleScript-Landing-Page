@@ -53,13 +53,12 @@ const Countdown = ({ startTime, endTime, currentTime }) => {
       <div className="add-to-cal">
         <AddToCalendarButton
           buttonStyle="text"
-          name="AssembleScript Contest"
-          options={["Apple", "Google"]}
-          location="Jspm's RSCOE, Tathawade"
-          startDate="2023-10-23"
-          endDate="2023-10-23"
-          startTime="10:15"
-          endTime="23:30"
+          name="AssembleScript Codefinity Contest"
+          options={["Apple", "Google", "Outlook.com", "iCal"]}
+          startDate="2023-12-3"
+          endDate="2023-12-3"
+          startTime="10:00"
+          endTime="12:30"
           timeZone="Asia/Calcutta"
         ></AddToCalendarButton>
       </div>
