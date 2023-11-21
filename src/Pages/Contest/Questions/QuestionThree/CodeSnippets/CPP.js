@@ -1,9 +1,11 @@
 const CPP_snippet = 
-`bool is_prime_sieve(int n, bool sieve[]) {
+`bool is_prime_sieve(int n) {
     if (n <= 1) {
         return false;
     }
     
+    bool sieve[n+1];
+
     sieve[0] = false;
     sieve[1] = false;
 

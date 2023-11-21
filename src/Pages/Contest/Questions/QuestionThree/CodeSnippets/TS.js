@@ -4,6 +4,7 @@ const TS_snippet =
         return false;
     }
 
+    let sieve = new Array(n+1);
     sieve[0] = false;
     sieve[1] = false;
 

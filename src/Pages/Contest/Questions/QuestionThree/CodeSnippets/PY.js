@@ -3,6 +3,7 @@ const PY_snippet =
     if n <= 1:
         return False
 
+    sieve = [True] * (n + 1)
     sieve[0] = False
     sieve[1] = False
 
