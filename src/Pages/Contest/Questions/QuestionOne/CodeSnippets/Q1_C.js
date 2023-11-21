@@ -15,7 +15,7 @@ const C_snippet =
         case '*':
             return num_one * num_two;
         case 'p':
-            return pow(num_one, num_two);
+            return floor(pow(num_one, num_two));
         default:
             // Returning a special value (-1) 
             // for an unsupported operator

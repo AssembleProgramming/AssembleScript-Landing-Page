@@ -15,7 +15,7 @@ const JS_snippet =
         case '*':
             return num_one * num_two;
         case 'p':
-            return Math.pow(num_one, num_two);
+            return Math.floor(Math.pow(num_one, num_two));
         default:
             // Returning a special value (-1) 
             //for an unsupported operator

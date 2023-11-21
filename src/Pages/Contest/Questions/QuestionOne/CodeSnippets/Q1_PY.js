@@ -13,7 +13,7 @@ const PY_snippet =
     elif op == '*':
         return num_one * num_two
     elif op == 'p':
-        return math.pow(num_one, num_two)
+        return math.floor(math.pow(num_one, num_two))
     else:
         # Returning a special value (-1) 
         # for an unsupported operator
