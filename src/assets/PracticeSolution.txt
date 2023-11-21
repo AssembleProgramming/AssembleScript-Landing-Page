@@ -1,0 +1,8 @@
+assemble sum_of_n_numbers(n) {
+  newAvenger sum = 0;
+  newAvenger i=1;
+  wakandaFor(i; i <= n; i = i + 1){
+    sum = sum + i;
+  }
+  snap sum;
+}

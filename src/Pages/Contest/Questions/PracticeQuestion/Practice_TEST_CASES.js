@@ -1,11 +1,11 @@
 const PracticeTest =
-`assemble test_factorial_loop() {
-    vision("Testing factorial_loop...");
-    assertEqual(factorial_loop(0), 1);
-    assertEqual(factorial_loop(1), 1);
-    assertEqual(factorial_loop(5), 120);
-    assertEqual(factorial_loop(10), 3628800);
+`assemble test_sum_of_n_numbers() {
+    vision("Testing sum_of...");
+    assertEqual(sum_of_n_numbers(0), 0);
+    assertEqual(sum_of_n_numbers(1), 1);
+    assertEqual(sum_of_n_numbers(5), 15);
+    assertEqual(sum_of_n_numbers(10), 55);
 }
-test_factorial_loop();`;
+test_sum_of_n_numbers();`;
 
 export default PracticeTest;

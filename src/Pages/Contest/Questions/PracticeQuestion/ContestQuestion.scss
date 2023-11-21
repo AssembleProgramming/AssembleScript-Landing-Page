@@ -118,6 +118,19 @@
                 border-bottom-right-radius: 8px;
                 padding: 8px;
 
+
+                .contest-solution-download-btn {
+                    width: 120px;
+                    padding: 5px 10px;
+                    background-color: #fff;
+                    border: 1px solid #4a32c3;
+                    color: #4a32c3;
+                    border-radius: 8px;
+                    transition: all 0.3s ease;
+                    margin-right: 10px;
+                }
+
+
                 .contest-code-submit-btn {
                     width: 120px;
                     padding: 5px 10px;
