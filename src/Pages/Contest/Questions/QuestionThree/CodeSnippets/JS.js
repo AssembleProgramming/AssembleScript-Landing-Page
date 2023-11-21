@@ -23,6 +23,8 @@ const JS_snippet =
         }
         i = i + 1;
     }
+
+    return sieve[n];
 }`;
 
 export default JS_snippet;

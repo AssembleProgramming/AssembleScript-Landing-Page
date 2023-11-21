@@ -11,7 +11,7 @@ const CPP_snippet =
                 // to indicate division by zero
                 return -1; 
             }
-            return floor(num_one / static_cast<double>(num_two));
+            return floor(num_one / num_two);
         case '*':
             return num_one * num_two;
         case 'p':

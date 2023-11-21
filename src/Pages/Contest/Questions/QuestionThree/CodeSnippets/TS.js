@@ -1,5 +1,5 @@
 const TS_snippet = 
-`function is_prime_sieve(n: number, sieve: boolean[]): void {
+`function is_prime_sieve(n: number, sieve: boolean[]): boolean {
     if (n <= 1) {
         return false;
     }
@@ -23,6 +23,8 @@ const TS_snippet =
         }
         i = i + 1;
     }
+
+    return sieve[n];
 }`;
 
 export default TS_snippet;

@@ -1,11 +1,12 @@
 const C_snippet = 
-`void is_prime_sieve(int n, bool sieve[]) {
+`bool is_prime_sieve(int n, bool sieve[]) {
     if (n <= 1) {
         return false;
     }
     
     sieve[0] = false;
     sieve[1] = false;
+    
     int it = 2;
     for (it ; it <= n; it = it + 1) {
         sieve[it] = true;
@@ -22,6 +23,8 @@ const C_snippet =
         }
         i = i + 1;
     }
+
+    return sieve[n];
 }`;
 
 export default C_snippet;

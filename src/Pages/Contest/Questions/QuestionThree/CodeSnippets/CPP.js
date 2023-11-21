@@ -1,5 +1,5 @@
 const CPP_snippet = 
-`void is_prime_sieve(int n, bool sieve[]) {
+`bool is_prime_sieve(int n, bool sieve[]) {
     if (n <= 1) {
         return false;
     }
@@ -23,6 +23,8 @@ const CPP_snippet =
         }
         i = i + 1;
     }
+
+    return sieve[n];
 }`;
 
 export default CPP_snippet

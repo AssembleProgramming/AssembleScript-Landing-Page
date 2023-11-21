@@ -17,5 +17,7 @@ const PY_snippet =
                 sieve[j] = False
                 j = j + i
         i = i + 1
+        
+    return sieve[n];
 `;
 export default PY_snippet;
