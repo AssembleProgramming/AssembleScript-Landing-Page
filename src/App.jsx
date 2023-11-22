@@ -104,8 +104,8 @@ function App() {
             <Route path="/playground" element={<Playground />} />
 
             <Route path="/team" element={<Team />} />
-            <Route path="/login-signup" element={<LoginSignUpPage onLogin={handleLogin} />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
+            {/* <Route path="/login-signup" element={<LoginSignUpPage onLogin={handleLogin} />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} /> */}
             <Route path="/terms-of-service" element={<TermsOfService />} />
 
 
