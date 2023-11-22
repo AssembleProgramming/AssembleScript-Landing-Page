@@ -24,10 +24,6 @@
             font-weight: 600;
         }
     }
-    .carousel-item{
-        height: 100vh;
-    }
-
     .contest-carousel-about {
         h3 {
             font-family: "Roboto Mono", monospace;
@@ -183,7 +179,7 @@
     .contest-head {
         margin-top: 50px;
         min-height: 100%;
-        height: 30vh;
+
         .contest-title {
             position: absolute;
             z-index: 1;
