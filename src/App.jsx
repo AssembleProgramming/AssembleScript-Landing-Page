@@ -104,17 +104,17 @@ function App() {
             <Route path="/playground" element={<Playground />} />
 
             <Route path="/team" element={<Team />} />
-            {/* <Route path="/login-signup" element={<LoginSignUpPage onLogin={handleLogin} />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} /> */}
+            <Route path="/login-signup" element={<LoginSignUpPage onLogin={handleLogin} />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
 
 
-            {/* <Route path="/contest" element={<Contest />} />
+            <Route path="/contest" element={<Contest />} />
             <Route path="/contest/frequently-asked-questions" element={<FAQPage faqs={faqs} />} />
             <Route path="/contest/main-contest" element={<MainContest user={user} isLoggingIn={isLoggingIn} />} />
             <Route path="/contest/codefinity-2023" element={<CodefinityPage user={user} isLoggingIn={isLoggingIn} />} />
             <Route path="/contest/practice" element={<PracticeContest />} />
-            <Route path="/contest/codefinity-rankings" element={<Rankings />} /> */}
+            <Route path="/contest/codefinity-rankings" element={<Rankings />} />
 
 
             <Route path="*" element={<PageNotFound />} />
