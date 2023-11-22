@@ -118,7 +118,7 @@ const Home = () => {
                                 </h1>
                             </div>
                             <p className='main-info'>
-                                <b><em>AssembleScript</em></b> , a marvel in itself, is our very own programming language
+                                <b><em>AssembleScript</em></b> ,a marvel in itself, is our very own programming language
                                 designed for the true MCU enthusiasts!
                                 Inspired by the epic world of Marvel and the incredible Avengers,
                                 AssembleScript combines the best of  programming with the thrill of superheroic adventures.
