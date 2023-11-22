@@ -118,9 +118,10 @@ const Home = () => {
                                 </h1>
                             </div>
                             <p className='main-info'>
-                                Inspired by the epic world of Marvel and the incredible Avengers, <br />
-                                AssembleScript combines the best of  programming with <br /> the thrill of superheroic adventures.
-                                It's time to step into the spotlight and become the hero your code deserves.
+                                <b><em>AssembleScript</em></b> , a marvel in itself, is our very own programming language
+                                designed for the true MCU enthusiasts!
+                                Inspired by the epic world of Marvel and the incredible Avengers,
+                                AssembleScript combines the best of  programming with the thrill of superheroic adventures.
                             </p>
                             <div className="stats">
                                 <RepoStats />
